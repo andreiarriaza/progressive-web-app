@@ -9,4 +9,4 @@ Algo importante a tomar en cuenta, es que para realizar las pruebas localmente e
 ### Pruebas locales
 1. Abrir Xampp o Wampp. 
 2. Activar los servicios de **Apache** y **MySQL**.
-3. Abrir la página web desde LiveServer
+3. Abrir la página web en Visual Studio Code desde LiveServer.
