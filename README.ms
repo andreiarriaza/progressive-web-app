@@ -10,3 +10,13 @@ Algo importante a tomar en cuenta, es que para realizar las pruebas localmente e
 1. Abrir Xampp o Wampp. 
 2. Activar los servicios de **Apache** y **MySQL**.
 3. Abrir la página web en Visual Studio Code desde LiveServer.
+
+
+## Instalación de Progressive Web App 
+Las Progressive Web App, únicamente se pueden instalar en protocolos seguros, es decir, en sitios web que tiene el protocolo **_https_**. Si se está desarrollando la aplicación, también funconionará con un servidor de Xampp, Wampp o LiverServer. 
+
+
+
+
+
+

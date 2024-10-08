@@ -7,6 +7,7 @@
         2. Acceder a la sección "Application" (Aplicación).
         3. En la barra de navegación del lado izquierdo, seleccionar "Service workers".
         4. Se muestra la casilla "Source", y en ella de debería mostrar el nombre del archivo de ServiceWorker, el cual, en este caso, se llama "sw.js".
+        5. Por otro lado, al acceder a la consola, se debería mostrar el mensaje: "Registro de SW (Service Worker) exitoso"
 
 
   Corroborar que se haya creado el Caché en el dispositivo: 
@@ -31,53 +32,54 @@ En una aplicación progresiva (PWA), el caché se utiliza para almacenar recurso
     - Imágenes y favicon: todos los recursos gráficos importantes.
     - Fuentes web: cualquier fuente personalizada o de terceros que utilices (como Google Fonts).
     - Recursos externos: cualquier API o CDN que necesite ser cacheado.
+    - (NO FUNCIONA CON VIDEOS DE YOUTUBE POR RESTRICCIONES DE "CORS (Cross-Origin Resource Sharing").
 */
 
 //Asignar un nombre y versión al cache
 const CACHE_NAME = "v1_chess_mate_club",
   urlsToCache = [
     /* Se encarga de cargar el archivo "index.html". */
-    "./",
+    "/index.html",
     /* Carga las fuentes de Google Fonts. */
     "https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap",
     /* Kit de Font Awesome Icons */
     "https://kit.fontawesome.com/f1bff8ec54.js",
 
     /* Hoja Externa de CSS */
-    "./assets/css/styles.css",
+    "/assets/css/styles.css",
     /* Hoja Externa de JavaScript. */
-    "./assets/js/script.js",
+    "/assets/js/script.js",
 
     /* Imágenes del sitio web */
-    "./assets/img/ProgramadorFitness.png",
+    "/assets/img/ProgramadorFitness.png",
 
     /* Favicon */
-    "./assets/img/favicon-16x16.png",
-    "./assets/img/favicon-32x32.png",
-    "./assets/img/favicon-48x48.png",
-    "./assets/img/favicon-76x76.png",
-    "./assets/img/favicon-96x96.png",
-    "./assets/img/favicon-120x120.png",
-    "./assets/img/favicon-144x144.png",
-    "./assets/img/favicon-152x152.png",
-    "./assets/img/favicon-167x167.png",
-    "./assets/img/favicon-180x180.png",
-    "./assets/img/favicon-192x192.png",
-    "./assets/img/favicon-256x256.png",
-    "./assets/img/favicon-384x384.png",
-    "./assets/img/favicon-512x512.png",
+    "/assets/img/favicon-16x16.png",
+    "/assets/img/favicon-32x32.png",
+    "/assets/img/favicon-48x48.png",
+    "/assets/img/favicon-76x76.png",
+    "/assets/img/favicon-96x96.png",
+    "/assets/img/favicon-120x120.png",
+    "/assets/img/favicon-144x144.png",
+    "/assets/img/favicon-152x152.png",
+    "/assets/img/favicon-167x167.png",
+    "/assets/img/favicon-180x180.png",
+    "/assets/img/favicon-192x192.png",
+    "/assets/img/favicon-256x256.png",
+    "/assets/img/favicon-384x384.png",
+    "/assets/img/favicon-512x512.png",
 
     /* Apple Touch Icon */
-    "./assets/img/apple-touch-icon-57x57.png",
-    "./assets/img/apple-touch-icon-60x60.png",
-    "./assets/img/apple-touch-icon-72x72.png",
-    "./assets/img/apple-touch-icon-76x76.png",
-    "./assets/img/apple-touch-icon-114x114.png",
-    "./assets/img/apple-touch-icon-120x120.png",
-    "./assets/img/apple-touch-icon-144x144.png",
-    "./assets/img/apple-touch-icon-152x152.png",
-    "./assets/img/apple-touch-icon-167x167.png",
-    "./assets/img/./assets/img/apple-touch-icon-180x180.png",
+    "/assets/img/apple-touch-icon-57x57.png",
+    "/assets/img/apple-touch-icon-60x60.png",
+    "/assets/img/apple-touch-icon-72x72.png",
+    "/assets/img/apple-touch-icon-76x76.png",
+    "/assets/img/apple-touch-icon-114x114.png",
+    "/assets/img/apple-touch-icon-120x120.png",
+    "/assets/img/apple-touch-icon-144x144.png",
+    "/assets/img/apple-touch-icon-152x152.png",
+    "/assets/img/apple-touch-icon-167x167.png",
+    "/assets/img/apple-touch-icon-180x180.png",
   ];
 
 /* Durante la fase de instalación, generalmente se almacenan en caché los activos estáticos. 
@@ -87,6 +89,7 @@ El código dentro del bloque self.addEventListener("install", ...) se ejecuta en
 
 */
 self.addEventListener("install", (e) => {
+  console.log("Service Worker installing...");
   /* El método e.waitUntil() se asegura que el Service Worker no se considere instalado hasta que todas las tareas dentro de él hayan finalizado correctamente. En este caso, 
   hasta que se hayan agregado todos los archivos al caché.
   */
@@ -99,6 +102,7 @@ self.addEventListener("install", (e) => {
       .open(CACHE_NAME)
 
       .then((cache) => {
+        console.log("Caching files...");
         /* Se agrega un return, dentro del cual se ejecutará el método "addAll", el cual se encargará de agregar todas las URL que se encuentran dentro de la
     constante "urlToCache" a la memoria caché del dispositivo dentro del cual se instale la Progressive Web App. 
     
@@ -137,6 +141,7 @@ self.addEventListener("install", (e) => {
 Se está utilizando el evento "activate" para ejecutar código cuando el Service Worker se activa. La activación ocurre después de que el Service Worker ha sido instalado (cuando ya se ha cargado y almacenado el caché en el dispositivo del usuario).
 */
 self.addEventListener("activate", (e) => {
+  console.log("Service Worker activating...");
   /* Aquí se crea una lista blanca de caché llamada "cacheWhiteList", 
   que contiene los nombres de los cachés que se desean conservar. 
   
