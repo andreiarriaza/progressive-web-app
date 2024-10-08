@@ -14,7 +14,16 @@
         1. Acceder a las Herramientas para Desarrolladores de Chrome. 
         2. Acceder a la sección "Application" (Aplicación).
         3. En la barra de navegación del lado izquierdo, seleccionar "Cache storage".
-        4. Ya debería mostrarse el chaché llamado "v1_chess_mate_club", que se creón dentro de este archivo.
+        4. Ya debería mostrarse el chaché llamado "v1_chess_mate_club", que se creón dentro de este archivo y el listado de URL que se agregarón dentro
+           de la constante "urlsToCache".
+
+        5. Si las variables no se muestran correctamente al acceder en las Herramientas para Desarrolladores de Chrome a "Application/Cache Storage",
+           es necesario reinicar el Service Worker. Para reinicarlo, se deben seguir los siguientes pasos: 
+               - Acceder a las Herramientas para Desarrolladores de Chrome. 
+               - Seleccionar la opción "Application".
+               - En la barra de navegación de lado izquierdo, seleccionar "Service workers".
+               - En el lado derecho, se muestra el botón "Update". Dar clic en él. 
+               - Listo.
 
       
 

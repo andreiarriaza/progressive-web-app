@@ -593,6 +593,29 @@ Ejemplo de uso completo: -->
               }
             ],
 
+                      "screenshots": [
+            {
+              "src": "./assets/img/screenshot-wide-1280X800.png",
+              "sizes": "1280x800",
+              "type": "image/png",
+              "form_factor": "wide"
+            },
+            {
+              "src": "./assets/img/screenshot-portrait-800X1280.png",
+              "sizes": "800x1280",
+              "type": "image/png"
+            }
+          ],
+          "protocol_handlers": [
+            {
+              "protocol": "web+micontacto",
+              
+              "url": "http://127.0.0.1:5500/nosotros.html?data=%s"    (IMPORTANTE: si se sube este sitio web a un Hosting, es imperativo cambiar
+                                                                      la URL: http://127.0.0.1:5500 por la URL del dominioen el que se cargó el sitio web, de lo contrario se generará un error porque dicho link está fuera del ámbito de la Progressive Web App. )
+            }
+          ]
+        }
+
 
           (El campo screenshots en el manifest.json de una Progressive Web App (PWA) se utiliza para 
           proporcionar imágenes que muestran cómo se ve la aplicación en diferentes contextos. Estas 
