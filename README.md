@@ -221,17 +221,19 @@ Las Progressive Web App, únicamente se pueden instalar en protocolos seguros, e
           proporcionar imágenes que muestran cómo se ve la aplicación en diferentes contextos. Estas
           capturas de pantalla son especialmente útiles para las siguientes razones:
 
-            1. Mejorar la Presentación de la PWA: Las capturas de pantalla ayudan a los usuarios a tener una idea visual de la experiencia de usuario que ofrece la PWA. Esto puede aumentar la tasa de instalación al mostrar la interfaz atractiva y funcional de la aplicación.
+            1. Una de las imágenes asignadas aquí, será la que se mostrará cuando se inicie la instalación de la Progressive Web App, junto con el
+               título y la descrición de la Progressive Web App que se definieron en el archivo "manifest.json".
+            2. Mejorar la Presentación de la PWA: Las capturas de pantalla ayudan a los usuarios a tener una idea visual de la experiencia de usuario que ofrece la PWA. Esto puede aumentar la tasa de instalación al mostrar la interfaz atractiva y funcional de la aplicación.
 
-            2. Reforzar la Identidad de la Aplicación: Al incluir capturas de pantalla que reflejan la
+            3. Reforzar la Identidad de la Aplicación: Al incluir capturas de pantalla que reflejan la
             apariencia y las características de la aplicación, se puede ayudar a construir una identidad
             visual más fuerte y consistente.
 
-            3. Aumentar la Confianza del Usuario: Mostrar cómo se verá la aplicación una vez instalada
+            4. Aumentar la Confianza del Usuario: Mostrar cómo se verá la aplicación una vez instalada
             puede ayudar a generar confianza en los usuarios, especialmente si están considerando
             instalar la aplicación desde su navegador.
 
-            4. Diferenciación en la Tienda de Aplicaciones: Si la PWA se presenta en una tienda de
+            5. Diferenciación en la Tienda de Aplicaciones: Si la PWA se presenta en una tienda de
             aplicaciones, las capturas de pantalla pueden ayudar a diferenciarla de otras aplicaciones, atrayendo así más usuarios.)
 
              */

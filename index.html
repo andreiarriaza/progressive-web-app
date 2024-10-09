@@ -6,12 +6,21 @@
     <title>Progressive Web App</title>
     <meta
       name="description"
-      content="Bienvenid@s a #ProgramadorFitness, serie de videos, donde te daré consejos para llevar una vida saludable y evitar el sedentarismo. Recuerda... mente sana en cuerpo sano :)"
+      content="Bienvenidos al sitio web para amantes del ajedrez, en el cual encontrarás recomendaciones de libros, consejos de aperturas, finales,
+        jaque mates y medio juego."
     />
+
+    <!-- Color de la Barra de direcciones del navegador
+     en dispositivos móviles -->
+    <meta name="theme-color" content="#F0DB4F" />
+
+    <!-- ****************** ETIQUETAS OBSOLETAS ****************** -->
 
     <!-- IMPORTANTE: Las etiquetas 
           <meta name="MobileOptimized" content="width" />
-          <meta name="MobileOptimized" content="width" />
+          <meta name="HandheldFriendly" content="true" /> 
+
+         servían para indicar a los navegadores que el sitio web está optimizado para dispositivos móviles.
          se utilizaban antiguamente, pero actualmente, fueron reemplazadas por la etiueta "viewport".
 
         Actualmente, basta con usar la etiqueta <meta name="viewport"> para lograr la optimización en dispositivos móviles. Las etiquetas <meta name="MobileOptimized"> y <meta name="HandheldFriendly"> eran más útiles para navegadores móviles antiguos y ya no son necesarias en la mayoría de los casos modernos.
@@ -21,49 +30,110 @@
      
     -->
 
-    <!-- Color de la Barra de direcciones del navegador
-     en dispositivos móviles -->
-    <meta name="theme-color" content="#F0DB4F" />
-    <!-- Estas etiquetas sirven para indicar a los navegadores
-     que el sitio web está optimizado para dispositivos móviles. -->
+    <!--  -->
 
-    <!-- Propósito: Esta etiqueta es utilizada para asegurar que el sitio web se ajuste correctamente a la anchura de la pantalla de dispositivos móviles.
+    <!-- Propósito: Esta etiqueta era utilizada para asegurar que el sitio web se ajustara correctamente a la anchura de la pantalla de dispositivos móviles.
     Función: Al establecer el valor width, estás indicando que el contenido del sitio web debe ser escalado y optimizado para coincidir con el ancho de la pantalla del dispositivo móvil. Esta etiqueta es principalmente relevante para navegadores más antiguos de Microsoft, como Internet Explorer Mobile, aunque actualmente no se usa tanto ya que la mayoría de navegadores modernos utilizan otras formas de manejo, como el <meta name="viewport">. -->
 
     <!-- <meta name="MobileOptimized" content="width" /> -->
 
-    <!-- Propósito: Informa a los dispositivos portátiles (handhelds), como teléfonos y otros dispositivos móviles, que la página está optimizada para su uso.
-Función: Cuando content="true", indica que el sitio es amigable para dispositivos móviles, lo que puede mejorar la visualización en navegadores móviles más antiguos que podrían no reconocer automáticamente el diseño responsive o adaptable. -->
+    <!-- Propósito: Informaba a los dispositivos portátiles (handhelds), como teléfonos y otros dispositivos móviles, que la página está optimizada para su uso.
+        Función: Cuando content="true", indica que el sitio es amigable para dispositivos móviles, lo que puede mejorar la visualización en navegadores móviles más antiguos que podrían no reconocer automáticamente el diseño responsive o adaptable. Nuevamente, es reemplazada por la etiqueta "Viewport".-->
 
     <!-- <meta name="HandheldFriendly" content="true" /> -->
 
-    <!-- Propósito: Esta etiqueta permite que tu sitio web se ejecute como una "web app" a pantalla completa en
-    dispositivos iOS. 
-    
-    Función: Al establecer content="yes", indicas que el sitio puede comportarse como una aplicación web cuando se añade a la pantalla de inicio del dispositivo iOS (iPhone o iPad). Esto significa que:
-El sitio se abrirá sin la barra de direcciones ni elementos de la interfaz del navegador.
-Parecerá una aplicación nativa a pantalla completa. -->
+    <!-- ****************** FIN ETIQUETAS OBSOLETAS ****************** -->
 
-    <!--  La etiqueta siguiente, anteriormente se escribía así: 
-    <meta name="apple-mobile-web-app-capable" content="yes" /> 
-    
--->
+    <!-- ****************** ETIQUETAS PARA CONTROLAR CÓMO SE VERÁ EL SITIO CUANDO SE AGREGUE A LA PANTALLA DE INICIO DEL SMARTPHONE Y LUEGO SE ABRA ****************** -->
+
+    <!-- Las siguiente etiqeutas, NO CONVIERTEN EL SITIO en una Progressive Web App: 
+          Las etiquetas que se muestran a continuación, solamente sirven para que, cuando se agregue un acceso directo del sitio web
+          a la pantalla de inicio del Smartphone, y luego se abra dicho sitio, este se muestre en pantalla completa, sin la barra de herramientas del navegador.
+          Aunque esto pareciera que es una Progressive Web App, aún no lo es, solamente da la apariencia de una Progressive Web App que simplemente
+          cambia la apariencia del sitio cuando se agrega a la pantalla de inicio y se abre. 
+
+         Estas etiquetas siguen siendo útiles incluso si tienes una Progressive Web App (PWA). Aunque una PWA ya ofrece varias funcionalidades avanzadas por sí misma, 
+         estas etiquetas mejoran aún más la experiencia de usuario en dispositivos móviles, especialmente en términos de integración visual y comportamiento en iOS y Android.
+
+        ¿Por qué son útiles en una PWA?
+          Modo de pantalla completa: Aunque las PWAs pueden ejecutarse en modo de pantalla completa automáticamente en muchos navegadores, 
+                                     estas etiquetas garantizan que tanto en iOS (Safari) como en Android (Chrome y otros navegadores móviles) 
+                                     el sitio web se comportará como una aplicación nativa cuando se abra desde la pantalla de inicio.
+
+
+            <meta name="apple-mobile-web-app-capable" content="yes"> (iOS) y <meta name="mobile-web-app-capable" content="yes"> (Android) 
+            le indican al navegador que tu sitio web puede mostrarse en modo pantalla completa cuando los usuarios lo agregan a la pantalla de inicio.
+
+            Modo pantalla completa: Cuando un usuario guarda tu página web en la pantalla de inicio de su dispositivo y luego la abre desde allí, 
+                                    el navegador ocultará la barra de direcciones, controles de navegación y otros elementos de la interfaz, 
+                                    brindando una experiencia similar a la de una aplicación.
+
+            Sin ser una PWA, NO tendrás:
+                Instalación directa: Los usuarios no podrán instalar la página directamente como una aplicación mediante 
+                                     un botón "Instalar" en el navegador (una característica propia de las PWAs).
+            Funcionalidades offline: Las PWAs permiten que las páginas funcionen sin conexión a través de un "service worker", 
+                                      lo cual no es posible si tu página no es una PWA.
+            Actualización automática de contenido: Las PWAs pueden almacenar en caché el contenido localmente y actualizarlo en segundo plano.
+            
+            Beneficios que aún obtendrás:
+              - Pantalla completa: Tus usuarios podrán experimentar tu sitio web en modo de pantalla completa cuando lo abran desde el acceso directo en la pantalla de inicio.
+              - Experiencia tipo app: La interfaz web se verá más inmersiva y parecida a una app, aunque no sea una PWA completa.
+              - Personalización visual: Puedes configurar un ícono, el título de la página cuando se guarda en la pantalla de inicio, y el color de la barra de estado en dispositivos móviles. 
+              
+  -->
+
+    <!-- 
     <meta name="mobile-web-app-capable" content="yes" />
-    <!-- Propósito: Controla el estilo de la barra de estado (la barra en la parte superior que muestra la hora, batería, etc.) cuando tu sitio se ejecuta como una "web app" en iOS.
-
-    Función: Al usar content="black-translucent", haces que la barra de estado sea negra y translúcida, permitiendo que parte del contenido de la página web sea visible debajo de la barra de estado. Esto puede dar una apariencia más integrada y fluida a tu aplicación web.
     
-    Otros valores posibles para esta etiqueta incluyen:
+      Definición:
+        Esta etiqueta está diseñada para navegadores en dispositivos Android, como Google Chrome, y permite que el sitio web se comporte como 
+        una "aplicación web" cuando se agrega a la pantalla de inicio del dispositivo.
 
-      default: Usa la barra de estado normal (que es gris o   
-               blanca).
-      black: La barra de estado será completamente negra, sin 
-             transparencia.
-Ejemplo de uso completo: -->
+      Funcionalidad:
+        Modo de pantalla completa: Similar a la etiqueta para iOS, esta permite que el sitio web se muestre sin la barra de direcciones ni controles 
+        del navegador cuando se accede desde un acceso directo creado en la pantalla de inicio.
+        Experiencia de aplicación: Hace que el sitio web funcione como una Progressive Web App (PWA), 
+        dándole una apariencia más nativa.. -->
+
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <!-- <meta name="apple-mobile-web-app-capable" content="yes" />
+            Definición:
+              Esta etiqueta es específica para dispositivos iOS (iPhone, iPad, iPod touch) y le indica a Safari que el sitio web es "capaz" de comportarse como una aplicación web cuando el usuario lo agrega a su pantalla de inicio.
+
+            Funcionalidad:
+              Modo de pantalla completa: Permite que el sitio web se abra en un modo de "pantalla completa", es decir, sin la barra de direcciones ni otros controles de Safari, ofreciendo una experiencia más cercana a una aplicación nativa.
+              Agregado a la pantalla de inicio: Cuando los usuarios añaden tu sitio web a la pantalla de inicio, el sitio se comporta como una aplicación independiente, sin elementos del navegador. 
+              
+    -->
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <!-- 
+    
+     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+          Propósito: Controla el estilo de la barra de estado (la barra en la parte superior que muestra la hora, batería, etc.) cuando tu sitio 
+          se ejecuta como una "web app" en iOS.
+
+          Función: Al usar content="black-translucent", haces que la barra de estado sea negra y translúcida, permitiendo que parte del 
+          contenido de la página web sea visible debajo de la barra de estado. Esto puede dar una apariencia más integrada y fluida a tu aplicación web.
+    
+          Otros valores posibles para esta etiqueta incluyen:
+
+            - default: Usa la barra de estado normal (que es gris o   blanca).
+            - black: La barra de estado será completamente negra, sin 
+                     transparencia.
+
+            - black-translucent: La barra de estado será negra y translúcida, permitiendo que parte del contenido de la página web sea visible debajo de la barra de estado.
+    
+     -->
     <meta
       name="apple-mobile-web-app-status-bar-style"
       content="black-translucent"
     />
+
+    <!-- ****************** FIN ETIQUETAS PARA CONTROLAR CÓMO SE VERÁ EL SITIO CUANDO SE AGREGUE A LA PANTALLA DE INICIO DEL SMARTPHONE Y LUEGO SE ABRA ****************** -->
+
     <!-- ****************************************** FAVICON ******************************************  -->
 
     <!-- Sitio Web para descargar Favicon y Apple Touch Icons: https://favicon.io/ 
@@ -617,21 +687,23 @@ Ejemplo de uso completo: -->
         }
 
 
-          (El campo screenshots en el manifest.json de una Progressive Web App (PWA) se utiliza para 
-          proporcionar imágenes que muestran cómo se ve la aplicación en diferentes contextos. Estas 
+             (El campo screenshots en el manifest.json de una Progressive Web App (PWA) se utiliza para
+          proporcionar imágenes que muestran cómo se ve la aplicación en diferentes contextos. Estas
           capturas de pantalla son especialmente útiles para las siguientes razones:
 
-            1. Mejorar la Presentación de la PWA: Las capturas de pantalla ayudan a los usuarios a tener una idea visual de la experiencia de usuario que ofrece la PWA. Esto puede aumentar la tasa de instalación al mostrar la interfaz atractiva y funcional de la aplicación.
+            1. Una de las imágenes asignadas aquí, será la que se mostrará cuando se inicie la instalación de la Progressive Web App, junto con el
+               título y la descrición de la Progressive Web App que se definieron en el archivo "manifest.json".
+            2. Mejorar la Presentación de la PWA: Las capturas de pantalla ayudan a los usuarios a tener una idea visual de la experiencia de usuario que ofrece la PWA. Esto puede aumentar la tasa de instalación al mostrar la interfaz atractiva y funcional de la aplicación.
 
-            2. Reforzar la Identidad de la Aplicación: Al incluir capturas de pantalla que reflejan la 
-            apariencia y las características de la aplicación, se puede ayudar a construir una identidad 
+            3. Reforzar la Identidad de la Aplicación: Al incluir capturas de pantalla que reflejan la
+            apariencia y las características de la aplicación, se puede ayudar a construir una identidad
             visual más fuerte y consistente.
 
-            3. Aumentar la Confianza del Usuario: Mostrar cómo se verá la aplicación una vez instalada 
-            puede ayudar a generar confianza en los usuarios, especialmente si están considerando 
+            4. Aumentar la Confianza del Usuario: Mostrar cómo se verá la aplicación una vez instalada
+            puede ayudar a generar confianza en los usuarios, especialmente si están considerando
             instalar la aplicación desde su navegador.
 
-            4. Diferenciación en la Tienda de Aplicaciones: Si la PWA se presenta en una tienda de 
+            5. Diferenciación en la Tienda de Aplicaciones: Si la PWA se presenta en una tienda de
             aplicaciones, las capturas de pantalla pueden ayudar a diferenciarla de otras aplicaciones, atrayendo así más usuarios.)
 
             
@@ -695,16 +767,25 @@ Ejemplo de uso completo: -->
     ></script>
   </head>
   <body>
-    <header class="Header">
-      <h1>#ProgramadorFitness</h1>
+    <header>
+      <h1>Chess Mate Club</h1>
+
+      <nav>
+        <a href="mates/mates.html" target="_self" title="Jaque Mates">
+          Mates
+        </a>
+        <a href="" target="_blank" title="Aperturas"> Aperturas </a>
+
+        <a href="#" target="_blank" title="Libros"> Libros </a>
+      </nav>
       <img
         src="./assets/img/ProgramadorFitness.png"
         alt="#ProgramadorFitness"
       />
       <p>
-        Bienvenid@s a #ProgramadorFitness, serie de videos, donde te daré
-        consejos para llevar una vida saludable y evitar el sedentarismo.
-        Recuerda... mente sana en cuerpo sano :)
+        Bienvenidos al sitio web para amantes del ajedrez, en el cual
+        encontrarás recomendaciones de libros, consejos de aperturas, finales,
+        jaque mates y medio juego.
       </p>
 
       <!-- Pendiente de prueba cuando ya se haya convertido en una ¨PWA -->
@@ -734,13 +815,15 @@ Ejemplo de uso completo: -->
         </a>
       </nav>
     </header>
-    <main class="Main">
+    <main>
       <iframe
         width="560"
         height="315"
-        src="https://www.youtube.com/embed/9oQIylJ-JpU"
+        src="https://www.youtube.com/embed/jIYF9wg1fZU?si=uxGNOes4DM7Scy7o"
+        title="YouTube video player"
         frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
         allowfullscreen
       ></iframe>
     </main>

@@ -1,3 +1,6 @@
+/* Se debe recordar que el ancho mínimo de dispositivos para controlar la responsividad del sitio web, es de 320px, el cual es el ancho
+de los smartphones más antiguos.  */
+
 /* Custom Properties */
 :root {
   --main-color: #f0db4f;
@@ -49,13 +52,13 @@ p {
   color: var(--main-color);
 }
 
-.Header {
+header {
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 
-.Header h1 {
+h1 {
   /* La propiedad "word-wrap" permite que las palabras que no quepan completas dentro de una línea se dividan, pasando el resto de la palabra a la
    siguiente línea. Por ejemplo:
    
@@ -74,21 +77,27 @@ p {
   overflow-wrap: break-word;
 }
 
-.Header img {
+header img {
   margin: 0 auto;
   display: block;
   max-width: 150px;
   border-radius: 50%;
 }
 
-.Header nav {
+header nav {
   padding: 2rem 0;
   display: flex;
   justify-content: space-evenly;
-  font-size: 3rem;
+  font-size: 1.5rem;
 }
 
-.Main {
+header nav a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #4b4b4b;
+}
+
+main {
   position: relative;
   margin: 0 auto;
   /* IMPORTANTE: este es un hack que utilizan los desarrolladores Web, para conseguir que los videos se visualicen en una resolución de 16:9, consiguiendo
@@ -96,7 +105,7 @@ p {
   padding-bottom: 56.25%; /* 16:9 */
 }
 
-.Main iframe {
+main iframe {
   position: absolute;
   top: 0;
   left: 0;
