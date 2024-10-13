@@ -75,6 +75,7 @@ h1 {
 
   /* Esta propiedad reempaza a la propiedad "word-wrap".  */
   overflow-wrap: break-word;
+  text-align: center;
 }
 
 header img {
@@ -84,7 +85,7 @@ header img {
   border-radius: 50%;
 }
 
-header nav {
+nav {
   padding: 2rem 0;
   display: flex;
   justify-content: space-evenly;
@@ -99,7 +100,7 @@ header nav a {
 
 main {
   position: relative;
-  margin: 0 auto;
+  margin: 1rem auto;
   /* IMPORTANTE: este es un hack que utilizan los desarrolladores Web, para conseguir que los videos se visualicen en una resolución de 16:9, consiguiendo
   de esta manera que los videos no se deformen. */
   padding-bottom: 56.25%; /* 16:9 */

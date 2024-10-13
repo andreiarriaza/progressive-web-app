@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chess Mate - Club - Mates</title>
 
     <meta
       name="description"
@@ -178,6 +177,10 @@
          Esto ayuda al navegador a seleccionar el tamaño adecuado según el contexto. -->
 
     <!-- IMPORTANTE: cuando se utliza "./" antes de una ruta, se indica que dicha ruta se busca a partir de la ubicación actual.  -->
+
+    <!-- La "/" se utiliza para definir que las URL tomen de referencias
+     la carpeta raíz. De este modo, se puede utilizar la misma ruta en todas las páginas web, sin tener
+     que modificarla sin importar la ubicación. -->
     <link
       rel="icon"
       type="image/png"
@@ -748,7 +751,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/mates.css" />
+
+    <link rel="stylesheet" href="assets/css/contacto.css" />
 
     <!-- Font Awesome Icons ya no permite hacer el uso de CDN directamente. Para poder utilizar estos íconos, es necesario realizar los siguientes pasos: 
       1. Inicar sesión en https://fontawesome.com/
@@ -770,12 +774,11 @@
       src="https://kit.fontawesome.com/f1bff8ec54.js"
       crossorigin="anonymous"
     ></script>
-
-    <link rel="stylesheet" href="../assets/css/main.css" />
+    <title>Contacto</title>
   </head>
   <body>
     <header>
-      <h1>Mates Famosos</h1>
+      <h1>Datos de Contacto</h1>
       <nav>
         <a href="/index.html" target="_self" title="Inicio"> Inicio </a>
         <a href="/mates/mates.html" target="_self" title="Jaque Mates">
@@ -787,37 +790,51 @@
       </nav>
     </header>
 
-    <br />
+    <h2 id="contact-id" class="contact-param-id"></h2>
+    <p id="contact-info"></p>
 
-    <details>
-      <summary>Mate Árabe</summary>
-      <img src="assets/img/mate-arabe.gif" alt="" />
-    </details>
+    <script>
+      /* 
+      - URLSearchParams: Esta clase permite trabajar con los parámetros de la URL, en este caso, los que 
+              vienen después del signo ?. 
+      
+      - window.location.search: Obtiene la parte de la URL que contiene los parámetros (lo que está   
+        después del ?).
 
-    <details>
-      <summary>Mate Cola de Golondrina</summary>
-      <img src="assets/img/mate-arabe.gif" alt="" />
-    </details>
-    <details>
-      <summary>Mate Árabe</summary>
-      <img src="assets/img/mate-arabe.gif" alt="" />
-    </details>
-    <details>
-      <summary>Mate Árabe</summary>
-      <img src="assets/img/mate-arabe.gif" alt="" />
-    </details>
-    <details>
-      <summary>Mate Árabe</summary>
-      <img src="assets/img/mate-arabe.gif" alt="" />
-    </details>
-    <details>
-      <summary>Mate Árabe</summary>
-      <img src="assets/img/mate-arabe.gif" alt="" />
-    </details>
-    <details>
-      <summary>Mate Árabe</summary>
-      <img src="assets/img/mate-arabe.gif" alt="" />
-    </details>
+      
+      */
+      const urlParams = new URLSearchParams(window.location.search);
+      /* - urlParams.get("id"): Extrae el valor del parámetro id de la URL (por ejemplo, si la URL es ?id=web+micontacto://100/, entonces rawContactoId contendría web+micontacto://100/). 
+
+       */
+      const rawContactoId = urlParams.get("id");
+      /* El if (rawContactoId) comprueba si hay algún valor en el parámetro id. Si lo hay, procede a procesarlo. */
+      if (rawContactoId) {
+        /* 
+        
+        
+        - rawContactoId.replace("web+micontacto://", "").replace("/", "")
+            Sin embargo, como lo que se necesita es el valor del "id", es necesario reemplazar la parte de la URL que no se necesita con espacios vacíos, de tal manera que se obtenga únicamente el "id". }}. Esto se consigue mediante los métodos:  */
+        const contactoId = rawContactoId
+
+          .replace("web+micontacto://", "")
+          .replace("/", "");
+        document.getElementById("contact-id").textContent = `ID: ${contactoId}`;
+        console.log(contactoId);
+
+        /* Acá se comprueba el valor del "id". No se aplicó igualdad estricta (===), porque el parámetro no es un número, sino una cadena de texto. */
+        if (contactoId == 100) {
+          /*  Se modifica el valor del elemento que tiene asignada la clase "contact-info".*/
+          document.getElementById(
+            "contact-info"
+          ).textContent = `Nombre: Andrei Arriaza`;
+        } else if (contactoId == 200) {
+          document.getElementById(
+            "contact-info"
+          ).textContent = `Nombre: Bobby Fischer`;
+        }
+      }
+    </script>
   </body>
 
   <footer>
