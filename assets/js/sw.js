@@ -54,8 +54,12 @@ const CACHE_NAME = "v1_chess_mate_club",
     /* Kit de Font Awesome Icons */
     "https://kit.fontawesome.com/f1bff8ec54.js",
 
-    /* Hoja Externa de CSS */
-    "/assets/css/styles.css",
+    /* Hojas Externas de CSS*/
+    "/assets/css/main.css",
+    "/aperturas/assets/css/aperturas.css",
+    "/libros/assets/css/libros.css",
+    "/mates/assets/css/mates.css",
+
     /* Hoja Externa de JavaScript. */
     "/assets/js/script.js",
 
@@ -89,6 +93,35 @@ const CACHE_NAME = "v1_chess_mate_club",
     "/assets/img/apple-touch-icon-152x152.png",
     "/assets/img/apple-touch-icon-167x167.png",
     "/assets/img/apple-touch-icon-180x180.png",
+
+    /* Aperturas */
+    "/assets/img/Apertura-Ruy-López.png",
+    "/assets/img/Apertura-Italiana.png",
+    "/assets/img/Defensa-Alekhine.png",
+    "/assets/img/Defensa-Caro-Kann.png",
+    "/assets/img/Defensa-Escandinava.png",
+    "/assets/img/Defensa-Escocesa.png",
+    "/assets/img/Defensa-Francesa.png",
+    "/assets/img/Defensa-Siciliana.png",
+    "/assets/img/Defensa-Vienesa.png",
+    "/assets/img/Gambito-de-Rey.png",
+
+    /* Mates */
+    "/assets/img/mate-arabe.gif",
+    "/assets/img/mate-cola-de-golondrina.gif",
+    "/assets/img/mate-de-anastasia.gif",
+    "/assets/img/mate-de-blackburne.gif",
+    "/assets/img/mate-de-boen.gif",
+    "/assets/img/mate-de-cozio.gif",
+    "/assets/img/mate-de-damiano.gif",
+    "/assets/img/mate-de-la-coz.gif",
+    "/assets/img/mate-de-la-opera.gif",
+    "/assets/img/mate-de-las-hombreras.gif",
+    "/assets/img/mate-de-morphy.gif",
+
+    /* Libros */
+    "/assets/img/mis-60-partidas-memorables.jpg",
+    "/assets/img/curso-completo-de-ajedrez.jpg",
   ];
 
 /* Durante la fase de instalación, generalmente se almacenan en caché los activos estáticos. 
