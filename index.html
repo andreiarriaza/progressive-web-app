@@ -97,6 +97,24 @@
 
     <meta name="mobile-web-app-capable" content="yes" />
 
+    <!-- <meta name="apple-mobile-web-app-title" content="Chess Mate Club" />: esta etiqueta es necesaria, aún si nuestra página es una Progressive Web App, si se quiere 
+                                                                               personalizar el nombre de tu aplicación web en iOS cuando los usuarios agreguen 
+                                                                               el sitio a la pantalla de inicio.
+
+                                                                                Sin esta etiqueta, iOS tomará el valor del título de la página web (<title>) 
+                                                                                como el nombre que se muestra en la pantalla de inicio, lo cual podría no ser 
+                                                                                ideal si tu título es muy largo o si quieres que sea algo más específico o estilizado.
+                                                                                
+          ¿Qué hace esta etiqueta?
+              Define el título de la "aplicación web" en iOS:
+                  Cuando el usuario agrega tu sitio web a la pantalla de inicio en un dispositivo iOS (iPhone o iPad), este 
+                  título aparecerá debajo del ícono en lugar de tomar el título de la página o el dominio del sitio.
+                  Te permite personalizar el nombre que se muestra en la pantalla de inicio, lo cual puede ser más corto o diferente al título de la página.
+              Específica para iOS:
+                  Solo tiene efecto en dispositivos iOS (Safari). Android no utiliza esta etiqueta, ya que en Android el nombre de la PWA se define 
+                  en el archivo manifest.json.-->
+    <meta name="apple-mobile-web-app-title" content="Chess Mate Club" />
+
     <!-- <meta name="apple-mobile-web-app-capable" content="yes" />
             Definición:
               Esta etiqueta es específica para dispositivos iOS (iPhone, iPad, iPod touch) y le indica a Safari que el sitio web es "capaz" de comportarse como una aplicación web cuando el usuario lo agrega a su pantalla de inicio.
@@ -131,6 +149,53 @@
       name="apple-mobile-web-app-status-bar-style"
       content="black-translucent"
     />
+
+    <!-- ****************** Tamaños de apple-touch-icon que se recomienda agregar (en este ejemplo solo se agregó uno, pero es 
+    recomendable agregar todos los tamaños listados) ****************** 
+
+        <link rel="apple-touch-icon" sizes="57x57" href="./assets/img/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="./assets/img/apple-touch-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="./assets/img/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-touch-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="./assets/img/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="./assets/img/apple-touch-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="./assets/img/apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="./assets/img/apple-touch-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="167x167" href="./assets/img/apple-touch-icon-167x167.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/apple-touch-icon-180x180.png">
+
+        Para cubrir la gama de dispositivos Apple con diferentes resoluciones, es común incluir varios tamaños de íconos. Aquí están los tamaños recomendados:
+
+          57x57 px: Icono básico para iPhone (antiguos modelos).
+          60x60 px: iPhone con pantallas Retina (iOS 7 y posteriores).
+          72x72 px: iPad (modelos más antiguos).
+          76x76 px: iPad (iOS 7 y posteriores).
+          114x114 px: iPhone con pantallas Retina (modelos más antiguos).
+          120x120 px: iPhone con pantallas Retina (iOS 7 y posteriores).
+          144x144 px: iPad con pantallas Retina.
+          152x152 px: iPad con pantallas Retina (iOS 7 y posteriores).
+          167x167 px: iPad Pro.
+          180x180 px: iPhone con pantallas Retina (iOS 8 y posteriores).
+          192x192 px: Icono de alta resolución, también válido para Android.
+
+
+    -->
+
+    <!-- Propósito: Esta etiqueta define el ícono que se mostrará en la pantalla de 
+         inicio de dispositivos iOS (iPhone o iPad) cuando el usuario agregue el sitio 
+         web a su pantalla de inicio.
+         Función: Al incluir esta etiqueta, permites que tu sitio web tenga un ícono personalizado en lugar del favicon tradicional del navegador cuando el usuario lo guarda como una app. 
+         Este ícono se mostrará en la pantalla de inicio y en el menú multitarea de iOS.
+         Aún es vigente. Es común y recomendable si quieres ofrecer una experiencia más personalizada y profesional para los usuarios que agreguen tu sitio a su pantalla de inicio. -->
+    <link rel="apple-touch-icon" href="./ProgramadorFitness.png" />
+    <!-- 
+    IMPORTANTE: Menos común en la actualidad, especialmente en iOS recientes, ya que los tiempos de carga suelen ser más rápidos y las PWA modernas manejan mejor las transiciones de inicio. Si lo deseas, puedes incluirla, pero no es estrictamente necesaria.
+
+    Propósito: Esta etiqueta define la imagen que se muestra mientras la aplicación web se está cargando (pantalla de inicio o splash screen) cuando es lanzada desde la pantalla de inicio de un dispositivo iOS.
+
+    Función: Sirve como una pantalla de carga que aparece brevemente cuando se abre la web app, antes de que el contenido esté listo para ser visualizado. Le da una apariencia más parecida a una aplicación nativa, con una transición más fluida al abrir la web app.   
+    -->
+    <link rel="apple-touch-startup-image" href="./ProgramadorFitness.png" />
 
     <!-- ****************** FIN ETIQUETAS PARA CONTROLAR CÓMO SE VERÁ EL SITIO CUANDO SE AGREGUE A LA PANTALLA DE INICIO DEL SMARTPHONE Y LUEGO SE ABRA ****************** -->
 
@@ -415,53 +480,6 @@
       sizes="180x180"
       href="./assets/img/apple-touch-icon-180x180.png"
     />
-
-    <!-- ****************** Tamaños de apple-touch-icon que se recomienda agregar (en este ejemplo solo se agregó uno, pero es 
-    recomendable agregar todos los tamaños listados) ****************** 
-
-        <link rel="apple-touch-icon" sizes="57x57" href="./assets/img/apple-touch-icon-57x57.png">
-        <link rel="apple-touch-icon" sizes="60x60" href="./assets/img/apple-touch-icon-60x60.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="./assets/img/apple-touch-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-touch-icon-76x76.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="./assets/img/apple-touch-icon-114x114.png">
-        <link rel="apple-touch-icon" sizes="120x120" href="./assets/img/apple-touch-icon-120x120.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="./assets/img/apple-touch-icon-144x144.png">
-        <link rel="apple-touch-icon" sizes="152x152" href="./assets/img/apple-touch-icon-152x152.png">
-        <link rel="apple-touch-icon" sizes="167x167" href="./assets/img/apple-touch-icon-167x167.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/apple-touch-icon-180x180.png">
-
-        Para cubrir la gama de dispositivos Apple con diferentes resoluciones, es común incluir varios tamaños de íconos. Aquí están los tamaños recomendados:
-
-          57x57 px: Icono básico para iPhone (antiguos modelos).
-          60x60 px: iPhone con pantallas Retina (iOS 7 y posteriores).
-          72x72 px: iPad (modelos más antiguos).
-          76x76 px: iPad (iOS 7 y posteriores).
-          114x114 px: iPhone con pantallas Retina (modelos más antiguos).
-          120x120 px: iPhone con pantallas Retina (iOS 7 y posteriores).
-          144x144 px: iPad con pantallas Retina.
-          152x152 px: iPad con pantallas Retina (iOS 7 y posteriores).
-          167x167 px: iPad Pro.
-          180x180 px: iPhone con pantallas Retina (iOS 8 y posteriores).
-          192x192 px: Icono de alta resolución, también válido para Android.
-
-
-    -->
-
-    <!-- Propósito: Esta etiqueta define el ícono que se mostrará en la pantalla de 
-         inicio de dispositivos iOS (iPhone o iPad) cuando el usuario agregue el sitio 
-         web a su pantalla de inicio.
-         Función: Al incluir esta etiqueta, permites que tu sitio web tenga un ícono personalizado en lugar del favicon tradicional del navegador cuando el usuario lo guarda como una app. 
-         Este ícono se mostrará en la pantalla de inicio y en el menú multitarea de iOS.
-         Aún es vigente. Es común y recomendable si quieres ofrecer una experiencia más personalizada y profesional para los usuarios que agreguen tu sitio a su pantalla de inicio. -->
-    <link rel="apple-touch-icon" href="./ProgramadorFitness.png" />
-    <!-- 
-    IMPORTANTE: Menos común en la actualidad, especialmente en iOS recientes, ya que los tiempos de carga suelen ser más rápidos y las PWA modernas manejan mejor las transiciones de inicio. Si lo deseas, puedes incluirla, pero no es estrictamente necesaria.
-
-    Propósito: Esta etiqueta define la imagen que se muestra mientras la aplicación web se está cargando (pantalla de inicio o splash screen) cuando es lanzada desde la pantalla de inicio de un dispositivo iOS.
-
-    Función: Sirve como una pantalla de carga que aparece brevemente cuando se abre la web app, antes de que el contenido esté listo para ser visualizado. Le da una apariencia más parecida a una aplicación nativa, con una transición más fluida al abrir la web app.   
-    -->
-    <link rel="apple-touch-startup-image" href="./ProgramadorFitness.png" />
 
     <!-- IMPORTANTE: el archivo "maminfest.json" es recomendable que esté ubicado en la carpeta raíz (principal) del sitio web.  
     
