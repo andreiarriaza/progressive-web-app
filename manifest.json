@@ -1,5 +1,5 @@
 {
-  "id": "/index.html?utm_source=web_app_manifest",
+  "id": "index.html?utm_source=web_app_manifest",
   "name": "Chess Mate Club",
   "short_name": "Chess Mate",
   "description": "Bienvenidos al sitio web para amantes del ajedrez, en el cual encontrarás recomendaciones de libros, consejos de aperturas, finales, jaque mates y medio juego.",
@@ -8,7 +8,7 @@
   "orientation": "portrait",
   "display": "standalone",
   "start_url": "/index.html?utm_source=web_app_manifest",
-  "scope": "/",
+  "scope": "./",
   "lang": "es-GT",
   "icons": [
     {
