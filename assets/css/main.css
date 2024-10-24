@@ -30,6 +30,7 @@ body {
   margin: 2rem auto;
   overflow-x: hidden;
   max-width: 800px;
+  padding: 2rem;
 }
 
 a {
