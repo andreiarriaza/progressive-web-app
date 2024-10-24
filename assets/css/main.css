@@ -56,8 +56,21 @@ p {
 header {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+
   text-align: center;
+}
+
+nav {
+  display: flex; /* Hace que la barra de navegación sea flexible */
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan en varias líneas */
+  justify-content: center; /* Centra los elementos en la línea */
+  margin-bottom: 20px; /* Espacio entre la barra de navegación y otros elementos */
+}
+
+nav a {
+  flex: 1 1 auto; /* Hace que los enlaces sean flexibles y se ajusten */
+  min-width: 100px; /* Establece un ancho mínimo para los enlaces */
+  padding: 10px; /* Espaciado interno para los enlaces */
 }
 
 h1 {
