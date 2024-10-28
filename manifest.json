@@ -64,15 +64,46 @@
   ],
   "screenshots": [
     {
-      "src": "assets/img/screenshot-wide-1280X800.png",
-      "sizes": "1280x800",
+      "src": "assets/img/screenshot-wide-1905X1034",
+      "sizes": "1905x1034",
       "type": "image/png",
       "form_factor": "wide"
     },
     {
-      "src": "assets/img/screenshot-portrait-800X1280.png",
+      "src": "assets/img/screenshot-wide-1920X1080",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "assets/img/screenshot-wide-1905X1034",
+      "sizes": "1905x1034",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "assets/img/screenshot-wide-1899X1026",
+      "sizes": "1899x1026",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "assets/img/screenshot-portrait-483X997.png",
+      "sizes": "483x997",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "assets/img/screenshot-portrait-797X992.png",
+      "sizes": "797x992",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "assets/img/screenshots-portrait-800X1280.png",
       "sizes": "800x1280",
-      "type": "image/png"
+      "type": "image/png",
+      "form_factor": "narrow"
     }
   ],
   "protocol_handlers": [

@@ -62,13 +62,27 @@ header {
 
 nav {
   display: flex; /* Hace que la barra de navegación sea flexible */
-  flex-wrap: wrap; /* Permite que los elementos se envuelvan en varias líneas */
+  flex-wrap: wrap; /* flex-wrap: wrap;:
+
+Con esta propiedad, permites que los elementos dentro del contenedor flex se envuelvan en múltiples líneas si no hay suficiente espacio horizontal.
+Sin esta propiedad, todos los elementos intentarían ocupar una sola línea, lo que podría resultar en que algunos de ellos se "desborden" o no se muestren correctamente en pantallas más pequeñas. wrap hace que, si no cabe un elemento en la línea actual, se mueva a la siguiente línea. */
   justify-content: center; /* Centra los elementos en la línea */
   margin-bottom: 20px; /* Espacio entre la barra de navegación y otros elementos */
 }
 
 nav a {
-  flex: 1 1 auto; /* Hace que los enlaces sean flexibles y se ajusten */
+  flex: 1 1 auto; /* flex: 1 1 auto;:
+
+  Esta propiedad es una abreviatura que incluye tres valores: flex-grow, flex-shrink, y flex-basis.
+  
+    flex-grow: 1: Esto significa que cada enlace puede crecer para llenar el espacio disponible. Si hay espacio extra en la barra de navegación, los enlaces se expandirán equitativamente.
+    
+    flex-shrink: 1: Esto indica que los enlaces pueden reducir su tamaño si es necesario. Si hay poco espacio, los enlaces se encogerán para adaptarse.
+    
+    flex-basis: auto: Este es el tamaño inicial del elemento antes de que se aplique el espacio disponible. auto significa que el tamaño inicial se basa en el contenido del elemento.
+    
+
+    Usar esta propiedad permite que los enlaces se ajusten de manera flexible a diferentes tamaños de pantalla y se distribuyan uniformemente. */
   min-width: 100px; /* Establece un ancho mínimo para los enlaces */
   padding: 10px; /* Espaciado interno para los enlaces */
 }
