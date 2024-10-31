@@ -10,8 +10,13 @@
         jaque mates y medio juego."
     />
 
-    <!-- Color de la Barra de direcciones del navegador
-     en dispositivos móviles -->
+    <!-- 
+      La etiqueta <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" /> funciona solo en dispositivos Apple (iOS). Esta etiqueta se utiliza para definir el color y la apariencia de la barra de estado cuando una aplicación web se ejecuta en pantalla completa en iOS, ya sea en modo default, black, o black-translucent.
+
+      Alternativa para Android
+      Para controlar la apariencia de la barra de estado en Android, puedes configurar la propiedad "theme_color" en tu archivo manifest.json. Esto permite definir el color de la barra de estado cuando el sitio se abre desde la pantalla de inicio 
+      
+    -->
     <meta name="theme-color" content="#F0DB4F" />
 
     <!-- ****************** ETIQUETAS OBSOLETAS ****************** -->
@@ -594,8 +599,8 @@
                                               cuando la aplicación está siendo cargada.
                                               Este color será visible mientras la aplicación 
                                               se inicia, antes de que se cargue el contenido.)
-            "theme_color": "#F0DB4F",  (Define el color de la barra de direcciones
-                                        en dispositivos móviles)
+            "theme_color": "#F0DB4F",  (Define el color de la barra de estado y de la barra de direcciones
+                                        en dispositivos móviles al abrir la Progressive Web App)
             "orientation": "portrait",  (Se utiliza para especificar la 
                                         orientación preferida en la que debe mostrarse tu 
                                         Progressive Web App (PWA) cuando se inicia. Esto es 

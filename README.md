@@ -75,8 +75,8 @@ Las Progressive Web App, únicamente se pueden instalar en protocolos seguros, e
                                               cuando la aplicación está siendo cargada.
                                               Este color será visible mientras la aplicación
                                               se inicia, antes de que se cargue el contenido.) */
-            "theme_color": "#F0DB4F",  /* (Define el color de la barra de direcciones
-                                        en dispositivos móviles) */
+            "theme_color": "#F0DB4F",  /* (Define el color de la barra de estado y de la barra de direcciones
+                                        en dispositivos móviles al abrir la Progressive Web App)) */
             "orientation": "portrait",  /* (Se utiliza para especificar la
                                         orientación preferida en la que debe mostrarse tu
                                         Progressive Web App (PWA) cuando se inicia. Esto es
