@@ -61,7 +61,7 @@ const CACHE_NAME = "v1_chess_mate_club",
     "../../mates/assets/css/mates.css",
 
     /* Hoja Externa de JavaScript. */
-    "script.js",
+    "sw-register",
 
     /* Imágenes del sitio web */
     "../../assets/img/ProgramadorFitness.png",
