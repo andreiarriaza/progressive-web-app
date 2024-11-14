@@ -599,7 +599,15 @@
             "short_name": "Chess Mate",     (Es la versión corta del nombre de la aplicación.
                                             Se utiliza cuando hay poco espacio para mostrar 
                                             el nombre, como en la pantalla de inicio o en la 
-                                            barra de aplicaciones. Se recomienda que el nombre corto sea breve y fácilmente reconocible.)
+                                            barra de aplicaciones. Se recomienda que el nombre corto sea breve y fácilmente reconocible.
+                                            Para el atributo short_name en el archivo manifest.json, se recomienda limitarlo a entre 12 y 15 
+                                            caracteres. 
+                                            Este nombre abreviado se utiliza cuando hay restricciones de espacio, como en:
+                                                - Íconos en la pantalla de inicio: Especialmente en dispositivos móviles, donde el nombre de la 
+                                                  aplicación aparece debajo del ícono y el espacio es muy limitado.
+                                                - Menús de aplicaciones: Algunos sistemas operativos y lanzadores de aplicaciones muestran el short_name en lugar 
+                                                  del nombre completo (name) si este último es muy largo.
+                                            )
             "description": "Bienvenidos al sitio web para 
             amantes del ajedrez, en el cual encontrarás 
             recomendaciones de libros, consejos de aperturas, 
