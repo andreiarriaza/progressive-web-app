@@ -108,7 +108,7 @@ const CACHE_NAME = "v1_chess_mate_club",
     "./assets/img/apple-touch-icon-180x180.png",
 
     /* Aperturas */
-    "./aperturas/assets/img/Apertura-Ruy-López.png",
+    "./aperturas/assets/img/Apertura-Ruy-Lopez.png",
     "./aperturas/assets/img/Apertura-Italiana.png",
     "./aperturas/assets/img/Defensa-Alekhine.png",
     "./aperturas/assets/img/Defensa-Caro-Kann.png",
@@ -130,7 +130,9 @@ const CACHE_NAME = "v1_chess_mate_club",
     "./mates/assets/img/mate-de-la-coz.gif",
     "./mates/assets/img/mate-de-la-opera.gif",
     "./mates/assets/img/mate-de-las-hombreras.gif",
+    "./mates/assets/img/mate-de-legal.gif",
     "./mates/assets/img/mate-de-morphy.gif",
+    "./mates/assets/img/mate-del-loco.gif",
 
     /* Libros */
     "./libros/assets/img/mis-60-partidas-memorables.jpg",
