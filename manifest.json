@@ -65,7 +65,7 @@
   "screenshots": [
     {
       "src": "assets/img/screenshot-wide-2560X1440.png",
-      "sizes": "2560*1440",
+      "sizes": "2560x1440",
       "type": "image/png",
       "form_factor": "wide"
     },
@@ -76,13 +76,13 @@
       "form_factor": "wide"
     },
     {
-      "src": "assets/img/screenshot-wide-1600x900.png",
+      "src": "assets/img/screenshot-wide-1600X900.png",
       "sizes": "1600x900",
       "type": "image/png",
       "form_factor": "wide"
     },
     {
-      "src": "assets/img/screenshot-wide-1280x720.png",
+      "src": "assets/img/screenshot-wide-1280X720.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide"
@@ -95,7 +95,7 @@
       "form_factor": "narrow"
     },
     {
-      "src": "assets/img/screenshots-portrait-1080x1920.png",
+      "src": "assets/img/screenshots-portrait-1080X1920.png",
       "sizes": "1080x1920",
       "type": "image/png",
       "form_factor": "narrow"
