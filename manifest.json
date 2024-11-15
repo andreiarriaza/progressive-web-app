@@ -64,8 +64,8 @@
   ],
   "screenshots": [
     {
-      "src": "assets/img/screenshot-wide-1905X1034.png",
-      "sizes": "1905x1034",
+      "src": "assets/img/screenshot-wide-2560X1440.png",
+      "sizes": "2560*1440",
       "type": "image/png",
       "form_factor": "wide"
     },
@@ -76,32 +76,33 @@
       "form_factor": "wide"
     },
     {
-      "src": "assets/img/screenshot-wide-1905X1034.png",
-      "sizes": "1905x1034",
+      "src": "assets/img/screenshot-wide-1600x900.png",
+      "sizes": "1600x900",
       "type": "image/png",
       "form_factor": "wide"
     },
     {
-      "src": "assets/img/screenshot-wide-1899X1026.png",
-      "sizes": "1899x1026",
+      "src": "assets/img/screenshot-wide-1280x720.png",
+      "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide"
     },
+
     {
-      "src": "assets/img/screenshot-portrait-483X997.png",
-      "sizes": "483x997",
+      "src": "assets/img/screenshot-portrait-1440X2560.png",
+      "sizes": "1440x2560",
       "type": "image/png",
       "form_factor": "narrow"
     },
     {
-      "src": "assets/img/screenshot-portrait-797X992.png",
-      "sizes": "797x992",
+      "src": "assets/img/screenshots-portrait-1080x1920.png",
+      "sizes": "1080x1920",
       "type": "image/png",
       "form_factor": "narrow"
     },
     {
-      "src": "assets/img/screenshots-portrait-800X1280.png",
-      "sizes": "800x1280",
+      "src": "assets/img/screenshot-portrait-768X1366.png",
+      "sizes": "768X1366",
       "type": "image/png",
       "form_factor": "narrow"
     }

@@ -775,12 +775,33 @@
               
                         Cantidad de capturas:
                             No hay un límite exacto, pero se recomienda incluir entre 3 y 8 capturas de pantalla para que los usuarios tengan una buena perspectiva de la aplicación sin abrumarlos. Cada captura debe representar un aspecto clave o funcionalidad importante.
+
+                  Relación de aspecto de las imágenes:
+                    Las imágenes pueden tener diferentes dimensiones, pero la relación de aspecto debe ser consistente 
+                    para todas las imágenes dentro de un mismo form_factor. Esto quiere decir, que si para el form_factor "wide", 
+                    se optó por la relación de aspecto 16:9, las capturas de pantalla pueden tener diferentes dimensiones pero todas
+                    deben tener una relación de aspecto de 16:9, de lo contrario, se mostrará una advertencia en el "manifest" en las herramientas
+                    para desarrolladores de Chrome: 
+
+                                                                                
+                    
+                    Por ejemplo:
+                            Si tienes imágenes con un form_factor de "wide", todas deben tener una relación de aspecto idéntica, 
+                            como 16:9. Lo mismo ocurre con el form_factor "narrow"; las imágenes dentro de esa categoría deben tener la misma relación de aspecto,
+                            es decir, 9:16 (la relación de aspecto de "wide" invertida).
+
+                  Los siguientes tamaños, tiene todos una relación de aspecto de 16:9:
+                      - 2560X1440
+                      - 1920X1080
+                      - 1280X720
+
+                  
                   )
                           
                   
               {
-                "src": "assets/img/screenshot-wide-1905X1034",
-                "sizes": "1905x1034",
+                "src": "assets/img/screenshot-wide-2560x1440",
+                "sizes": "2560x1440",
                 "type": "image/png",
                 "form_factor": "wide"    (El atributo "form_factor" en el manifest.json de una Progressive Web App (PWA) especifica el tipo de dispositivo en el 
                                           que se recomienda que se muestren ciertos elementos visuales, como capturas de pantalla en la sección "screenshots". 
@@ -788,25 +809,36 @@
 
                                           Valores comunes de "form_factor":
                                             "wide": Indica que la captura de pantalla o el recurso visual está diseñado para dispositivos con pantallas 
-                                                    más anchas, como tablets, laptops y monitores de escritorio.
-                                            "narrow": Indica que la captura es para dispositivos con pantallas más estrechas, como teléfonos móviles en orientación vertical.
-                                          )
+                                                    más anchas, como tablets, laptops y monitores de escritorio. Relación de aspecto 16:9.
+                                            "narrow": Indica que la captura es para dispositivos con pantallas más estrechas, como teléfonos móviles en orientación vertical. Relación de aspecto 9:16.
+
+                                          
+
+                                          Tamaños recomendados para wide:
+                                            - 2560x1440 (QHD o 2K) — Relación de aspecto 16:9
+                                                  Uso: Monitores y pantallas de alta resolución, como laptops de gama alta o pantallas grandes.
+                                            - 1920x1080 (Full HD) — Relación de aspecto 16:9
+                                                  Uso: Ideal para pantallas de computadora, televisores y la mayoría de dispositivos de alta resolución.
+                                            - 1600x900 (HD+) — Relación de aspecto 16:9
+                                                  Uso: Resolución común en monitores de computadoras y laptops más antiguas o de gama media. 
+                                            - 1280x720 (HD) — Relación de aspecto 16:9
+                                                  Uso: Pantallas de teléfonos móviles más antiguos, tablets y dispositivos con pantallas más pequeñas.                              )
               },
               {
-                "src": "assets/img/screenshot-wide-1920X1080",
+                "src": "assets/img/screenshot-wide-1920x1080",
                 "sizes": "1920x1080",
                 "type": "image/png",
                 "form_factor": "wide"
               },
               {
-                "src": "assets/img/screenshot-wide-1905X1034",
-                "sizes": "1905x1034",
+                "src": "assets/img/screenshot-wide-1600x900",
+                "sizes": "1600x900",
                 "type": "image/png",
                 "form_factor": "wide"
               },
               {
-                "src": "assets/img/screenshot-wide-1899X1026",
-                "sizes": "1899x1026",
+                "src": "assets/img/screenshot-wide-1280x720",
+                "sizes": "1280x720",
                 "type": "image/png",
                 "form_factor": "wide"
               },
@@ -815,16 +847,33 @@
                 "sizes": "483x997",
                 "type": "image/png",
                 "form_factor": "narrow"
+
+                                            Tamaños recomendados para narrow (9:16):
+                                                - 1440x2560 px — Relación de aspecto 9:16 (Quad HD)
+                                                     Uso: Este tamaño es ideal para teléfonos de gama alta con pantallas de resolución más alta, 
+                                                     como dispositivos Android más nuevos y modelos de iPhone de última generación. También es una buena 
+                                                     opción para tabletas de mayor resolución.
+                                                - 1080x1920 px — Relación de aspecto 9:16
+                                                     Uso: Esta es una resolución común en dispositivos móviles de gama alta, como muchos teléfonos Android y iPhones modernos (iPhone 6, 7, 8, etc.). Es ampliamente compatible y se ve bien en la mayoría de los dispositivos.
+                                                - 768x1366 px — Relación de aspecto 9:16
+                                                    Uso: Ideal para tabletas o dispositivos de gama baja/media que tienen pantallas de tamaño intermedio.
+                                                
               },
               {
-                "src": "assets/img/screenshot-portrait-797X992.png",
-                "sizes": "797x992",
+                "src": "assets/img/screenshot-portrait-1440x2560.png",
+                "sizes": "1440x2560",
                 "type": "image/png",
                 "form_factor": "narrow"
               },
               {
-                "src": "assets/img/screenshots-portrait-800X1280.png",
-                "sizes": "800x1280",
+                "src": "assets/img/screenshots-portrait-1080x1920.png",
+                "sizes": "1080x1920",
+                "type": "image/png",
+                "form_factor": "narrow"
+              },
+               {
+                "src": "assets/img/screenshots-portrait-768x1366.png",
+                "sizes": "768x1366",
                 "type": "image/png",
                 "form_factor": "narrow"
               }
