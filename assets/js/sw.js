@@ -48,93 +48,93 @@ En una aplicación progresiva (PWA), el caché se utiliza para almacenar recurso
 const CACHE_NAME = "v1_chess_mate_club",
   urlsToCache = [
     /* Se encarga de cargar el archivo "index.html". */
-    "/progressive-web-app/index.html",
+    "./index.html",
 
     /* Se agrega la página web "mates"*/
-    "/progressive-web-app/mates/mates.html",
+    "./mates/mates.html",
     /* Se agrega la página web "libros"*/
-    "/progressive-web-app/libros/libros.html",
+    "./libros/libros.html",
     /* Se agrega la página web "aperturas"*/
-    "/progressive-web-app/aperturas/aperturas.html",
+    "./aperturas/aperturas.html",
     /* Se agrega la página web "contacto"*/
-    "/progressive-web-app/contacto/contacto.html",
+    "./contacto/contacto.html",
     /* Carga las fuentes de Google Fonts. */
     "https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap",
     /* Kit de Font Awesome Icons */
     "https://kit.fontawesome.com/f1bff8ec54.js",
 
     /* Hojas Externas de CSS*/
-    "/progressive-web-app/assets/css/main.css",
-    "/progressive-web-app/aperturas/assets/css/aperturas.css",
-    "/progressive-web-app/libros/assets/css/libros.css",
-    "/progressive-web-app/mates/assets/css/mates.css",
+    "./assets/css/main.css",
+    "./aperturas/assets/css/aperturas.css",
+    "./libros/assets/css/libros.css",
+    "./mates/assets/css/mates.css",
 
     /* Hoja Externa de JavaScript.
     
 
 
     */
-    "/progressive-web-app/assets/js/sw-register.js",
+    "./assets/js/sw-register.js",
 
     /* Imágenes del sitio web */
-    "/progressive-web-app/assets/img/ProgramadorFitness.png",
+    "./assets/img/ProgramadorFitness.png",
 
     /* Favicon */
-    "/progressive-web-app/assets/img/favicon-16x16.png",
-    "/progressive-web-app/assets/img/favicon-32x32.png",
-    "/progressive-web-app/assets/img/favicon-48x48.png",
-    "/progressive-web-app/assets/img/favicon-76x76.png",
-    "/progressive-web-app/assets/img/favicon-96x96.png",
-    "/progressive-web-app/assets/img/favicon-120x120.png",
-    "/progressive-web-app/assets/img/favicon-144x144.png",
-    "/progressive-web-app/assets/img/favicon-152x152.png",
-    "/progressive-web-app/assets/img/favicon-167x167.png",
-    "/progressive-web-app/assets/img/favicon-180x180.png",
-    "/progressive-web-app/assets/img/favicon-192x192.png",
-    "/progressive-web-app/assets/img/favicon-256x256.png",
-    "/progressive-web-app/assets/img/favicon-384x384.png",
-    "/progressive-web-app/assets/img/favicon-512x512.png",
+    "./assets/img/favicon-16x16.png",
+    "./assets/img/favicon-32x32.png",
+    "./assets/img/favicon-48x48.png",
+    "./assets/img/favicon-76x76.png",
+    "./assets/img/favicon-96x96.png",
+    "./assets/img/favicon-120x120.png",
+    "./assets/img/favicon-144x144.png",
+    "./assets/img/favicon-152x152.png",
+    "./assets/img/favicon-167x167.png",
+    "./assets/img/favicon-180x180.png",
+    "./assets/img/favicon-192x192.png",
+    "./assets/img/favicon-256x256.png",
+    "./assets/img/favicon-384x384.png",
+    "./assets/img/favicon-512x512.png",
 
     /* Apple Touch Icon */
-    "/progressive-web-app/assets/img/apple-touch-icon-57x57.png",
-    "/progressive-web-app/assets/img/apple-touch-icon-60x60.png",
-    "/progressive-web-app/assets/img/apple-touch-icon-72x72.png",
-    "/progressive-web-app/assets/img/apple-touch-icon-76x76.png",
-    "/progressive-web-app/assets/img/apple-touch-icon-114x114.png",
-    "/progressive-web-app/assets/img/apple-touch-icon-120x120.png",
-    "/progressive-web-app/assets/img/apple-touch-icon-144x144.png",
-    "/progressive-web-app/assets/img/apple-touch-icon-152x152.png",
-    "/progressive-web-app/assets/img/apple-touch-icon-167x167.png",
-    "/progressive-web-app/assets/img/apple-touch-icon-180x180.png",
+    "./assets/img/apple-touch-icon-57x57.png",
+    "./assets/img/apple-touch-icon-60x60.png",
+    "./assets/img/apple-touch-icon-72x72.png",
+    "./assets/img/apple-touch-icon-76x76.png",
+    "./assets/img/apple-touch-icon-114x114.png",
+    "./assets/img/apple-touch-icon-120x120.png",
+    "./assets/img/apple-touch-icon-144x144.png",
+    "./assets/img/apple-touch-icon-152x152.png",
+    "./assets/img/apple-touch-icon-167x167.png",
+    "./assets/img/apple-touch-icon-180x180.png",
 
     /* Aperturas */
-    "/progressive-web-app/aperturas/assets/img/Apertura-Ruy-López.png",
-    "/progressive-web-app/aperturas/assets/img/Apertura-Italiana.png",
-    "/progressive-web-app/aperturas/assets/img/Defensa-Alekhine.png",
-    "/progressive-web-app/aperturas/assets/img/Defensa-Caro-Kann.png",
-    "/progressive-web-app/aperturas/assets/img/Defensa-Escandinava.png",
-    "/progressive-web-app/aperturas/assets/img/Defensa-Escocesa.png",
-    "/progressive-web-app/aperturas/assets/img/Defensa-Francesa.png",
-    "/progressive-web-app/aperturas/assets/img/Defensa-Siciliana.png",
-    "/progressive-web-app/aperturas/assets/img/Defensa-Vienesa.png",
-    "/progressive-web-app/aperturas/assets/img/Gambito-de-Rey.png",
+    "./aperturas/assets/img/Apertura-Ruy-López.png",
+    "./aperturas/assets/img/Apertura-Italiana.png",
+    "./aperturas/assets/img/Defensa-Alekhine.png",
+    "./aperturas/assets/img/Defensa-Caro-Kann.png",
+    "./aperturas/assets/img/Defensa-Escandinava.png",
+    "./aperturas/assets/img/Defensa-Escocesa.png",
+    "./aperturas/assets/img/Defensa-Francesa.png",
+    "./aperturas/assets/img/Defensa-Siciliana.png",
+    "./aperturas/assets/img/Defensa-Vienesa.png",
+    "./aperturas/assets/img/Gambito-de-Rey.png",
 
     /* Mates */
-    "/progressive-web-app/mates/assets/img/mate-arabe.gif",
-    "/progressive-web-app/mates/assets/img/mate-cola-de-golondrina.gif",
-    "/progressive-web-app/mates/assets/img/mate-de-anastasia.gif",
-    "/progressive-web-app/mates/assets/img/mate-de-blackburne.gif",
-    "/progressive-web-app/mates/assets/img/mate-de-boen.gif",
-    "/progressive-web-app/mates/assets/img/mate-de-cozio.gif",
-    "/progressive-web-app/mates/assets/img/mate-de-damiano.gif",
-    "/progressive-web-app/mates/assets/img/mate-de-la-coz.gif",
-    "/progressive-web-app/mates/assets/img/mate-de-la-opera.gif",
-    "/progressive-web-app/mates/assets/img/mate-de-las-hombreras.gif",
-    "/progressive-web-app/mates/assets/img/mate-de-morphy.gif",
+    "./mates/assets/img/mate-arabe.gif",
+    "./mates/assets/img/mate-cola-de-golondrina.gif",
+    "./mates/assets/img/mate-de-anastasia.gif",
+    "./mates/assets/img/mate-de-blackburne.gif",
+    "./mates/assets/img/mate-de-boen.gif",
+    "./mates/assets/img/mate-de-cozio.gif",
+    "./mates/assets/img/mate-de-damiano.gif",
+    "./mates/assets/img/mate-de-la-coz.gif",
+    "./mates/assets/img/mate-de-la-opera.gif",
+    "./mates/assets/img/mate-de-las-hombreras.gif",
+    "./mates/assets/img/mate-de-morphy.gif",
 
     /* Libros */
-    "/progressive-web-app/libros/assets/img/mis-60-partidas-memorables.jpg",
-    "/progressive-web-app/libros/assets/img/curso-completo-de-ajedrez.jpg",
+    "./libros/assets/img/mis-60-partidas-memorables.jpg",
+    "./libros/assets/img/curso-completo-de-ajedrez.jpg",
   ];
 
 /* Durante la fase de instalación, generalmente se almacenan en caché los activos estáticos. 
