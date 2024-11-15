@@ -95,14 +95,14 @@
       "form_factor": "narrow"
     },
     {
-      "src": "assets/img/screenshots-portrait-1080X1920.png",
+      "src": "assets/img/screenshot-portrait-1080X1920.png",
       "sizes": "1080x1920",
       "type": "image/png",
       "form_factor": "narrow"
     },
     {
-      "src": "assets/img/screenshot-portrait-768X1366.png",
-      "sizes": "768X1366",
+      "src": "assets/img/screenshot-portrait-720X1280.png",
+      "sizes": "720X1280",
       "type": "image/png",
       "form_factor": "narrow"
     }
