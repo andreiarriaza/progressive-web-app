@@ -68,7 +68,7 @@ const CACHE_NAME = "v1_chess_mate_club",
     "/progressive-web-app/mates/assets/css/mates.css",
 
     /* Hoja Externa de JavaScript.
-    "./" indica que debe buscar el archivo en la ubicación actual del archivo "sw.js".
+    
 
 
     */
