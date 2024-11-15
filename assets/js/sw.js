@@ -51,11 +51,11 @@ const CACHE_NAME = "v1_chess_mate_club",
     "/progressive-web-app/index.html",
 
     /* Se agrega la página web "mates"*/
-    "/progressive-web-app/mates/index.html",
+    "/progressive-web-app/mates/mates.html",
     /* Se agrega la página web "libros"*/
-    "/progressive-web-app/libros/index.html",
+    "/progressive-web-app/libros/libros.html",
     /* Se agrega la página web "aperturas"*/
-    "/progressive-web-app/aperturas/index.html",
+    "/progressive-web-app/aperturas/aperturas.html",
     /* Carga las fuentes de Google Fonts. */
     "https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap",
     /* Kit de Font Awesome Icons */
