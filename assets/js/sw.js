@@ -49,6 +49,13 @@ const CACHE_NAME = "v1_chess_mate_club",
   urlsToCache = [
     /* Se encarga de cargar el archivo "index.html". */
     "/progressive-web-app/index.html",
+
+    /* Se agrega la página web "mates"*/
+    "/progressive-web-app/mates/index.html",
+    /* Se agrega la página web "libros"*/
+    "/progressive-web-app/libros/index.html",
+    /* Se agrega la página web "aperturas"*/
+    "/progressive-web-app/aperturas/index.html",
     /* Carga las fuentes de Google Fonts. */
     "https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap",
     /* Kit de Font Awesome Icons */
