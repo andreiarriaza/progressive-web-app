@@ -72,7 +72,7 @@ const CACHE_NAME = "v1_chess_mate_club",
 
 
     */
-    "./sw-register.js",
+    "/progressive-web-app/assets/js/sw-register.js",
 
     /* Imágenes del sitio web */
     "/progressive-web-app/assets/img/ProgramadorFitness.png",
