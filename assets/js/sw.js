@@ -142,53 +142,29 @@ El código dentro del bloque self.addEventListener("install", ...) se ejecuta en
 
 */
 self.addEventListener("install", (e) => {
-  console.log("Service Worker installing...");
-  /* El método e.waitUntil() se asegura que el Service Worker no se considere instalado hasta que todas las tareas dentro de él hayan finalizado correctamente. En este caso, 
-  hasta que se hayan agregado todos los archivos al caché.
-  */
   e.waitUntil(
     caches
-
-      /* El método caches.open(CACHE_NAME) abre un caché (almacenamiento local en el
-       navegador, es decir, que ese caché será almacenado en el dispositivo) con el nombre que se define en CACHE_NAME. Esta operación devuelve una 
-       promesa. Si la promesa se resuelve correctamente, pasa al siguiente bloque .then(). */
       .open(CACHE_NAME)
-
       .then((cache) => {
-        console.log("Caching files...");
-        /* Se agrega un return, dentro del cual se ejecutará el método "addAll", el cual se encargará de agregar todas las URL que se encuentran dentro de la
-    constante "urlToCache" a la memoria caché del dispositivo dentro del cual se instale la Progressive Web App. 
-    
-    Esta lista podría contener recursos como archivos HTML, CSS, JavaScript, imágenes, etc., que se desean almacenar en el caché para ser usados sin conexión.
-    
-    */
-        return (
-          cache
-            .addAll(urlsToCache)
-
-            /* Una vez que se han añadido todos los archivos al caché, se llama a self.skipWaiting(). Este método obliga al Service Worker a activarse inmediatamente después de la instalación, sin esperar a que los usuarios cierren las pestañas actuales donde la aplicación esté en uso. Es decir, el nuevo Service Worker reemplaza al anterior más rápidamente.   */
-            .then(() => {
-              // Mensaje de confirmación en consola
-              console.log("Archivos agregados al caché:", urlsToCache);
-              self.skipWaiting();
-            })
+        return Promise.all(
+          urlsToCache.map((url) => {
+            return fetch(url)
+              .then((response) => {
+                if (response.ok) {
+                  return cache.put(url, response);
+                } else {
+                  console.log(`No se pudo cargar: ${url}`);
+                }
+              })
+              .catch((err) => console.log(`Error de red para ${url}: ${err}`));
+          })
         );
       })
-
-      /* En caso de que haya un error con alguna URL o se pierda la conexión, se desplegará
-  en consola el mensaje "Falló registro de caché".
-  
-  Si ocurre algún error durante el proceso (como problemas al abrir el caché o añadir las URLs), se captura con el método .catch() y se muestra un mensaje en la consola: "Falló registro de caché", junto con el error específico err para mayor claridad.*/
-      .catch((err) => console.log("Falló registro de caché", err))
-
-    /* 
-    Resumen del flujo:
-      - Se intercepta el evento de instalación.
-      - Se abre un caché.
-      - Se añaden archivos al caché (almacenamiento local).
-      - Se asegura que el Service Worker tome control inmediatamente (skipWaiting()).
-      - Si algo falla, se informa del error en la consola.
-*/
+      .then(() => {
+        console.log("Archivos agregados al caché");
+        self.skipWaiting();
+      })
+      .catch((err) => console.log("Falló el registro de caché:", err))
   );
 });
 
