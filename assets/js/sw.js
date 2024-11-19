@@ -145,17 +145,6 @@ El evento "install" ocurre cuando el Service Worker está siendo instalado en el
 El código dentro del bloque self.addEventListener("install", ...) se ejecuta en ese momento.
 
 */
-
-const limitCacheSize = (name, size) => {
-  caches.open(name).then((cache) => {
-    cache.keys().then((keys) => {
-      if (keys.length > size) {
-        cache.delete(keys[0]).then(limitCacheSize(name, size));
-      }
-    });
-  });
-};
-
 self.addEventListener("install", (e) => {
   console.log("Service Worker installing...");
   /* El método e.waitUntil() se asegura que el Service Worker no se considere instalado hasta que todas las tareas dentro de él hayan finalizado correctamente. En este caso, 
@@ -177,16 +166,24 @@ self.addEventListener("install", (e) => {
     Esta lista podría contener recursos como archivos HTML, CSS, JavaScript, imágenes, etc., que se desean almacenar en el caché para ser usados sin conexión.
     
     */
+        return (
+          cache
+            .addAll(urlsToCache)
 
-        cache.addAll(urlsToCache);
-
-        /* Una vez que se han añadido todos los archivos al caché, se llama a self.skipWaiting(). Este método obliga al Service Worker a activarse inmediatamente después de la instalación, sin esperar a que los usuarios cierren las pestañas actuales donde la aplicación esté en uso. Es decir, el nuevo Service Worker reemplaza al anterior más rápidamente.   */
+            /* Una vez que se han añadido todos los archivos al caché, se llama a self.skipWaiting(). Este método obliga al Service Worker a activarse inmediatamente después de la instalación, sin esperar a que los usuarios cierren las pestañas actuales donde la aplicación esté en uso. Es decir, el nuevo Service Worker reemplaza al anterior más rápidamente.   */
+            .then(() => {
+              // Mensaje de confirmación en consola
+              console.log("Archivos agregados al caché:", urlsToCache);
+              return self.skipWaiting();
+            })
+        );
       })
 
-    /* En caso de que haya un error con alguna URL o se pierda la conexión, se desplegará
+      /* En caso de que haya un error con alguna URL o se pierda la conexión, se desplegará
   en consola el mensaje "Falló registro de caché".
   
   Si ocurre algún error durante el proceso (como problemas al abrir el caché o añadir las URLs), se captura con el método .catch() y se muestra un mensaje en la consola: "Falló registro de caché", junto con el error específico err para mayor claridad.*/
+      .catch((err) => console.log("Falló registro de caché", err))
 
     /* 
     Resumen del flujo:
@@ -204,17 +201,74 @@ self.addEventListener("install", (e) => {
 
 Se está utilizando el evento "activate" para ejecutar código cuando el Service Worker se activa. La activación ocurre después de que el Service Worker ha sido instalado (cuando ya se ha cargado y almacenado el caché en el dispositivo del usuario).
 */
-// Activate service worker
-self.addEventListener("activate", (evt) => {
-  // console.log('Service worker has been activated');
-  evt.waitUntil(
-    caches.keys().then((keys) => {
-      // console.log(keys);
-      return Promise.all(
-        keys.filter((key) => key !== cacheName).map((key) => caches.delete(key))
-      );
-    })
+self.addEventListener("activate", (e) => {
+  console.log("Service Worker activating...");
+  /* Aquí se crea una lista blanca de caché llamada "cacheWhiteList", 
+  que contiene los nombres de los cachés que se desean conservar. 
+  
+  "CACHE_NAME" es una constante que contiene el nombre del caché actual, el cual 
+  contiene los archivos más recientes de la aplicación. 
+  Solo este caché debe mantenerse activo.
+  */
+  const cacheWhiteList = [CACHE_NAME];
+
+  /* 
+
+El método e.waitUntil() extiende el evento de activación hasta que todas las promesas dentro de él se resuelvan. Esto garantiza que el Service Worker no finalice su activación hasta que se hayan ejecutado correctamente las acciones dentro de este bloque (en este caso, la limpieza de caché y la activación del nuevo caché).*/
+  e.waitUntil(
+    /* caches.keys():
+Este método devuelve una promesa que se resuelve con una lista de todos los nombres }
+de caché almacenados en el navegador. Cada vez que el caché se actualiza, se crea un 
+nuevo caché con un nombre diferente (versión nueva). */
+    caches
+      .keys()
+      /* .then((cacheNames) => { ... }):
+Cuando la promesa de caches.keys() se resuelve, el argumento cacheNames contendrá un array 
+con los nombres de todos los cachés actuales. Este bloque de código se utiliza para comparar 
+estos nombres con la lista blanca cacheWhiteList y decidir cuáles cachés deben eliminarse. */
+      .then((cacheNames) => {
+        /* Promise.all() se utiliza para ejecutar varias promesas en paralelo y esperar a que
+         todas se resuelvan. En este caso, se espera que todas las eliminaciones de caché 
+         innecesario se completen antes de continuar con la activación. */
+        return Promise.all(
+          /* Se usa para recorrer cada nombre de caché en cacheNames. Para cada caché, se ejecuta una comparación con la lista blanca cacheWhiteList. */
+          cacheNames.map((cacheName) => {
+            // Eliminando lo que ya no se necesita en el caché.
+            /* Esta condición verifica si el cacheName actual no está en la lista blanca 
+            (cacheWhiteList). Si el nombre del caché no se encuentra en la lista blanca 
+            (lo que significa que es un caché antiguo o no deseado), se procede a eliminarlo. */
+            if (cacheWhiteList.indexOf(cacheName) === -1) {
+              /* caches.delete(cacheName):
+                Si la condición anterior es verdadera (es decir, el caché no está en la lista blanca), se llama a caches.delete(cacheName) para eliminar ese caché del 
+                navegador. Esta operación devuelve una promesa que indica que el caché se ha 
+                eliminado correctamente. */
+              return caches.delete(cacheName);
+            }
+          })
+        );
+      })
+      // Le indica al Service Worker activar el caché actual.
+      /* .then(() => self.clients.claim()):
+            Después de que todas las promesas de Promise.all() se hayan 
+            resuelto (lo que indica que todos los cachés innecesarios se han eliminado), 
+            se llama a self.clients.claim(). */
+
+      /* self.clients.claim() hace que el nuevo Service Worker tome el control de todas las páginas de la aplicación sin necesidad de que los usuarios cierren y vuelvan a abrir las pestañas. Es decir, asegura que el nuevo Service Worker y los cachés actualizados se utilicen inmediatamente, sin esperar a que se recarguen las páginas. */
+      .then(() => {
+        console.log("Service Worker activo y listo para controlar clientes.");
+        return self.clients.claim();
+      })
   );
+
+  /*  Resumen del flujo:
+        - Se intercepta el evento de activación del Service Worker.
+        - Se define una lista blanca de cachés permitidos (en este caso, solo uno).
+        - Se obtienen todos los nombres de los cachés almacenados en el navegador.
+        - Se compara cada caché con la lista blanca, y si un caché no está en la lista, se elimina.
+        - Una vez que se eliminan todos los cachés antiguos, el nuevo Service Worker toma el control de las páginas abiertas de la aplicación con self.clients.claim().  
+        
+        Este proceso es importante para garantizar que solo se conserve la versión más reciente del caché, eliminando las versiones anteriores y asegurando que la aplicación esté siempre actualizada.
+        */
 });
 
 /* Este fragmento de código gestiona el evento fetch en un Service Worker dentro de una Progressive Web App (PWA). El objetivo del código es interceptar las solicitudes de red de la aplicación y responder con los archivos que ya están en el caché o, si no están en el caché, realizar la solicitud a la red (internet). 
@@ -227,29 +281,62 @@ self.addEventListener("activate", (evt) => {
         una solicitud de red. Cada vez que el navegador pide algún recurso (como una página
         HTML, una imagen o un archivo CSS), el Service Worker intercepta la solicitud con 
         este evento. */
-// Fetch event
-self.addEventListener("fetch", (evt) => {
-  console.log(evt);
+self.addEventListener("fetch", (e) => {
+  //Responder ya sea con el objeto en caché o continuar y buscar la url real
+  /*  e.respondWith():
+        El método e.respondWith() se utiliza para interceptar la solicitud y proporcionar 
+        una respuesta personalizada. Dentro de este método, se decide si la respuesta debe
+        provenir del caché o de una petición a la red (url real). */
+  e.respondWith(
+    /* caches.match(e.request):
+          caches.match() es una función que busca en el caché del navegador el recurso
+          solicitado (e.request). Si el recurso ya fue almacenado en caché anteriormente,
+          devolverá una promesa que se resuelve con la respuesta almacenada en caché (por
+          ejemplo, un archivo CSS, una imagen, etc.).
+          
+          En resumen, está intentando encontrar una versión almacenada del recurso 
+          solicitado en la caché. */
 
-  evt.respondWith(
-    caches
-      .match(evt.request)
-      .then((cacheRes) => {
-        return (
-          cacheRes ||
-          fetch(evt.request).then((fetchRes) => {
-            return caches.open(dynamicCacheName).then((cache) => {
-              cache.put(evt.request.url, fetchRes.clone());
-              limitCacheSize(dynamicCacheName, 5);
-              return fetchRes;
-            });
-          })
-        );
-      })
-      .catch(() => {
-        if (evt.request.url.indexOf(".html") > -1) {
-          return caches.match("index.html");
-        }
-      })
+    /*  .then((res) => { ... }):
+              Este bloque de código se ejecuta cuando la promesa de caches.match() se 
+              resuelve. El argumento "res" contiene la respuesta encontrada en el 
+              caché (si es que existe). */
+    caches.match(e.request).then((res) => {
+      /* if (res):
+            Aquí se verifica si "res" tiene un valor (es decir, si la solicitud al caché 
+            fue exitosa y encontró el recurso solicitado).  */
+      if (res) {
+        //recuperar del cache
+        /* return res;:
+              Si el recurso fue encontrado en el caché, se devuelve esa respuesta. Esto 
+              significa que el recurso se obtiene del caché y se evita realizar una nueva 
+              solicitud a la red. Este es el principal beneficio de las PWA: pueden 
+              trabajar offline o con recursos guardados, mejorando el rendimiento 
+              y reduciendo el uso de datos. */
+        return res;
+      }
+      //recuperar de la petición a la url
+      /* return fetch(e.request);:
+            Si res es null o undefined (es decir, el recurso no está en el caché), 
+            se ejecuta la siguiente línea.
+            Se llama a fetch(e.request), que realiza una solicitud normal a la red 
+            para obtener el recurso solicitado desde el servidor.
+            Este código asegura que si el recurso no se encuentra en el caché, la 
+            aplicación lo descargue de la red de manera habitual. */
+      return fetch(e.request).catch((err) => {
+        console.error("Error fetching resource:", err);
+      });
+
+      /* Resumen del flujo:
+            - El Service Worker intercepta cada solicitud de la aplicación (evento fetch).
+            - Se busca en el caché si el recurso solicitado ya está guardado.
+            - Si el recurso está en el caché, se devuelve directamente del caché, lo que 
+              permite que la aplicación funcione sin conexión o cargue más rápido.
+            - Si el recurso no está en el caché, se realiza una solicitud a la red utilizando 
+              fetch() para obtenerlo desde el servidor.
+            - Este enfoque combina lo mejor de los dos mundos:
+                - Velocidad y eficiencia cuando los recursos ya están en el caché.
+                - Flexibilidad al permitir que los recursos faltantes se obtengan de la red cuando sea necesario. */
+    })
   );
 });
