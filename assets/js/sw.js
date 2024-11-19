@@ -48,7 +48,7 @@ En una aplicación progresiva (PWA), el caché se utiliza para almacenar recurso
 const CACHE_NAME = "v1_chess_mate_club",
   urlsToCache = [
     /* Se encarga de cargar el archivo "index.html". */
-    "../../index.html",
+    "/index.html",
     /* Se agrega la página web "libros"*/
     "../../libros/libros.html",
     /* Se agrega la página web "aperturas"*/
@@ -102,33 +102,33 @@ const CACHE_NAME = "v1_chess_mate_club",
     "../../assets/img/apple-touch-icon-180x180.png",
 
     /* Aperturas */
-    "../../assets/img/Apertura-Ruy-López.png",
-    "../../assets/img/Apertura-Italiana.png",
-    "../../assets/img/Defensa-Alekhine.png",
-    "../../assets/img/Defensa-Caro-Kann.png",
-    "../../assets/img/Defensa-Escandinava.png",
-    "../../assets/img/Defensa-Escocesa.png",
-    "../../assets/img/Defensa-Francesa.png",
-    "../../assets/img/Defensa-Siciliana.png",
-    "../../assets/img/Defensa-Vienesa.png",
-    "../../assets/img/Gambito-de-Rey.png",
+    "../../aperturas/assets/img/Apertura-Ruy-López.png",
+    "../../aperturas/assets/img/Apertura-Italiana.png",
+    "../../aperturas/assets/img/Defensa-Alekhine.png",
+    "../../aperturas/assets/img/Defensa-Caro-Kann.png",
+    "../../aperturas/assets/img/Defensa-Escandinava.png",
+    "../../aperturas/assets/img/Defensa-Escocesa.png",
+    "../../aperturas/assets/img/Defensa-Francesa.png",
+    "../../aperturas/assets/img/Defensa-Siciliana.png",
+    "../../aperturas/assets/img/Defensa-Vienesa.png",
+    "../../aperturas/assets/img/Gambito-de-Rey.png",
 
     /* Mates */
-    "../../assets/img/mate-arabe.gif",
-    "../../assets/img/mate-cola-de-golondrina.gif",
-    "../../assets/img/mate-de-anastasia.gif",
-    "../../assets/img/mate-de-blackburne.gif",
-    "../../assets/img/mate-de-boen.gif",
-    "../../assets/img/mate-de-cozio.gif",
-    "../../assets/img/mate-de-damiano.gif",
-    "../../assets/img/mate-de-la-coz.gif",
-    "../../assets/img/mate-de-la-opera.gif",
-    "../../assets/img/mate-de-las-hombreras.gif",
-    "../../assets/img/mate-de-morphy.gif",
+    "../../mates/assets/img/mate-arabe.gif",
+    "../../mates/assets/img/mate-cola-de-golondrina.gif",
+    "../../mates/assets/img/mate-de-anastasia.gif",
+    "../../mates/assets/img/mate-de-blackburne.gif",
+    "../../mates/assets/img/mate-de-boen.gif",
+    "../../mates/assets/img/mate-de-cozio.gif",
+    "../../mates/assets/img/mate-de-damiano.gif",
+    "../../mates/assets/img/mate-de-la-coz.gif",
+    "../../mates/assets/img/mate-de-la-opera.gif",
+    "../../mates/assets/img/mate-de-las-hombreras.gif",
+    "../../mates/assets/img/mate-de-morphy.gif",
 
     /* Libros */
-    "../../assets/img/mis-60-partidas-memorables.jpg",
-    "../../assets/img/curso-completo-de-ajedrez.jpg",
+    "../../libros/assets/img/mis-60-partidas-memorables.jpg",
+    "../../libros/assets/img/curso-completo-de-ajedrez.jpg",
   ];
 
 /* Durante la fase de instalación, generalmente se almacenan en caché los activos estáticos. 
