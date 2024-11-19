@@ -174,7 +174,7 @@ self.addEventListener("install", (e) => {
             .then(() => {
               // Mensaje de confirmación en consola
               console.log("Archivos agregados al caché:", urlsToCache);
-              self.skipWaiting();
+              return self.skipWaiting();
             })
         );
       })
