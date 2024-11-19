@@ -282,61 +282,26 @@ estos nombres con la lista blanca cacheWhiteList y decidir cuáles cachés deben
         HTML, una imagen o un archivo CSS), el Service Worker intercepta la solicitud con 
         este evento. */
 self.addEventListener("fetch", (e) => {
-  //Responder ya sea con el objeto en caché o continuar y buscar la url real
-  /*  e.respondWith():
-        El método e.respondWith() se utiliza para interceptar la solicitud y proporcionar 
-        una respuesta personalizada. Dentro de este método, se decide si la respuesta debe
-        provenir del caché o de una petición a la red (url real). */
   e.respondWith(
-    /* caches.match(e.request):
-          caches.match() es una función que busca en el caché del navegador el recurso
-          solicitado (e.request). Si el recurso ya fue almacenado en caché anteriormente,
-          devolverá una promesa que se resuelve con la respuesta almacenada en caché (por
-          ejemplo, un archivo CSS, una imagen, etc.).
-          
-          En resumen, está intentando encontrar una versión almacenada del recurso 
-          solicitado en la caché. */
-
-    /*  .then((res) => { ... }):
-              Este bloque de código se ejecuta cuando la promesa de caches.match() se 
-              resuelve. El argumento "res" contiene la respuesta encontrada en el 
-              caché (si es que existe). */
-    caches.match(e.request).then((res) => {
-      /* if (res):
-            Aquí se verifica si "res" tiene un valor (es decir, si la solicitud al caché 
-            fue exitosa y encontró el recurso solicitado).  */
-      if (res) {
-        //recuperar del cache
-        /* return res;:
-              Si el recurso fue encontrado en el caché, se devuelve esa respuesta. Esto 
-              significa que el recurso se obtiene del caché y se evita realizar una nueva 
-              solicitud a la red. Este es el principal beneficio de las PWA: pueden 
-              trabajar offline o con recursos guardados, mejorando el rendimiento 
-              y reduciendo el uso de datos. */
-        return res;
+    caches.match(e.request).then((cachedResponse) => {
+      // Si encontramos una respuesta en la caché, la devolvemos
+      if (cachedResponse) {
+        return cachedResponse;
       }
-      //recuperar de la petición a la url
-      /* return fetch(e.request);:
-            Si res es null o undefined (es decir, el recurso no está en el caché), 
-            se ejecuta la siguiente línea.
-            Se llama a fetch(e.request), que realiza una solicitud normal a la red 
-            para obtener el recurso solicitado desde el servidor.
-            Este código asegura que si el recurso no se encuentra en el caché, la 
-            aplicación lo descargue de la red de manera habitual. */
-      return fetch(e.request).catch((err) => {
-        console.error("Error fetching resource:", err);
-      });
 
-      /* Resumen del flujo:
-            - El Service Worker intercepta cada solicitud de la aplicación (evento fetch).
-            - Se busca en el caché si el recurso solicitado ya está guardado.
-            - Si el recurso está en el caché, se devuelve directamente del caché, lo que 
-              permite que la aplicación funcione sin conexión o cargue más rápido.
-            - Si el recurso no está en el caché, se realiza una solicitud a la red utilizando 
-              fetch() para obtenerlo desde el servidor.
-            - Este enfoque combina lo mejor de los dos mundos:
-                - Velocidad y eficiencia cuando los recursos ya están en el caché.
-                - Flexibilidad al permitir que los recursos faltantes se obtengan de la red cuando sea necesario. */
+      // Si no está en la caché, intentamos obtenerlo de la red y lo agregamos al caché dinámicamente
+      return fetch(e.request)
+        .then((networkResponse) => {
+          return caches.open(CACHE_NAME).then((cache) => {
+            // Clonamos la respuesta y la almacenamos en la caché
+            cache.put(e.request, networkResponse.clone());
+            return networkResponse;
+          });
+        })
+        .catch((error) => {
+          console.error("Error al recuperar recurso de la red:", error);
+          // Opcional: Podrías retornar una página de fallback si es necesario
+        });
     })
   );
 });
