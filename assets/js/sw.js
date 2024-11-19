@@ -48,95 +48,95 @@ En una aplicación progresiva (PWA), el caché se utiliza para almacenar recurso
 const CACHE_NAME = "v1_chess_mate_club",
   urlsToCache = [
     /* Se encarga de cargar el archivo "index.html". */
-    "/progressive-web-app/index.html",
+    "../../index.html",
 
     /* Se agrega la página web "mates"*/
-    "/progressive-web-app/mates/mates.html",
+    "../../mates/mates.html",
     /* Se agrega la página web "libros"*/
-    "/progressive-web-app/libros/libros.html",
+    "../../libros/libros.html",
     /* Se agrega la página web "aperturas"*/
-    "/progressive-web-app/aperturas/aperturas.html",
+    "../../aperturas/aperturas.html",
     /* Se agrega la página web "contacto"*/
-    "/progressive-web-app/contacto/contacto.html",
+    "../../contacto/contacto.html",
     /* Carga las fuentes de Google Fonts. */
     "https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap",
     /* Kit de Font Awesome Icons */
     "https://kit.fontawesome.com/f1bff8ec54.js",
 
     /* Hojas Externas de CSS*/
-    "/progressive-web-app/assets/css/main.css",
-    "/progressive-web-app/aperturas/assets/css/aperturas.css",
-    "/progressive-web-app/libros/assets/css/libros.css",
-    "/progressive-web-app/mates/assets/css/mates.css",
+    "../css/main.css",
+    "../../aperturas/assets/css/aperturas.css",
+    "../../libros/assets/css/libros.css",
+    "../../mates/assets/css/mates.css",
 
     /* Hoja Externa de JavaScript.
     
 
 
     */
-    "/progressive-web-app/assets/js/sw-register.js",
+    /*     "sw-register.js", */
 
     /* Imágenes del sitio web */
-    "/progressive-web-app/assets/img/ProgramadorFitness.png",
+    "../img/ProgramadorFitness.png",
 
     /* Favicon */
-    "/progressive-web-app/assets/img/favicon-16x16.png",
-    "/progressive-web-app/assets/img/favicon-32x32.png",
-    "/progressive-web-app/assets/img/favicon-48x48.png",
-    "/progressive-web-app/assets/img/favicon-76x76.png",
-    "/progressive-web-app/assets/img/favicon-96x96.png",
-    "/progressive-web-app/assets/img/favicon-120x120.png",
-    "/progressive-web-app/assets/img/favicon-144x144.png",
-    "/progressive-web-app/assets/img/favicon-152x152.png",
-    "/progressive-web-app/assets/img/favicon-167x167.png",
-    "/progressive-web-app/assets/img/favicon-180x180.png",
-    "/progressive-web-app/assets/img/favicon-192x192.png",
-    "/progressive-web-app/assets/img/favicon-256x256.png",
-    "/progressive-web-app/assets/img/favicon-384x384.png",
-    "/progressive-web-app/assets/img/favicon-512x512.png",
+    "../img/favicon-16x16.png",
+    "../img/favicon-32x32.png",
+    "../img/favicon-48x48.png",
+    "../img/favicon-76x76.png",
+    "../img/favicon-96x96.png",
+    "../img/favicon-120x120.png",
+    "../img/favicon-144x144.png",
+    "../img/favicon-152x152.png",
+    "../img/favicon-167x167.png",
+    "../img/favicon-180x180.png",
+    "../img/favicon-192x192.png",
+    "../img/favicon-256x256.png",
+    "../img/favicon-384x384.png",
+    "../img/favicon-512x512.png",
 
     /* Apple Touch Icon */
-    "/progressive-web-app/assets/img/apple-touch-icon-57x57.png",
-    "/progressive-web-app/assets/img/apple-touch-icon-60x60.png",
-    "/progressive-web-app/assets/img/apple-touch-icon-72x72.png",
-    "/progressive-web-app/assets/img/apple-touch-icon-76x76.png",
-    "/progressive-web-app/assets/img/apple-touch-icon-114x114.png",
-    "/progressive-web-app/assets/img/apple-touch-icon-120x120.png",
-    "/progressive-web-app/assets/img/apple-touch-icon-144x144.png",
-    "/progressive-web-app/assets/img/apple-touch-icon-152x152.png",
-    "/progressive-web-app/assets/img/apple-touch-icon-167x167.png",
-    "/progressive-web-app/assets/img/apple-touch-icon-180x180.png",
+    "../img/apple-touch-icon-57x57.png",
+    "../img/apple-touch-icon-60x60.png",
+    "../img/apple-touch-icon-72x72.png",
+    "../img/apple-touch-icon-76x76.png",
+    "../img/apple-touch-icon-114x114.png",
+    "../img/apple-touch-icon-120x120.png",
+    "../img/apple-touch-icon-144x144.png",
+    "../img/apple-touch-icon-152x152.png",
+    "../img/apple-touch-icon-167x167.png",
+    "../img/apple-touch-icon-180x180.png",
 
     /* Aperturas */
-    "/progressive-web-app/aperturas/assets/img/Apertura-Ruy-Lopez.png",
-    "/progressive-web-app/aperturas/assets/img/Apertura-Italiana.png",
-    "/progressive-web-app/aperturas/assets/img/Defensa-Alekhine.png",
-    "/progressive-web-app/aperturas/assets/img/Defensa-Caro-Kann.png",
-    "/progressive-web-app/aperturas/assets/img/Defensa-Escandinava.png",
-    "/progressive-web-app/aperturas/assets/img/Defensa-Escocesa.png",
-    "/progressive-web-app/aperturas/assets/img/Defensa-Francesa.png",
-    "/progressive-web-app/aperturas/assets/img/Defensa-Siciliana.png",
-    "/progressive-web-app/aperturas/assets/img/Defensa-Vienesa.png",
-    "/progressive-web-app/aperturas/assets/img/Gambito-de-Rey.png",
+    "../../aperturas/assets/img/Apertura-Ruy-Lopez.png",
+    "../../aperturas/assets/img/Apertura-Italiana.png",
+    "../../aperturas/assets/img/Defensa-Alekhine.png",
+    "../../aperturas/assets/img/Defensa-Caro-Kann.png",
+    "../../aperturas/assets/img/Defensa-Escandinava.png",
+    "../../aperturas/assets/img/Defensa-Escocesa.png",
+    "../../aperturas/assets/img/Defensa-Francesa.png",
+    "../../aperturas/assets/img/Defensa-Siciliana.png",
+    "../../aperturas/assets/img/Defensa-Vienesa.png",
+    "../../aperturas/assets/img/Gambito-de-Rey.png",
 
     /* Mates */
-    "/progressive-web-app/mates/assets/img/mate-arabe.gif",
-    "/progressive-web-app/mates/assets/img/mate-cola-de-golondrina.gif",
-    "/progressive-web-app/mates/assets/img/mate-de-anastasia.gif",
-    "/progressive-web-app/mates/assets/img/mate-de-blackburne.gif",
-    "/progressive-web-app/mates/assets/img/mate-de-boen.gif",
-    "/progressive-web-app/mates/assets/img/mate-de-cozio.gif",
-    "/progressive-web-app/mates/assets/img/mate-de-damiano.gif",
-    "/progressive-web-app/mates/assets/img/mate-de-la-coz.gif",
-    "/progressive-web-app/mates/assets/img/mate-de-la-opera.gif",
-    "/progressive-web-app/mates/assets/img/mate-de-las-hombreras.gif",
-    "/progressive-web-app/mates/assets/img/mate-de-legal.gif",
-    "/progressive-web-app/mates/assets/img/mate-de-morphy.gif",
-    "/progressive-web-app/mates/assets/img/mate-del-loco.gif",
+    "../../mates/assets/img/mate-arabe.gif",
+    "../../mates/assets/img/mate-cola-de-golondrina.gif",
+    "../../mates/assets/img/mate-de-anastasia.gif",
+    "../../mates/assets/img/mate-de-blackburne.gif",
+    "../../mates/assets/img/mate-de-boen.gif",
+    "../../mates/assets/img/mate-de-cozio.gif",
+    "../../mates/assets/img/mate-de-damiano.gif",
+    "../../mates/assets/img/mate-de-la-coz.gif",
+    "../../mates/assets/img/mate-de-la-opera.gif",
+    "../../mates/assets/img/mate-de-las-hombreras.gif",
+    "../../mates/assets/img/mate-de-legal.gif",
+    "../../mates/assets/img/mate-de-morphy.gif",
+    "../../mates/assets/img/mate-del-loco.gif",
 
     /* Libros */
-    "/progressive-web-app/libros/assets/img/mis-60-partidas-memorables.jpg",
-    "/progressive-web-app/libros/assets/img/curso-completo-de-ajedrez.jpg",
+    "../../libros/assets/img/mis-60-partidas-memorables.jpg",
+    "../../libros/assets/img/curso-completo-de-ajedrez.jpg",
   ];
 
 /* Durante la fase de instalación, generalmente se almacenan en caché los activos estáticos. 
@@ -282,26 +282,61 @@ estos nombres con la lista blanca cacheWhiteList y decidir cuáles cachés deben
         HTML, una imagen o un archivo CSS), el Service Worker intercepta la solicitud con 
         este evento. */
 self.addEventListener("fetch", (e) => {
+  //Responder ya sea con el objeto en caché o continuar y buscar la url real
+  /*  e.respondWith():
+        El método e.respondWith() se utiliza para interceptar la solicitud y proporcionar 
+        una respuesta personalizada. Dentro de este método, se decide si la respuesta debe
+        provenir del caché o de una petición a la red (url real). */
   e.respondWith(
-    caches.match(e.request).then((cachedResponse) => {
-      // Si encontramos una respuesta en la caché, la devolvemos
-      if (cachedResponse) {
-        return cachedResponse;
-      }
+    /* caches.match(e.request):
+          caches.match() es una función que busca en el caché del navegador el recurso
+          solicitado (e.request). Si el recurso ya fue almacenado en caché anteriormente,
+          devolverá una promesa que se resuelve con la respuesta almacenada en caché (por
+          ejemplo, un archivo CSS, una imagen, etc.).
+          
+          En resumen, está intentando encontrar una versión almacenada del recurso 
+          solicitado en la caché. */
 
-      // Si no está en la caché, intentamos obtenerlo de la red y lo agregamos al caché dinámicamente
-      return fetch(e.request)
-        .then((networkResponse) => {
-          return caches.open(CACHE_NAME).then((cache) => {
-            // Clonamos la respuesta y la almacenamos en la caché
-            cache.put(e.request, networkResponse.clone());
-            return networkResponse;
-          });
-        })
-        .catch((error) => {
-          console.error("Error al recuperar recurso de la red:", error);
-          // Opcional: Podrías retornar una página de fallback si es necesario
-        });
+    /*  .then((res) => { ... }):
+              Este bloque de código se ejecuta cuando la promesa de caches.match() se 
+              resuelve. El argumento "res" contiene la respuesta encontrada en el 
+              caché (si es que existe). */
+    caches.match(e.request).then((res) => {
+      /* if (res):
+            Aquí se verifica si "res" tiene un valor (es decir, si la solicitud al caché 
+            fue exitosa y encontró el recurso solicitado).  */
+      if (res) {
+        //recuperar del cache
+        /* return res;:
+              Si el recurso fue encontrado en el caché, se devuelve esa respuesta. Esto 
+              significa que el recurso se obtiene del caché y se evita realizar una nueva 
+              solicitud a la red. Este es el principal beneficio de las PWA: pueden 
+              trabajar offline o con recursos guardados, mejorando el rendimiento 
+              y reduciendo el uso de datos. */
+        return res;
+      }
+      //recuperar de la petición a la url
+      /* return fetch(e.request);:
+            Si res es null o undefined (es decir, el recurso no está en el caché), 
+            se ejecuta la siguiente línea.
+            Se llama a fetch(e.request), que realiza una solicitud normal a la red 
+            para obtener el recurso solicitado desde el servidor.
+            Este código asegura que si el recurso no se encuentra en el caché, la 
+            aplicación lo descargue de la red de manera habitual. */
+      return fetch(e.request).catch((err) => {
+        console.error("Error fetching resource:", err);
+      });
+
+      /* Resumen del flujo:
+            - El Service Worker intercepta cada solicitud de la aplicación (evento fetch).
+            - Se busca en el caché si el recurso solicitado ya está guardado.
+            - Si el recurso está en el caché, se devuelve directamente del caché, lo que 
+              permite que la aplicación funcione sin conexión o cargue más rápido.
+            - Si el recurso no está en el caché, se realiza una solicitud a la red utilizando 
+              fetch() para obtenerlo desde el servidor.
+            - Este enfoque combina lo mejor de los dos mundos:
+                - Velocidad y eficiencia cuando los recursos ya están en el caché.
+                - Flexibilidad al permitir que los recursos faltantes se obtengan de la red cuando sea necesario. */
     })
   );
 });
