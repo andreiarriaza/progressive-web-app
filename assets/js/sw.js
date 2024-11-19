@@ -48,14 +48,16 @@ En una aplicación progresiva (PWA), el caché se utiliza para almacenar recurso
 const CACHE_NAME = "v1_chess_mate_club",
   urlsToCache = [
     /* Se encarga de cargar el archivo "index.html". */
-    "/index.html",
+    "../../index.html",
+
+    /* Se agrega la página web "mates"*/
+    "../../mates/mates.html",
     /* Se agrega la página web "libros"*/
     "../../libros/libros.html",
     /* Se agrega la página web "aperturas"*/
     "../../aperturas/aperturas.html",
     /* Se agrega la página web "contacto"*/
     "../../contacto/contacto.html",
-    /* Carga las fuentes de Google Fonts. */
     /* Carga las fuentes de Google Fonts. */
     "https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap",
     /* Kit de Font Awesome Icons */
@@ -67,42 +69,46 @@ const CACHE_NAME = "v1_chess_mate_club",
     "../../libros/assets/css/libros.css",
     "../../mates/assets/css/mates.css",
 
-    /* Hoja Externa de JavaScript. */
+    /* Hoja Externa de JavaScript.
+    
+
+
+    */
     "sw-register.js",
 
     /* Imágenes del sitio web */
-    "../../assets/img/ProgramadorFitness.png",
+    "../img/ProgramadorFitness.png",
 
     /* Favicon */
-    "../../assets/img/favicon-16x16.png",
-    "../../assets/img/favicon-32x32.png",
-    "../../assets/img/favicon-48x48.png",
-    "../../assets/img/favicon-76x76.png",
-    "../../assets/img/favicon-96x96.png",
-    "../../assets/img/favicon-120x120.png",
-    "../../assets/img/favicon-144x144.png",
-    "../../assets/img/favicon-152x152.png",
-    "../../assets/img/favicon-167x167.png",
-    "../../assets/img/favicon-180x180.png",
-    "../../assets/img/favicon-192x192.png",
-    "../../assets/img/favicon-256x256.png",
-    "../../assets/img/favicon-384x384.png",
-    "../../assets/img/favicon-512x512.png",
+    "../img/favicon-16x16.png",
+    "../img/favicon-32x32.png",
+    "../img/favicon-48x48.png",
+    "../img/favicon-76x76.png",
+    "../img/favicon-96x96.png",
+    "../img/favicon-120x120.png",
+    "../img/favicon-144x144.png",
+    "../img/favicon-152x152.png",
+    "../img/favicon-167x167.png",
+    "../img/favicon-180x180.png",
+    "../img/favicon-192x192.png",
+    "../img/favicon-256x256.png",
+    "../img/favicon-384x384.png",
+    "../img/favicon-512x512.png",
 
     /* Apple Touch Icon */
-    "../../assets/img/apple-touch-icon-57x57.png",
-    "../../assets/img/apple-touch-icon-60x60.png",
-    "../../assets/img/apple-touch-icon-72x72.png",
-    "../../assets/img/apple-touch-icon-76x76.png",
-    "../../assets/img/apple-touch-icon-114x114.png",
-    "../../assets/img/apple-touch-icon-120x120.png",
-    "../../assets/img/apple-touch-icon-144x144.png",
-    "../../assets/img/apple-touch-icon-152x152.png",
-    "../../assets/img/apple-touch-icon-167x167.png",
-    "../../assets/img/apple-touch-icon-180x180.png",
+    "../img/apple-touch-icon-57x57.png",
+    "../img/apple-touch-icon-60x60.png",
+    "../img/apple-touch-icon-72x72.png",
+    "../img/apple-touch-icon-76x76.png",
+    "../img/apple-touch-icon-114x114.png",
+    "../img/apple-touch-icon-120x120.png",
+    "../img/apple-touch-icon-144x144.png",
+    "../img/apple-touch-icon-152x152.png",
+    "../img/apple-touch-icon-167x167.png",
+    "../img/apple-touch-icon-180x180.png",
 
     /* Aperturas */
-    "../../aperturas/assets/img/Apertura-Ruy-López.png",
+    "../../aperturas/assets/img/Apertura-Ruy-Lopez.png",
     "../../aperturas/assets/img/Apertura-Italiana.png",
     "../../aperturas/assets/img/Defensa-Alekhine.png",
     "../../aperturas/assets/img/Defensa-Caro-Kann.png",
@@ -124,7 +130,9 @@ const CACHE_NAME = "v1_chess_mate_club",
     "../../mates/assets/img/mate-de-la-coz.gif",
     "../../mates/assets/img/mate-de-la-opera.gif",
     "../../mates/assets/img/mate-de-las-hombreras.gif",
+    "../../mates/assets/img/mate-de-legal.gif",
     "../../mates/assets/img/mate-de-morphy.gif",
+    "../../mates/assets/img/mate-del-loco.gif",
 
     /* Libros */
     "../../libros/assets/img/mis-60-partidas-memorables.jpg",
