@@ -254,7 +254,10 @@ estos nombres con la lista blanca cacheWhiteList y decidir cuáles cachés deben
             se llama a self.clients.claim(). */
 
       /* self.clients.claim() hace que el nuevo Service Worker tome el control de todas las páginas de la aplicación sin necesidad de que los usuarios cierren y vuelvan a abrir las pestañas. Es decir, asegura que el nuevo Service Worker y los cachés actualizados se utilicen inmediatamente, sin esperar a que se recarguen las páginas. */
-      .then(() => self.clients.claim())
+      .then(() => {
+        console.log("Service Worker activo y listo para controlar clientes.");
+        return self.clients.claim();
+      })
   );
 
   /*  Resumen del flujo:
@@ -320,7 +323,9 @@ self.addEventListener("fetch", (e) => {
             para obtener el recurso solicitado desde el servidor.
             Este código asegura que si el recurso no se encuentra en el caché, la 
             aplicación lo descargue de la red de manera habitual. */
-      return fetch(e.request);
+      return fetch(e.request).catch((err) => {
+        console.error("Error fetching resource:", err);
+      });
 
       /* Resumen del flujo:
             - El Service Worker intercepta cada solicitud de la aplicación (evento fetch).
