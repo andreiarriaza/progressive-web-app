@@ -47,8 +47,8 @@ En una aplicación progresiva (PWA), el caché se utiliza para almacenar recurso
 //Asignar un nombre y versión al cache
 const CACHE_NAME = "v1_chess_mate_club",
   urlsToCache = [
-    "./",
-    "./offline.html",
+    "./index.html",
+
     /* Se encarga de cargar el archivo "index.html". */
     /*  "./index.html", */
 
@@ -359,8 +359,6 @@ self.addEventListener("fetch", (e) => {
                   - Como medida de contingencia, se intenta devolver una página offline (/offline.html) desde la caché, si está disponible. */
             .catch((err) => {
               console.error("Error fetching resource:", err);
-              // Mostrar la página offline en caso de error
-              return caches.match("/offline.html");
             })
         );
       })
@@ -371,8 +369,6 @@ self.addEventListener("fetch", (e) => {
             - De nuevo, como medida de contingencia, se intenta devolver la página offline (/offline.html) desde la caché. */
       .catch((err) => {
         console.error("Error matching en caché", err);
-        // Mostrar la página offline en caso de error
-        return caches.match("/offline.html");
 
         /* Resumen del flujo:
             - Si la solicitud se encuentra en la caché, se sirve desde allí.
