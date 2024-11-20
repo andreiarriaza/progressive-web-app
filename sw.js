@@ -47,7 +47,6 @@ En una aplicación progresiva (PWA), el caché se utiliza para almacenar recurso
 //Asignar un nombre y versión al cache
 const CACHE_NAME = "v1_chess_mate_club",
   urlsToCache = [
-    "./",
     /* Se encarga de cargar el archivo "index.html". */
     "./index.html",
 
