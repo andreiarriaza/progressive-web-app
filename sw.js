@@ -336,11 +336,9 @@ self.addEventListener("fetch", (e) => {
               // Clonar la respuesta para poder almacenarla en la caché y devolverla
               let clonedResponse = networkResponse.clone();
 
-              // Verificar si la URL comienza con http o https
-              if (
-                e.request.url.startsWith("http://") ||
-                e.request.url.startsWith("https://")
-              ) {
+              // Verificar que el Service Worker solo intente cachear recursos que provienen de una URL segura: https.
+
+              if (e.request.url.startsWith("https://")) {
                 /* caches.open(CACHE_NAME):
                   Abre (o crea si no existe) un caché con el nombre definido por la constante CACHE_NAME.
               */
