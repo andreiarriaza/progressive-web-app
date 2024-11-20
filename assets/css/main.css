@@ -13,7 +13,7 @@ html {
   box-sizing: border-box;
   font-family: "Raleway", sans-serif;
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.5;
   color: var(--second-color);
   background-color: var(--main-modal-color);
 }
@@ -27,10 +27,10 @@ html {
 }
 
 body {
-  margin: 2rem auto;
+  margin: 1.5rem auto;
   overflow-x: hidden;
   max-width: 800px;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 a {
@@ -114,6 +114,10 @@ header img {
   border-radius: 50%;
 }
 
+footer {
+  text-align: center;
+}
+
 nav {
   padding: 2rem 0;
   display: flex;
@@ -127,12 +131,17 @@ header nav a {
   color: #4b4b4b;
 }
 
-main {
+.main-index {
   position: relative;
   margin: 1rem auto;
   /* IMPORTANTE: este es un hack que utilizan los desarrolladores Web, para conseguir que los videos se visualicen en una resolución de 16:9, consiguiendo
   de esta manera que los videos no se deformen. */
   padding-bottom: 56.25%; /* 16:9 */
+}
+
+main {
+  position: relative;
+  margin: 1rem 1rem;
 }
 
 main iframe {
