@@ -287,25 +287,31 @@ estos nombres con la lista blanca cacheWhiteList y decidir cuáles cachés deben
 
 self.addEventListener("fetch", (e) => {
   e.respondWith(
-    caches.match(e.request).then((res) => {
-      if (res) {
-        return res;
-      } else {
+    caches
+      .match(e.request)
+      .then((res) => {
+        if (res) {
+          console.log(`Sirviendo desde caché: ${e.request.url}`);
+          return res;
+        }
+        console.log(`Realizando fetch: ${e.request.url}`);
         return fetch(e.request)
-          .then((response) => {
-            // Almacenar la respuesta en el caché
+          .then((networkResponse) => {
+            // Clonar la respuesta para poder almacenarla en la caché y devolverla
+            let clonedResponse = networkResponse.clone();
+
             caches.open(CACHE_NAME).then((cache) => {
-              cache.put(e.request, response.clone());
+              cache.put(e.request, clonedResponse);
             });
-            return response;
+
+            return networkResponse;
           })
-          .catch(() => {
-            return new Response("No estás conectado a internet", {
-              status: 404,
-              statusText: "No encontrado",
-            });
+          .catch((err) => {
+            console.error("Error fetching resource:", err);
           });
-      }
-    })
+      })
+      .catch((err) => {
+        console.error("Error matching en caché", err);
+      })
   );
 });
