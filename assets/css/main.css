@@ -142,3 +142,22 @@ main iframe {
   width: 100%;
   height: 100%;
 }
+
+.offline {
+  width: 100%;
+}
+.offline > img {
+  width: 90%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.offline > p {
+  text-align: center;
+  overflow-wrap: break-word;
+  color: #214e34;
+  font-size: 1rem;
+  line-height: 1.5;
+}

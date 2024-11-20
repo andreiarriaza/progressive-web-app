@@ -48,6 +48,7 @@ En una aplicación progresiva (PWA), el caché se utiliza para almacenar recurso
 const CACHE_NAME = "v1_chess_mate_club",
   urlsToCache = [
     "./",
+    "./offline.html",
     /* Se encarga de cargar el archivo "index.html". */
     /*  "./index.html", */
 
@@ -285,33 +286,100 @@ estos nombres con la lista blanca cacheWhiteList y decidir cuáles cachés deben
 
 // ... (resto del código)
 
+/* 
+self.addEventListener("fetch", (e) => {...}):
+  - Registra un event listener para el evento fetch en el Service Worker. 
+    Este evento se activa cada vez que el navegador realiza una solicitud de red (ya sea para obtener una página, imagen, archivo, etc.).
+  - El parámetro e es el evento de la solicitud, que contiene detalles sobre la solicitud, como la URL que se está solicitando.
+
+*/
 self.addEventListener("fetch", (e) => {
+  /* e.respondWith(...):
+      - Este método es utilizado para proporcionar una respuesta personalizada al evento fetch. 
+        Aquí es donde decidimos qué respuesta se debe devolver: puede ser desde la caché o la red.
+      - Todo el código dentro de respondWith es una promesa que eventualmente devuelve una respuesta. 
+  */
   e.respondWith(
+    /* caches.match(e.request):
+        - caches.match() busca en el caché disponible para ver si ya existe una entrada que coincida con la solicitud que se 
+          está realizando (e.request es la solicitud original que se hace).
+        - Retorna una promesa que resuelve la respuesta almacenada en caché si existe, o undefined si no se encuentra una coincidencia. 
+    */
     caches
       .match(e.request)
+
+      /* .then((res) => {...}):
+            - Si caches.match(e.request) devuelve una respuesta (res), es decir, si la solicitud está en la caché:
+                - Se imprime en la consola que la respuesta está siendo servida desde la caché con console.log.
+                - Se devuelve esa respuesta inmediatamente con return res. */
       .then((res) => {
         if (res) {
           console.log(`Sirviendo desde caché: ${e.request.url}`);
           return res;
         }
         console.log(`Realizando fetch: ${e.request.url}`);
-        return fetch(e.request)
-          .then((networkResponse) => {
-            // Clonar la respuesta para poder almacenarla en la caché y devolverla
-            let clonedResponse = networkResponse.clone();
+        /*  return fetch(e.request):
+              Si el recurso no está en la caché, realizar una solicitud a la red. Si el recurso no está en la caché, se 
+              realiza una solicitud fetch a la red para obtenerlo. */
+        return (
+          fetch(e.request)
+            /* .then((networkResponse) => {...}):
+                  Si la solicitud de red es exitosa, networkResponse es la respuesta de la red. 
+            */
+            .then((networkResponse) => {
+              /* networkResponse.clone():
+                  Las respuestas de la red solo pueden ser leídas una vez, por lo que se necesita clonarlas si se quiere tanto usar 
+                  la respuesta en el código como almacenarla en la caché.
+                
+                  clonedRespons:
+                    Es una copia de la respuesta original que se puede almacenar en la caché sin afectar la respuesta original.
+                  
+                  */
+              // Clonar la respuesta para poder almacenarla en la caché y devolverla
+              let clonedResponse = networkResponse.clone();
 
-            caches.open(CACHE_NAME).then((cache) => {
-              cache.put(e.request, clonedResponse);
-            });
+              /* caches.open(CACHE_NAME):
+                  Abre (o crea si no existe) un caché con el nombre definido por la constante CACHE_NAME.
+              */
+              caches.open(CACHE_NAME).then((cache) => {
+                /* cache.put(e.request, clonedResponse):
+                    Almacenamos la respuesta clonada (clonedResponse) en la caché con la solicitud original (e.request) como clave.
+                    Esto permite que futuras solicitudes a la misma URL se sirvan desde la caché.
+                */
+                cache.put(e.request, clonedResponse);
+              });
 
-            return networkResponse;
-          })
-          .catch((err) => {
-            console.error("Error fetching resource:", err);
-          });
+              /* Se devuelve la respuesta de la red (networkResponse) después de que se haya almacenado en la caché. */
+              return networkResponse;
+            })
+
+            /* .catch((err) => {...}):
+                  - Si ocurre un error durante el fetch (por ejemplo, si no hay conexión a la red), se captura el error (err).
+                  - Se imprime el error en la consola.
+                  - Como medida de contingencia, se intenta devolver una página offline (/offline.html) desde la caché, si está disponible. */
+            .catch((err) => {
+              console.error("Error fetching resource:", err);
+              // Mostrar la página offline en caso de error
+              return caches.match("/offline.html");
+            })
+        );
       })
+
+      /* .catch((err) => {...}):
+            - Si ocurre un error al intentar buscar en la caché (caches.match()), se captura el error (err).
+            - Se imprime el error en la consola.
+            - De nuevo, como medida de contingencia, se intenta devolver la página offline (/offline.html) desde la caché. */
       .catch((err) => {
         console.error("Error matching en caché", err);
+        // Mostrar la página offline en caso de error
+        return caches.match("/offline.html");
+
+        /* Resumen del flujo:
+            - Si la solicitud se encuentra en la caché, se sirve desde allí.
+            - Si no se encuentra en la caché, se hace una solicitud a la red.
+            - Si la solicitud a la red es exitosa, se guarda la respuesta en la caché para la próxima vez y se devuelve la respuesta de la red.
+            - Si ocurre un error (por ejemplo, falta de conexión a internet), se sirve una página offline desde la caché. 
+        */
       })
   );
 });
