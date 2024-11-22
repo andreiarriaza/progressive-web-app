@@ -79,6 +79,11 @@ const CACHE_NAME = "v1_chess_mate_club",
     /* Imágenes del sitio web */
     "./assets/img/ProgramadorFitness.png",
 
+    /* Startup Image */
+    "./assets/img/startup-image-750x1334@2x.png",
+    "./assets/img/startup-image-1125x2436@3x.png",
+    "./assets/img/startup-image-768x1024@2x.png",
+
     /* Favicon */
     "./assets/img/favicon-16x16.png",
     "./assets/img/favicon-32x32.png",
