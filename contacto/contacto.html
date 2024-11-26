@@ -886,19 +886,19 @@
 
     <script>
       function handleProtocolClick(event) {
-        event.preventDefault(); // Prevenir el comportamiento predeterminado
+        event.preventDefault(); // Evita que el enlace se ejecute inmediatamente
 
-        // Intentar abrir la aplicación usando el protocolo personalizado
+        // Intenta abrir la aplicación con el protocolo personalizado
         const protocolUrl = "web+micontacto://200";
         window.location.href = protocolUrl;
 
-        // Si el navegador no soporta el protocolo personalizado, redirigir a la URL normal
+        // Si el protocolo no se maneja, redirige a la URL estándar después de un pequeño retraso
         setTimeout(() => {
           if (window.location.href !== protocolUrl) {
             window.location.href =
               "https://andreiarriaza.github.io/progressive-web-app/contacto/contacto.html?id=200";
           }
-        }, 1000); // Espera un poco para comprobar si el protocolo personalizado fue manejado
+        }, 1000); // Retraso de 1 segundo para comprobar si se manejó el protocolo
       }
     </script>
 
