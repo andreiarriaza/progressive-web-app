@@ -885,44 +885,48 @@
     <p id="contact-info"></p>
 
     <script>
-      // Obtener los parámetros de la URL
+      // Verifica si el parámetro 'id' está presente en la URL
       const urlParams = new URLSearchParams(window.location.search);
+      const rawContactoId = urlParams.get("id");
 
-      // Obtener el valor del parámetro 'id'
-      const contactoId = urlParams.get("id");
+      if (rawContactoId) {
+        // Si el parámetro 'id' está presente, limpia el valor y redirige a la URL estándar
+        const contactoId = rawContactoId.replace("/", "");
 
-      // Si el ID está presente en la URL, mostrarlo y procesar la información
-      if (contactoId) {
+        // Redirige a la URL estándar con el parámetro id
+        window.location.href = `https://andreiarriaza.github.io/progressive-web-app/contacto/contacto.html?id=${contactoId}`;
+      } else {
+        // Si el parámetro 'id' no está presente, muestra un mensaje
+        document.getElementById("contact-id").textContent =
+          "No se proporcionó ID";
+        document.getElementById("contact-info").textContent =
+          "Por favor, verifique la URL";
+      }
+
+      // Aquí manejamos el parámetro 'id' de la URL para mostrar el contenido correspondiente
+      if (rawContactoId) {
+        const contactoId = rawContactoId.replace("/", "");
+
+        // Muestra el ID en el encabezado
         document.getElementById("contact-id").textContent = `ID: ${contactoId}`;
+        console.log(contactoId);
 
-        // Realizar las comprobaciones basadas en el ID
+        // Aquí decides qué hacer con los valores del ID
         if (contactoId == 100) {
           document.getElementById("contact-info").textContent =
             "Nombre: Andrei Arriaza";
         } else if (contactoId == 200) {
           document.getElementById("contact-info").textContent =
             "Nombre: Bobby Fischer";
+        } else {
+          document.getElementById("contact-info").textContent =
+            "Contacto no encontrado";
         }
       } else {
         document.getElementById("contact-id").textContent =
-          "No se proporcionó un ID.";
+          "No se proporcionó ID";
         document.getElementById("contact-info").textContent =
-          "Por favor, proporcione un ID válido en la URL.";
-      }
-
-      // Redirigir si el protocolo 'web+micontacto' es utilizado en smartphones
-      const rawContactoId = new URLSearchParams(window.location.search).get(
-        "id"
-      );
-
-      // Si 'rawContactoId' existe y el valor contiene 'web+micontacto://', entonces redirige
-      if (window.location.href.includes("web+micontacto://")) {
-        const contactoIdRedirect = rawContactoId
-          .replace("web+micontacto://", "")
-          .replace("/", "");
-
-        // Redirigir a la URL estándar con parámetros
-        window.location.href = `https://andreiarriaza.github.io/progressive-web-app/contacto/contacto.html?id=${contactoIdRedirect}`;
+          "Por favor, verifique la URL";
       }
     </script>
 
