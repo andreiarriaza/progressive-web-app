@@ -1053,6 +1053,36 @@ Ejemplos Prácticos
 1. PWA para Contactos Personalizados
 Imagina que tienes una PWA de gestión de contactos y quieres que otros usuarios o aplicaciones puedan abrir un contacto específico usando un protocolo personalizado.
 
+
+Los protocol handlerse no funciona en Smartphones:
+
+  Es importante aclarar que los Protocol Handlers son una característica relativamente nueva y no son necesariamente compatibles con todos los navegadores ni plataformas, especialmente en dispositivos móviles. El soporte de Protocol Handlers en smartphones puede variar dependiendo del sistema operativo, el navegador y la configuración del dispositivo.
+
+  Razones por las que no funciona en smartphones:
+  
+  Limitaciones del sistema operativo móvil:
+
+    - Android y iOS tienen restricciones más estrictas en cuanto a la ejecución de protocolos personalizados desde aplicaciones web, principalmente 
+      por razones de seguridad.
+    - Algunos sistemas operativos no permiten la ejecución de protocolos personalizados a través de navegadores móviles, especialmente si no está registrado el 
+      protocolo en el sistema operativo.
+  
+  Compatibilidad de navegadores móviles:
+    - Los navegadores móviles pueden no soportar los Protocol Handlers de la misma manera que los navegadores de escritorio. 
+      Incluso si el navegador de escritorio (como Chrome, Edge o Firefox) en una computadora soporta Protocol Handlers, 
+      los navegadores en dispositivos móviles como Chrome para Android o Safari para iOS pueden no soportarlos o tener limitaciones en su funcionamiento.
+  
+  Restricciones de seguridad:
+    - Los navegadores en dispositivos móviles tienen políticas de seguridad más estrictas. Pueden bloquear los intentos de abrir aplicaciones 
+      nativas mediante protocolos personalizados, ya que esto puede ser un vector de ataque para aplicaciones maliciosas.
+  
+  Manifest de la PWA:
+    - Aunque en tu manifest.json defines un Protocol Handler, es importante saber que no todos los navegadores en dispositivos móviles respetan estas 
+      configuraciones de la misma manera. Por ejemplo, los Protocol Handlers definidos en el manifest de una PWA son más efectivos en el navegador de escritorio que en dispositivos móviles.
+  Compatibilidad con iOS:
+    - En iOS, Safari es más restrictivo con los protocolos personalizados. No siempre permite abrir aplicaciones nativas mediante un protocolo personalizado 
+      directamente desde el navegador.
+
 Definición del protocolo en el manifest.json:
 
     {
@@ -1094,7 +1124,7 @@ Definición del protocolo en el manifest.json:
           document.getElementById('contact-info').textContent = `Mostrando detalles del contacto ID: ${contactoId}`;
         }
         -->
-      <a href="web+https://200">Ver contacto: 100</a>
+      <a href="web+micontacto://200">Ver contacto: 100</a>
     </header>
     <main class="main-index">
       <iframe

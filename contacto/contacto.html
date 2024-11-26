@@ -885,21 +885,37 @@
     <p id="contact-info"></p>
 
     <script>
-      // Obtiene los parámetros de la URL
+      /* 
+      - URLSearchParams: Esta clase permite trabajar con los parámetros de la URL, en este caso, los que 
+              vienen después del signo ?. 
+      
+      - window.location.search: Obtiene la parte de la URL que contiene los parámetros (lo que está   
+        después del ?).
+
+      
+      */
       const urlParams = new URLSearchParams(window.location.search);
+      /* - urlParams.get("id"): Extrae el valor del parámetro id de la URL (por ejemplo, si la URL es ?id=web+micontacto://100/, entonces rawContactoId contendría web+micontacto://100/). 
 
-      // Extrae el valor del parámetro 'id'
+       */
       const rawContactoId = urlParams.get("id");
-
+      /* El if (rawContactoId) comprueba si hay algún valor en el parámetro id. Si lo hay, procede a procesarlo. */
       if (rawContactoId) {
-        // Decodifica el valor recibido
-        const contactoId = decodeURIComponent(rawContactoId);
+        /* 
+        
+        
+        - rawContactoId.replace("web+micontacto://", "").replace("/", "")
+            Sin embargo, como lo que se necesita es el valor del "id", es necesario reemplazar la parte de la URL que no se necesita con espacios vacíos, de tal manera que se obtenga únicamente el "id". }}. Esto se consigue mediante los métodos:  */
+        const contactoId = rawContactoId
 
-        // Actualiza el contenido de la página según el ID recibido
+          .replace("web+micontacto://", "")
+          .replace("/", "");
         document.getElementById("contact-id").textContent = `ID: ${contactoId}`;
-        console.log(`Contacto ID procesado: ${contactoId}`);
+        console.log(contactoId);
 
+        /* Acá se comprueba el valor del "id". No se aplicó igualdad estricta (===), porque el parámetro no es un número, sino una cadena de texto. */
         if (contactoId == 100) {
+          /*  Se modifica el valor del elemento que tiene asignada la clase "contact-info".*/
           document.getElementById(
             "contact-info"
           ).textContent = `Nombre: Andrei Arriaza`;
@@ -907,16 +923,7 @@
           document.getElementById(
             "contact-info"
           ).textContent = `Nombre: Bobby Fischer`;
-        } else {
-          document.getElementById(
-            "contact-info"
-          ).textContent = `ID no reconocido: ${contactoId}`;
         }
-      } else {
-        console.warn("No se encontró ningún parámetro 'id' en la URL.");
-        document.getElementById(
-          "contact-info"
-        ).textContent = `No se proporcionó un ID válido.`;
       }
     </script>
 
