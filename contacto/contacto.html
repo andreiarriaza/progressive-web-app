@@ -885,46 +885,40 @@
     <p id="contact-info"></p>
 
     <script>
-      // Obtener los parámetros de la URL
+      // Verifica si el parámetro 'id' está presente en la URL
       const urlParams = new URLSearchParams(window.location.search);
-
-      // Obtener el valor del parámetro 'id'
       const contactoId = urlParams.get("id");
 
-      // Verifica si el parámetro 'id' está presente en la URL
+      // Si el ID está presente en la URL, mostrarlo y procesar la información
       if (contactoId) {
-        // Si el ID está presente, mostrarlo y procesar la información
         document.getElementById("contact-id").textContent = `ID: ${contactoId}`;
 
         // Realizar las comprobaciones basadas en el ID
         if (contactoId == 100) {
-          // Si el ID es 100, mostrar información específica
           document.getElementById("contact-info").textContent =
             "Nombre: Andrei Arriaza";
         } else if (contactoId == 200) {
-          // Si el ID es 200, mostrar otra información
           document.getElementById("contact-info").textContent =
             "Nombre: Bobby Fischer";
         }
       } else {
-        // Si no hay parámetro 'id', mostrar un mensaje por defecto
         document.getElementById("contact-id").textContent =
           "No se proporcionó un ID.";
         document.getElementById("contact-info").textContent =
           "Por favor, proporcione un ID válido en la URL.";
       }
 
-      // Si el protocolo personalizado web+micontacto está siendo utilizado, redirigir a la URL estándar
-      const rawContactoId = new URLSearchParams(window.location.search).get(
-        "id"
-      );
-      if (rawContactoId && rawContactoId.includes("web+micontacto://")) {
-        const contactoIdRedirect = rawContactoId
-          .replace("web+micontacto://", "")
-          .replace("/", "");
+      // Redirigir si el protocolo 'web+micontacto' es utilizado en smartphones
+      if (window.location.href.includes("web+micontacto://")) {
+        const rawContactoId =
+          window.location.href.split("web+micontacto://")[1];
 
-        // Redirige a la URL estándar con parámetros
-        window.location.href = `https://andreiarriaza.github.io/progressive-web-app/contacto/contacto.html?id=${contactoIdRedirect}`;
+        // Si el 'rawContactoId' tiene el formato esperado
+        if (rawContactoId) {
+          // Redirigir a la URL estándar con parámetros
+          const contactoIdRedirect = rawContactoId.replace("/", "");
+          window.location.href = `https://andreiarriaza.github.io/progressive-web-app/contacto/contacto.html?id=${contactoIdRedirect}`;
+        }
       }
     </script>
 
