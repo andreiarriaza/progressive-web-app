@@ -111,7 +111,7 @@
     {
       "protocol": "web+micontacto",
 
-      "url": "./contacto/contacto.html?id=%s"
+      "url": "./progressive-web-app/contacto/contacto.html?id=%s"
     }
   ]
 }
