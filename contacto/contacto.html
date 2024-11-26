@@ -885,45 +885,46 @@
     <p id="contact-info"></p>
 
     <script>
-      /* 
-      - URLSearchParams: Esta clase permite trabajar con los parámetros de la URL, en este caso, los que 
-              vienen después del signo ?. 
-      
-      - window.location.search: Obtiene la parte de la URL que contiene los parámetros (lo que está   
-        después del ?).
-
-      
-      */
+      // Obtener los parámetros de la URL
       const urlParams = new URLSearchParams(window.location.search);
-      /* - urlParams.get("id"): Extrae el valor del parámetro id de la URL (por ejemplo, si la URL es ?id=web+micontacto://100/, entonces rawContactoId contendría web+micontacto://100/). 
 
-       */
-      const rawContactoId = urlParams.get("id");
-      /* El if (rawContactoId) comprueba si hay algún valor en el parámetro id. Si lo hay, procede a procesarlo. */
-      if (rawContactoId) {
-        /* 
-        
-        
-        - rawContactoId.replace("web+micontacto://", "").replace("/", "")
-            Sin embargo, como lo que se necesita es el valor del "id", es necesario reemplazar la parte de la URL que no se necesita con espacios vacíos, de tal manera que se obtenga únicamente el "id". }}. Esto se consigue mediante los métodos:  */
-        const contactoId = rawContactoId
+      // Obtener el valor del parámetro 'id'
+      const contactoId = urlParams.get("id");
 
+      // Verifica si el parámetro 'id' está presente en la URL
+      if (contactoId) {
+        // Si el ID está presente, mostrarlo y procesar la información
+        document.getElementById("contact-id").textContent = `ID: ${contactoId}`;
+
+        // Realizar las comprobaciones basadas en el ID
+        if (contactoId == 100) {
+          // Si el ID es 100, mostrar información específica
+          document.getElementById("contact-info").textContent =
+            "Nombre: Andrei Arriaza";
+        } else if (contactoId == 200) {
+          // Si el ID es 200, mostrar otra información
+          document.getElementById("contact-info").textContent =
+            "Nombre: Bobby Fischer";
+        }
+      } else {
+        // Si no hay parámetro 'id', mostrar un mensaje por defecto
+        document.getElementById("contact-id").textContent =
+          "No se proporcionó un ID.";
+        document.getElementById("contact-info").textContent =
+          "Por favor, proporcione un ID válido en la URL.";
+      }
+
+      // Si el protocolo personalizado web+micontacto está siendo utilizado, redirigir a la URL estándar
+      const rawContactoId = new URLSearchParams(window.location.search).get(
+        "id"
+      );
+      if (rawContactoId && rawContactoId.includes("web+micontacto://")) {
+        const contactoIdRedirect = rawContactoId
           .replace("web+micontacto://", "")
           .replace("/", "");
-        document.getElementById("contact-id").textContent = `ID: ${contactoId}`;
-        console.log(contactoId);
 
-        /* Acá se comprueba el valor del "id". No se aplicó igualdad estricta (===), porque el parámetro no es un número, sino una cadena de texto. */
-        if (contactoId == 100) {
-          /*  Se modifica el valor del elemento que tiene asignada la clase "contact-info".*/
-          document.getElementById(
-            "contact-info"
-          ).textContent = `Nombre: Andrei Arriaza`;
-        } else if (contactoId == 200) {
-          document.getElementById(
-            "contact-info"
-          ).textContent = `Nombre: Bobby Fischer`;
-        }
+        // Redirige a la URL estándar con parámetros
+        window.location.href = `https://andreiarriaza.github.io/progressive-web-app/contacto/contacto.html?id=${contactoIdRedirect}`;
       }
     </script>
 

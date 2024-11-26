@@ -111,7 +111,7 @@
     {
       "protocol": "web+micontacto",
 
-      "url": "https://andreiarriaza.github.io/progressive-web-app/contacto/contacto.html?id=%s"
+      "url": "./progressive-web-app/contacto/contacto.html?id=%s"
     }
   ]
 }
