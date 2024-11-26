@@ -885,16 +885,17 @@
     <p id="contact-info"></p>
 
     <script>
-      // Obtén los parámetros de la URL
+      // Obtiene los parámetros de la URL
       const urlParams = new URLSearchParams(window.location.search);
 
       // Extrae el valor del parámetro "id"
       const rawContactoId = urlParams.get("id");
 
       // Depuración: Verifica qué parámetros están llegando
+      console.log("URL Actual:", window.location.href);
       console.log("Parámetros de URL:", window.location.search);
 
-      // Si hay un parámetro "id" en la URL
+      // Verifica si el parámetro "id" está presente
       if (rawContactoId) {
         // Limpia el valor del parámetro "id" (eliminando posibles caracteres extraños)
         const contactoId = rawContactoId.replace("/", "");
@@ -917,7 +918,7 @@
           ).textContent = `Nombre: Desconocido`;
         }
       } else {
-        // Si no hay parámetros, muestra un mensaje predeterminado
+        // Si no se encuentra el parámetro "id", muestra un mensaje predeterminado
         console.warn("No se detectaron parámetros en la URL");
         document.getElementById("contact-id").textContent = "ID: No disponible";
         document.getElementById("contact-info").textContent =
