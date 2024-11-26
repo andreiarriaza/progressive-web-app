@@ -885,8 +885,10 @@
     <p id="contact-info"></p>
 
     <script>
-      // Verifica si el parámetro 'id' está presente en la URL
+      // Obtener los parámetros de la URL
       const urlParams = new URLSearchParams(window.location.search);
+
+      // Obtener el valor del parámetro 'id'
       const contactoId = urlParams.get("id");
 
       // Si el ID está presente en la URL, mostrarlo y procesar la información
@@ -909,16 +911,18 @@
       }
 
       // Redirigir si el protocolo 'web+micontacto' es utilizado en smartphones
-      if (window.location.href.includes("web+micontacto://")) {
-        const rawContactoId =
-          window.location.href.split("web+micontacto://")[1];
+      const rawContactoId = new URLSearchParams(window.location.search).get(
+        "id"
+      );
 
-        // Si el 'rawContactoId' tiene el formato esperado
-        if (rawContactoId) {
-          // Redirigir a la URL estándar con parámetros
-          const contactoIdRedirect = rawContactoId.replace("/", "");
-          window.location.href = `https://andreiarriaza.github.io/progressive-web-app/contacto/contacto.html?id=${contactoIdRedirect}`;
-        }
+      // Si 'rawContactoId' existe y el valor contiene 'web+micontacto://', entonces redirige
+      if (window.location.href.includes("web+micontacto://")) {
+        const contactoIdRedirect = rawContactoId
+          .replace("web+micontacto://", "")
+          .replace("/", "");
+
+        // Redirigir a la URL estándar con parámetros
+        window.location.href = `https://andreiarriaza.github.io/progressive-web-app/contacto/contacto.html?id=${contactoIdRedirect}`;
       }
     </script>
 
