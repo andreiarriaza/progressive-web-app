@@ -109,6 +109,7 @@
   ],
   "protocol_handlers": [
     {
+      "protocol": "web+micontacto",
       "url": "./progressive-web-app/contacto/contacto.html?id=%s"
     }
   ]

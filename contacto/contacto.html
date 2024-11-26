@@ -885,35 +885,20 @@
     <p id="contact-info"></p>
 
     <script>
-      // Obtiene el parámetro 'id' de la URL
-      const urlParams = new URLSearchParams(window.location.search);
-      const rawContactoId = urlParams.get("id");
+      function handleProtocolClick(event) {
+        event.preventDefault(); // Prevenir el comportamiento predeterminado
 
-      // Si no se encuentra el parámetro 'id', realiza la redirección a la URL estándar
-      if (!rawContactoId) {
-        // Realiza una redirección si no se pasa el 'id'
-        const currentUrl = window.location.href;
-        const newUrl = currentUrl + "?id=100"; // Cambiar '100' por un ID por defecto si es necesario
-        window.location.replace(newUrl); // Redirige a la misma página pero con el parámetro 'id'
-      } else {
-        // Si se encuentra el parámetro 'id', limpia el valor
-        const contactoId = rawContactoId.replace("/", "");
+        // Intentar abrir la aplicación usando el protocolo personalizado
+        const protocolUrl = "web+micontacto://200";
+        window.location.href = protocolUrl;
 
-        // Muestra el ID en el encabezado
-        document.getElementById("contact-id").textContent = `ID: ${contactoId}`;
-        console.log(contactoId);
-
-        // Aquí decides qué hacer con los valores del ID
-        if (contactoId == 100) {
-          document.getElementById("contact-info").textContent =
-            "Nombre: Andrei Arriaza";
-        } else if (contactoId == 200) {
-          document.getElementById("contact-info").textContent =
-            "Nombre: Bobby Fischer";
-        } else {
-          document.getElementById("contact-info").textContent =
-            "Contacto no encontrado";
-        }
+        // Si el navegador no soporta el protocolo personalizado, redirigir a la URL normal
+        setTimeout(() => {
+          if (window.location.href !== protocolUrl) {
+            window.location.href =
+              "https://andreiarriaza.github.io/progressive-web-app/contacto/contacto.html?id=200";
+          }
+        }, 1000); // Espera un poco para comprobar si el protocolo personalizado fue manejado
       }
     </script>
 
