@@ -109,7 +109,7 @@
   ],
   "protocol_handlers": [
     {
-      "protocol": "web+micontacto",
+      "protocol": "web+https",
       "url": "https://andreiarriaza.github.io/progressive-web-app/contacto/contacto.html?id=%s"
     }
   ]
