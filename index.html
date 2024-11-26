@@ -1033,8 +1033,27 @@
         jaque mates y medio juego.
       </p>
 
-      <!-- Este vínculo funciona exclusivamente cuando se ha instalado 
-       el sitio web comuna ProgressiveWebApp en el dispostivo. 
+      <!-- 
+
+       Protocol Handlers (Manejadores de Protocolo): 
+        Los Protocol Handlers permiten que las aplicaciones web interactúen con servicios externos o incluso con otras aplicaciones 
+        nativas, usando un protocolo personalizado. Este mecanismo puede ser muy útil para tareas como la integración de una PWA (Progressive Web App) 
+        con aplicaciones móviles, abrir una aplicación en particular, o hacer uso de servicios de terceros. A continuación, te presento algunos 
+        ejemplos claros de uso de Protocol Handlers.
+
+        IMPORTANTE: los protocol handlers funcionan únicamente en Windows. ¡No funciona en dispositivos móviles!
+
+        1. Abrir una aplicación nativa desde el navegador
+              Supón que tienes una aplicación nativa en un teléfono móvil, como una aplicación de mensajería (por ejemplo, WhatsApp, 
+              Telegram, o una app personalizada) y quieres abrirla directamente desde tu sitio web. Esto es un uso clásico de los Protocol Handlers.
+
+            Ejemplo: Abrir WhatsApp desde una página web
+              Supongamos que quieres permitir que los usuarios se conecten directamente con alguien en WhatsApp mediante 
+              un clic en un enlace. Puedes usar el protocolo whatsapp:// para lograrlo.
+
+            Cuando un usuario hace clic en este enlace, si tiene instalada la aplicación de WhatsApp, se abrirá y automáticamente 
+            comenzará una conversación con el número especificado. Este tipo de protocolo personalizado (whatsapp://) es 
+            manejado por la aplicación móvil de WhatsApp.
 
        Prefijo web+: Es una buena práctica utilizar el prefijo web+ en tus protocolos personalizados para evitar conflictos con protocolos existentes y adherirte a las recomendaciones de los estándares web.
 
@@ -1043,15 +1062,21 @@
        El manejo de protocolos personalizados con protocol_handlers en una Progressive Web App (PWA) te permite registrar protocolos específicos que luego serán manejados directamente por tu aplicación. Esto significa que puedes crear enlaces con un protocolo personalizado (como web+micontacto://) que redirijan a tu PWA, facilitando la interacción con la app fuera del típico comportamiento web.
 
 ¿Para qué sirve exactamente?
-Redirigir a la PWA desde otros contextos:
+  - Redirigir a la PWA desde otros contextos:
 
-Permite que otros sitios web, correos electrónicos, o incluso aplicaciones puedan crear enlaces con un protocolo específico que redirija directamente a tu PWA. En lugar de abrir otra aplicación o una página genérica, el navegador abrirá tu PWA con una URL personalizada, procesando parámetros en la URL para realizar acciones específicas.
-Mejorar la experiencia de usuario:
+      Permite que otros sitios web, correos electrónicos, o incluso aplicaciones puedan crear enlaces con un protocolo específico que 
+      redirija directamente a tu PWA. En lugar de abrir otra aplicación o una página genérica, el navegador abrirá tu PWA con una URL 
+      personalizada, procesando parámetros en la URL para realizar acciones específicas.
 
-Puedes mejorar la navegación y la interacción de los usuarios con tu app creando enlaces que pasen datos específicos (como identificadores o nombres) directamente a tu PWA, permitiendo que la app cargue una página o información personalizada al instante.
-Ejemplos Prácticos
-1. PWA para Contactos Personalizados
-Imagina que tienes una PWA de gestión de contactos y quieres que otros usuarios o aplicaciones puedan abrir un contacto específico usando un protocolo personalizado.
+  - Mejorar la experiencia de usuario:
+
+      Puedes mejorar la navegación y la interacción de los usuarios con tu app creando enlaces que pasen datos 
+      específicos (como identificadores o nombres) directamente a tu PWA, permitiendo que la app cargue una página o información personalizada al instante.
+
+  Ejemplos Prácticos
+     PWA para Contactos Personalizados
+        Imagina que tienes una PWA de gestión de contactos y quieres que otros usuarios o aplicaciones puedan abrir un 
+        contacto específico usando un protocolo personalizado.
 
 
 Los protocol handlerse no funciona en Smartphones:
@@ -1124,7 +1149,14 @@ Definición del protocolo en el manifest.json:
           document.getElementById('contact-info').textContent = `Mostrando detalles del contacto ID: ${contactoId}`;
         }
         -->
-      <a href="web+micontacto://200">Ver contacto: 100</a>
+
+      <!-- Este vínculo funciona exclusivamente cuando se ha instalado 
+       el sitio web comuna ProgressiveWebApp en el dispostivo. Lo que hace es que al dar clic en él redirigirá al usuario hacia la progressive 
+       web app cuando se abre en ambiente Windows. -->
+
+      <a href="web+micontacto://200"
+        >Ver contacto: 200 por medio de <b>protocol_handler</b></a
+      >
     </header>
     <main class="main-index">
       <iframe
