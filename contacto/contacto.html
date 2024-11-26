@@ -885,26 +885,18 @@
     <p id="contact-info"></p>
 
     <script>
-      // Verifica si el parámetro 'id' está presente en la URL
+      // Obtiene el parámetro 'id' de la URL
       const urlParams = new URLSearchParams(window.location.search);
       const rawContactoId = urlParams.get("id");
 
-      if (rawContactoId) {
-        // Si el parámetro 'id' está presente, limpia el valor y redirige a la URL estándar
-        const contactoId = rawContactoId.replace("/", "");
-
-        // Redirige a la URL estándar con el parámetro id
-        window.location.href = `https://andreiarriaza.github.io/progressive-web-app/contacto/contacto.html?id=${contactoId}`;
+      // Si no se encuentra el parámetro 'id', realiza la redirección a la URL estándar
+      if (!rawContactoId) {
+        // Realiza una redirección si no se pasa el 'id'
+        const currentUrl = window.location.href;
+        const newUrl = currentUrl + "?id=100"; // Cambiar '100' por un ID por defecto si es necesario
+        window.location.replace(newUrl); // Redirige a la misma página pero con el parámetro 'id'
       } else {
-        // Si el parámetro 'id' no está presente, muestra un mensaje
-        document.getElementById("contact-id").textContent =
-          "No se proporcionó ID";
-        document.getElementById("contact-info").textContent =
-          "Por favor, verifique la URL";
-      }
-
-      // Aquí manejamos el parámetro 'id' de la URL para mostrar el contenido correspondiente
-      if (rawContactoId) {
+        // Si se encuentra el parámetro 'id', limpia el valor
         const contactoId = rawContactoId.replace("/", "");
 
         // Muestra el ID en el encabezado
@@ -922,11 +914,6 @@
           document.getElementById("contact-info").textContent =
             "Contacto no encontrado";
         }
-      } else {
-        document.getElementById("contact-id").textContent =
-          "No se proporcionó ID";
-        document.getElementById("contact-info").textContent =
-          "Por favor, verifique la URL";
       }
     </script>
 

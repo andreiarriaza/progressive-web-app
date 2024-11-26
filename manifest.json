@@ -106,5 +106,10 @@
       "type": "image/png",
       "form_factor": "narrow"
     }
+  ],
+  "protocol_handlers": [
+    {
+      "url": "./progressive-web-app/contacto/contacto.html?id=%s"
+    }
   ]
 }
