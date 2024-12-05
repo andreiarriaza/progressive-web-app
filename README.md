@@ -2,6 +2,14 @@
 
 Este repositorio contiene el procedimiento necesario para convertir un sitio web en una **_Progressive Web App_**, es decir, en un sitio web que se pueda instalar, ya sea en nuestra computadora o en nuestro dispositio móvil, como si fuera una App nativa. Aunque no es una App como tal, simula el comportamiento y apariencia de una App.
 
+## Visualización de contenido Offline
+
+Su característica principal es que guarda en caché las imágenes indicadas en el ServiceWorker, y permite la visualización de las mismas aún estando offline. Sin embargo para que esto sea posible, es necesario realizar los siguientes pasos:
+
+1. Instalar la Progressive Web App.
+2. Abrir la aplicación después de que se haya descargado. **Nota:**Aunque cuando se instala en una computadora, después de instalada, la aplicación se abre automáticamente, es necesario cerrar la ventana de la aplicación y abrirla nuevamente, porque de lo contrario el Service Worker no almacenará los archivos en caché.
+3. Ahora ya se puede acceder al contenido de la página de forma offline.
+
 ## Instalación y Pruebas
 
 Algo importante a tomar en cuenta, es que para realizar las pruebas localmente es necesario levantar un servidor utilizando herramientas como Xampp. Ahora bien, si se desea comprobar su funcionamiento en una web que ya está en producción, es necesario que dicha web use el protocolo /**https://**, es decir que dicha página tenga los certificados de seguridad activados.
@@ -18,66 +26,178 @@ Las Progressive Web App, únicamente se pueden instalar en protocolos seguros, e
 
 ## Ejemplo de manifest.json
 
+¿Qué es el manifest.json?
+
+El manifest es un archivo de configuración en formato JSON que define cómo se debe comportar y mostrar tu aplicación web cuando se instala como una Progressive Web App (PWA) en dispositivos. Es fundamental para convertir una aplicación web en una experiencia similar a una aplicación nativa en dispositivos móviles y de escritorio.
+
+¿Qué hace el manifest.json?
+
+- Define la apariencia de la PWA: Configura el nombre, íconos, colores y diseño de la aplicación.
+- Controla el comportamiento: Establece cómo se debe iniciar la aplicación (URL de inicio, orientación, modo de pantalla completa, etc.).
+- Permite la instalación: Es obligatorio para que los navegadores permitan instalar la PWA en la pantalla de inicio.
+
+¿Qué debe Íconos debe incluir el manifest.json?
+
+Se debe tomar en cuenta que dentro del manifest.json, en la propiedad **icons** solamente se deben incluir las imágenes que servirán para la instalación de la Progressive Web App. En este caso, se agregaron los "favicon" porque se desea que esas imágenes use la Progressive Web App al instalarse y agregarse a la lista de aplicaciones. Ahora bien, esto solo tiene que ver con la instalación de la progressive web app, pues todo lo referente al contenido que se agregará al caché, esto se administra en el ServiceWorker (sw.js). Esto quiere decir que el que se hayan agregado algunos favicons en el manifest esto no hará que se muestren offline, pues el único que el contenido que se mostrará offline, es el Service Worker (sw.js).
+
+El manifest.json funciona tanto en Windows como en Apple, pero el soporte varía según la plataforma y el navegador:
+
+1. Windows:
+   El soporte para manifest.json es excelente en Windows, especialmente en los navegadores basados en Chromium, como:
+
+- Google Chrome
+- Microsoft Edge
+
+Características principales en Windows:
+
+- Las aplicaciones instaladas desde navegadores compatibles funcionan como aplicaciones independientes.
+- El ícono, el nombre, el esquema de colores y otros ajustes configurados en el manifest.json se reflejan al instalar la PWA.
+- En navegadores como Edge, las PWAs pueden integrarse completamente en el sistema operativo (menú de inicio, barra de tareas, etc.).
+
+Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte varía según la plataforma y el navegador:
+
+2. Apple (macOS e iOS)
+   El soporte para manifest.json en los dispositivos Apple depende del navegador:
+
+- Safari en macOS e iOS
+  - Soporte limitado para PWA: Safari reconoce el manifest.json, pero no implementa todas sus características.
+  - Las PWAs pueden instalarse en la pantalla de inicio en iOS (a través de la opción "Añadir a la pantalla de inicio"), pero el proceso depende más de los metadatos en el <head> del HTML que del manifest.json.
+  - En macOS, las PWAs no tienen un soporte tan nativo como en navegadores basados en Chromium.
+- Requiere metadatos adicionales en el HTML: Para que funcione correctamente en iOS, debes incluir etiquetas <link> y <meta> en el archivo HTML.
+
+  Metadatos esenciales para Safari:
+
+```html
+<link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="Mi Aplicación" />
+```
+
 ```javascript
-    /*  IMPORTANTE: el archivo "maminfest.json" es recomendable que esté ubicado en la carpeta raíz (principal) del sitio web.
+/* IMPORTANTE: el archivo "manifest.json" es recomendable que esté ubicado en la carpeta raíz (principal) del sitio web.
+
+    ¿Qué es el manifest.json?
+
+    El manifest es un archivo de configuración en formato JSON que define cómo se debe comportar y mostrar tu aplicación web cuando se instala como una Progressive Web App (PWA) en dispositivos. Es fundamental para convertir una aplicación web en una experiencia similar a una aplicación nativa en dispositivos móviles y de escritorio.
+
+    ¿Qué hace el manifest.json?
+
+    - Define la apariencia de la PWA: Configura el nombre, íconos, colores y diseño de la aplicación.
+    - Controla el comportamiento: Establece cómo se debe iniciar la aplicación (URL de inicio, orientación, modo de pantalla completa, etc.).
+    - Permite la instalación: Es obligatorio para que los navegadores permitan instalar la PWA en la pantalla de inicio.
+
+¿Qué debe Íconos debe incluir el manifest.json?
+
+Se debe tomar en cuenta que dentro del manifest.json, en la propiedad "icons" solamente se deben incluir las imágenes que servirán para la instalación de la Progressive Web App. En este caso, se agregaron los "favicon" porque se desea que esas imágenes use la Progressive Web App al instalarse y agregarse a la lista de aplicaciones. Ahora bien, esto solo tiene que ver con la instalación de la progressive web app, pues todo lo referente al contenido que se agregará al caché, esto se administra en el ServiceWorker (sw.js). Esto quiere decir que el que se hayan agregado algunos favicons en el manifest esto no hará que se muestren offline, pues el único que el contenido que se mostrará offline, es el Service Worker (sw.js).
+
+El manifest.json funciona tanto en Windows como en Apple, pero el soporte varía según la plataforma y el navegador:
+
+1. Windows:
+   El soporte para manifest.json es excelente en Windows, especialmente en los navegadores basados en Chromium, como:
+
+- Google Chrome
+- Microsoft Edge
+
+Características principales en Windows:
+
+- Las aplicaciones instaladas desde navegadores compatibles funcionan como aplicaciones independientes.
+- El ícono, el nombre, el esquema de colores y otros ajustes configurados en el manifest.json se reflejan al instalar la PWA.
+- En navegadores como Edge, las PWAs pueden integrarse completamente en el sistema operativo (menú de inicio, barra de tareas, etc.).
+
+Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte varía según la plataforma y el navegador:
+
+2. Apple (macOS e iOS)
+   El soporte para manifest.json en los dispositivos Apple depende del navegador:
+
+- Safari en macOS e iOS
+  - Soporte limitado para PWA: Safari reconoce el manifest.json, pero no implementa todas sus características.
+  - Las PWAs pueden instalarse en la pantalla de inicio en iOS (a través de la opción "Añadir a la pantalla de inicio"), pero el proceso depende más de los metadatos en el <head> del HTML que del manifest.json.
+  - En macOS, las PWAs no tienen un soporte tan nativo como en navegadores basados en Chromium.
+- Requiere metadatos adicionales en el HTML: Para que funcione correctamente en iOS, debes incluir etiquetas <link> y <meta> en el archivo HTML.
+
+  Metadatos esenciales para Safari:
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Mi Aplicación" />
+*/
 
 
     Estructura del archivo "manifest.json":
- */
+
             {
 
 
             "id": "./index.html?utm_source=web_app_manifest",
 
-                /*       ( Se asignó el valor ./index.html?utm_source=web_app_manifest al campo id porque:
-                       Consistencia con start_url: El valor del id suele coincidir con el de start_url,
-                                                   ya que esta URL es la principal de tu aplicación (en este caso, index.html). Al hacerlo, garantizamos que
-                                                   el navegador pueda identificar correctamente tu
-                                                   aplicación y vincularla con la página inicial.
+                La línea "id": "./index.html?utm_source=web_app_manifest" en el archivo manifest.json tiene un propósito específico en aplicaciones
+                web progresivas (PWA), y aquí está el desglose detallado de cada parte y su importancia:
 
-                      Identidad Única: El id actúa como un identificador único de la aplicación. Usar la
-                                       URL de inicio (con parámetros opcionales) es una forma estándar de
-                                       asegurar que la aplicación tenga una identidad única, no solo en
-                                       un dispositivo, sino también cuando se instala en otros.
+                  2. ¿Qué significa "id": "./index.html?utm_source=web_app_manifest"?
+                    - id: Esta propiedad es opcional en el manifest.json, pero cuando se usa, define un
+                          identificador único de la PWA. Este identificador permite que los navegadores, especialmente los que soportan la
+                          instalación de PWA, puedan reconocer, actualizar y abrir la aplicación con consistencia. También ayuda a
+                          asegurar que los usuarios no instalen duplicados de la misma aplicación en sus dispositivos.
 
-                      Estandarización en PWAs: Según las especificaciones de Progressive Web Apps (PWA),
-                                               es recomendable usar un id que identifique de manera
-                                               inequívoca la aplicación en relación con su URL de inicio.
-                                               En este caso,
-                                               la URL ./index.html?utm_source=web_app_manifest define
-                                               claramente de dónde proviene la app y coincide con su
-                                               punto de entrada principal.
+                    - "./index.html": Este es el punto de entrada de tu aplicación web cuando se abre a través de un acceso directo de
+                                      la PWA o se lanza después de ser instalada. Aquí, index.html es el archivo que representa la página
+                                      principal de la aplicación.
 
-                      ¿Por qué es importante el id?
-                            El campo id ayuda a garantizar que la aplicación tenga una identidad única,
-                            lo que es útil para:
-                                - Evitar conflictos con otras aplicaciones.
-                                - Ayudar a los navegadores a identificar tu PWA correctamente en
-                                  diferentes dispositivos.
-                                - Asegurar que cuando se actualice la aplicación, se reconozca como la
-                                  misma PWA.) */
+                    - ?utm_source=web_app_manifest: Esta parte del código es un parámetro de consulta (query parameter) que se añade
+                                                    al final de la URL ./index.html.
+                        - utm_source=web_app_manifest es un parámetro UTM, utilizado para el seguimiento de análisis web.
+                                                Los parámetros UTM (Urchin Tracking Module) permiten que herramientas de análisis como Google Analytics puedan identificar la "fuente" desde donde los usuarios abren la aplicación.
+                                                En este caso, el valor web_app_manifest indica que el usuario accedió a la PWA a través de
+                                                un acceso directo creado desde el archivo manifest.json.
+                  3. ¿Por qué es necesario?
+                      - Identificación de Origen: Agregar utm_source=web_app_manifest te permite analizar cómo los usuarios están
+                                                  abriendo tu aplicación. Puedes distinguir entre usuarios que acceden a través de un navegador,
+                                                  una instalación en pantalla de inicio o mediante otras rutas. Esto es útil en el análisis de comportamiento de usuarios.
+                      - Optimización de Contenidos: Con esta información, puedes optimizar la experiencia de usuario
+                                                    específicamente para quienes instalan la aplicación, por ejemplo, cargando contenido
+                                                    o características específicas solo para usuarios que acceden desde la PWA.
+                      - Compatibilidad y Buenas Prácticas: Si decides expandir la funcionalidad de la aplicación o hacer un seguimiento
+                                                           detallado de uso, esta estructura de id es una práctica recomendada en
+                                                           PWA para asegurar una identificación única y consistente en todas las plataformas.
 
-            "name": "Chess Mate Club",     /* (Es el nombre completo de la aplicación web.
+                    Ejemplo de cómo se ve en la práctica
+                      Si usas Google Analytics y un usuario abre la PWA desde el acceso directo instalado en su dispositivo, la URL ./index.html?utm_source=web_app_manifest se enviará como fuente de tráfico. Esto permitirá rastrear cuántos usuarios están accediendo mediante la instalación de la PWA y evaluar el uso de la aplicación como una "app nativa".)
+
+            "name": "Chess Mate Club",     (Es el nombre completo de la aplicación web.
                                             Se mostrará cuando los usuarios añadan la PWA a su
                                             pantalla de inicio o en otros contextos donde el
                                             nombre completo pueda ser mostrado, como en la
-                                            pantalla de bienvenida.) */
-            "short_name": "Chess Mate",     /* (Es la versión corta del nombre de la aplicación.
+                                            pantalla de bienvenida. Para el atributo name en el archivo manifest.json, se recomienda que el
+                                            nombre no supere los 30 caracteres para asegurar que se muestre correctamente en todos los
+                                            dispositivos, especialmente en la pantalla de inicio de dispositivos móviles, donde el espacio es limitado.)
+            "short_name": "Chess Mate",     (Es la versión corta del nombre de la aplicación.
                                             Se utiliza cuando hay poco espacio para mostrar
                                             el nombre, como en la pantalla de inicio o en la
-                                            barra de aplicaciones. Se recomienda que el nombre corto sea breve y fácilmente reconocible.) */
-            "description": "Bienvenidos al sitio web para amantes del ajedrez, en el cual encontrarás recomendaciones de libros, consejos de aperturas, finales, jaques mate y medio juego.",
-                                      /* ( Proporciona una breve descripción de la aplicación.
-                                       Esta descripción puede ser utilizada en tiendas de aplicaciones o en la configuración de la PWA para explicar a los usuarios el propósito de la app.En la práctica, es recomendable que la descripción sea breve y concisa, ya que algunos navegadores o sistemas podrían truncarla si es demasiado larga. Una buena práctica es mantener la descripción alrededor de 100 a 200 caracteres para asegurarse de que se muestre correctamente en todos los contextos, como tiendas de aplicaciones o cuando el usuario añade la PWA (Progressive Web App) a su pantalla de inicio.) */
+                                            barra de aplicaciones. Se recomienda que el nombre corto sea breve y fácilmente reconocible.
+                                            Para el atributo short_name en el archivo manifest.json, se recomienda limitarlo a entre 12 y 15
+                                            caracteres.
+                                            Este nombre abreviado se utiliza cuando hay restricciones de espacio, como en:
+                                                - Íconos en la pantalla de inicio: Especialmente en dispositivos móviles, donde el nombre de la
+                                                  aplicación aparece debajo del ícono y el espacio es muy limitado.
+                                                - Menús de aplicaciones: Algunos sistemas operativos y lanzadores de aplicaciones muestran el short_name en lugar
+                                                  del nombre completo (name) si este último es muy largo.
+                                            )
+            "description": "Bienvenidos al sitio web para
+            amantes del ajedrez, en el cual encontrarás
+            recomendaciones de libros, consejos de aperturas,
+            finales, jaques mate y medio juego.",
+                                      ( Proporciona una breve descripción de la aplicación.
+                                       Esta descripción puede ser utilizada en tiendas de aplicaciones o en la configuración de la PWA para explicar a los usuarios el propósito de la app.En la práctica, es recomendable que la descripción sea breve y concisa, ya que algunos navegadores o sistemas podrían truncarla si es demasiado larga. Una buena práctica es mantener la descripción alrededor de 100 a 200 caracteres para asegurarse de que se muestre correctamente en todos los contextos, como tiendas de aplicaciones o cuando el usuario añade la PWA (Progressive Web App) a su pantalla de inicio.)
 
 
-            "background_color": "#2B2B2B",    /* (Define el color de fondo de la pantalla de inicio
+            "background_color": "#2B2B2B",    (Define el color de fondo de la pantalla de inicio
                                               cuando la aplicación está siendo cargada.
                                               Este color será visible mientras la aplicación
-                                              se inicia, antes de que se cargue el contenido.) */
-            "theme_color": "#F0DB4F",  /* (Define el color de la barra de estado y de la barra de direcciones
-                                        en dispositivos móviles al abrir la Progressive Web App)) */
-            "orientation": "portrait",  /* (Se utiliza para especificar la
+                                              se inicia, antes de que se cargue el contenido.)
+            "theme_color": "#F0DB4F",  (Define el color de la barra de estado y de la barra de direcciones
+                                        en dispositivos móviles al abrir la Progressive Web App)
+            "orientation": "portrait",  (Se utiliza para especificar la
                                         orientación preferida en la que debe mostrarse tu
                                         Progressive Web App (PWA) cuando se inicia. Esto es
                                         especialmente útil para aplicaciones que están diseñadas
@@ -112,9 +232,9 @@ Las Progressive Web App, únicamente se pueden instalar en protocolos seguros, e
                                             landscape-primary: Indica que la orientación paisaje
                                                                principal debe ser utilizada.
 
-                                            ) */
+                                            )
 
-            "display": "standalone", /*  (Se utiliza para especificar cómo se debe mostrar la Progressive
+            "display": "standalone",  (Se utiliza para especificar cómo se debe mostrar la Progressive
                                        Web App (PWA) cuando se lanza. Esta propiedad influye en el
                                        aspecto y la experiencia del usuario al interactuar con la aplicación. A continuación, te explico las opciones
                                        disponibles para display:
@@ -136,8 +256,8 @@ Las Progressive Web App, únicamente se pueden instalar en protocolos seguros, e
                                                    barra de dirección y todos los controles del navegador.
                                                    Esta opción es la menos inmersiva y es útil para
                                                    aplicaciones que no requieren un entorno de aplicación
-                                                   dedicado.) */
-            "start_url": "./?utm_source=web_app_manifest",     /* (Especifica la URL inicial de la
+                                                   dedicado.)
+            "start_url": "./?utm_source=web_app_manifest",     (Especifica la URL inicial de la
                                                                 aplicación cuando se abre desde la
                                                                 pantalla de inicio. El parámetro
                                                                 utm_source=web_app_manifest puede ser
@@ -146,78 +266,260 @@ Las Progressive Web App, únicamente se pueden instalar en protocolos seguros, e
                                                                 analítica (como Google Analytics).)
                                                                 Página de inicio: Cuando un usuario instala tu PWA y la abre desde la pantalla de inicio (por ejemplo, en un dispositivo móvil), la aplicación se abrirá en la URL definida por start_url.
                                                                 Control de navegación: Permite a los desarrolladores dirigir a los usuarios a la página que mejor representa la aplicación o que debe ser la primera vista de la misma.
-                                                                Inclusión de parámetros: Puedes incluir parámetros de URL en start_url, lo que permite personalizar la experiencia al iniciar la aplicación. Esto es útil para el seguimiento o para configurar el estado inicial de la aplicación. */)
-            "scope": "./",       /*  (Define el ámbito de la aplicación. Este es el conjunto de URLs que
+                                                                Inclusión de parámetros: Puedes incluir parámetros de URL en start_url, lo que permite personalizar la experiencia al iniciar la aplicación. Esto es útil para el seguimiento o para configurar el estado inicial de la aplicación.
+
+                                                                En el contexto del archivo manifest.json de una Progressive Web App (PWA), las propiedades id y start_url tienen roles
+                                                                diferentes pero complementarios:
+                                                                  id
+                                                                    Qué es:
+                                                                      La propiedad id es un identificador único para la aplicación. En la mayoría de los casos, este valor no es visible para el usuario, pero
+                                                                      es importante para el navegador y las plataformas de instalación de PWAs.
+
+                                                                    Para qué sirve:
+                                                                        - Identificación única: Permite que el navegador distinga entre diferentes PWAs, incluso si comparten el mismo start_url.
+                                                                        - Gestión de instalaciones: Cuando instalas una PWA, el navegador usa este id para rastrear configuraciones o datos
+                                                                          específicos de esa aplicación.
+                                                                        - Compatibilidad futura: Aunque su uso es limitado actualmente, se está convirtiendo en una práctica
+                                                                          recomendada para PWAs modernas para garantizar un comportamiento más predecible en plataformas y actualizaciones.
+
+                                                                start_url
+                                                                    Qué es:
+                                                                      La propiedad start_url define la URL inicial que se cargará cuando el usuario abra la PWA instalada.
+
+                                                                    Para qué sirve:
+                                                                            - Inicio de la app: Define dónde comienza la navegación dentro de tu aplicación. Por ejemplo, puede ser una página específica como index.
+                                                                              html, una página de inicio personalizada, o incluso una sección de la app.
+                                                                            - Personalización del contexto: Puedes incluir parámetros (como en tu caso ?utm_source=web_app_manifest) para rastrear o ajustar el
+                                                                              comportamiento de la app cuando se abre desde el ícono instalado.
+                                                                            - Flexibilidad de rutas: Si tu aplicación utiliza un sistema de rutas (como en frameworks SPA), puedes especificar cualquier ruta válida
+                                                                              para iniciar la app.
+
+                                                                Importancia de cada una
+                                                                  id:
+                                                                    Crucial para identificar la PWA y evitar conflictos entre diferentes aplicaciones, especialmente en sistemas
+                                                                    operativos que soporten múltiples instalaciones.
+                                                                    Mejora la compatibilidad futura a medida que los navegadores amplíen su uso.
+                                                                  start_url:
+                                                                    Es fundamental para determinar cómo comienza la experiencia del usuario en la PWA.
+                                                                    Permite personalizar la experiencia inicial y es esencial para que la app funcione correctamente cuando se abre desde el ícono instalado.
+                                                                Resumen
+                                                                  - id es como un "nombre único interno" para la PWA, útil para el navegador y plataformas.
+                                                                  - start_url es como un "punto de entrada" para los usuarios, ya que define qué página se cargará cuando inicien la app desde el ícono.
+                                                                )
+            "scope": "./",        (Define el ámbito de la aplicación. Este es el conjunto de URLs que
                                   forman parte de la PWA. Aquí, "./" significa que cualquier URL relativa
                                   a la raíz de la app (cualquier URL que se encuentre dentro de la
                                   carpeta raíz) estará dentro del alcance de la PWA. Si la
                                   aplicación intenta acceder a URLs fuera de este ámbito, se comportará
-                                  como un sitio web normal.) */
-            "lang": "es-GT",    /* (Especifica el idioma predeterminado de la aplicación.
-                                En este caso, es español de México (es-GT). Esto ayuda a los navegadores
-                                y dispositivos a saber cuál es el idioma principal de la interfaz de usuario.) */
-            "icons": [                  /*   (La propiedad icons define una lista de iconos que se usan en
+                                  como un sitio web normal.)
+            "lang": "es-GT",    (Especifica el idioma predeterminado de la aplicación.
+                                En este caso, es español de Guatemala (es-GT). Esto ayuda a los navegadores
+                                y dispositivos a saber cuál es el idioma principal de la interfaz de usuario.)
+            "icons": [                    (La propiedad icons define una lista de iconos que se usan en
                                           diferentes resoluciones para representar la aplicación.
                                             Cada ítem en la lista contiene:
                                               src: La ruta al archivo de la imagen.
                                               sizes: El tamaño de la imagen en píxeles (ej. 1024x1024).
-                                              type: El tipo de archivo, usualmente image/png.) */
+                                              type: El tipo de archivo, usualmente image/png.
+                                          Estos íconos son los directamente relacionados con la instalación de la progressive web app. No tiene nada que
+                                          ver con los recursos que se guardarán en caché para su uso offline. En este caso, se agregaron aquí los favicons,
+                                          porque son las imágenes que se desea se muestren como ícono de la aplicación.
               {
-                "src": "./assets/img/icon-1024x1024",   /* (IMPORTANTE:  esta tamaño no es necesario para
+                "src": "../assets/img/icon-1024x1024",   (IMPORTANTE:  esta tamaño no es necesario para
                                                   favicon, pero sí para PWA (Progressive Web App).
-                                                  Los dispositivos modernos, como smartphones y tablets, a menudo cuentan con pantallas de alta densidad de píxeles (como Retina en dispositivos Apple). Un ícono de 1024x1024 px se verá nítido y claro en estas pantallas.) */
+                                                  Los dispositivos modernos, como smartphones y tablets, a menudo cuentan con pantallas de alta densidad de píxeles (como Retina en dispositivos Apple). Un ícono de 1024x1024 px se verá nítido y claro en estas pantallas.)
                 "sizes": "1024x1024",
                 "type": "image/png"
               },
               {
-                "src": "./assets/img/favicon-512x512.png",
+                "src": "../assets/img/favicon-512x512.png",
                 "sizes": "512x512",
                 "type": "image/png"
               },
               {
-                "src": "./assets/img/favicon-384x384.png",
+                "src": "../assets/img/favicon-384x384.png",
                 "sizes": "384x384",
                 "type": "image/png"
               },
               {
-                "src": "./assets/img/favicon-256x256.png",
+                "src": "../assets/img/favicon-256x256.png",
                 "sizes": "256x256",
                 "type": "image/png"
               },
               {
-                "src": "./assets/img/favicon-144x144.png",
+                "src": "../assets/img/favicon-144x144.png",
                 "sizes": "144X144",
                 "type": "image/png"
               },
               {
-                "src": "./assets/img/favicon-120x120.png",
+                "src": "../assets/img/favicon-120x120.png",
                 "sizes": "120x120",
                 "type": "image/png"
               },
               {
-                "src": "./assets/img/favicon-96x96.png",
+                "src": "../assets/img/favicon-96x96.png",
                 "sizes": "96x96",
                 "type": "image/png"
               },
               {
-                "src": "./assets/img/favicon-64x64.png",
+                "src": "../assets/img/favicon-64x64.png",
                 "sizes": "64x64",
                 "type": "image/png"
               },
               {
-                "src": "./assets/img/favicon-32x32.png",
+                "src": "../assets/img/favicon-32x32.png",
                 "sizes": "32x32",
                 "type": "image/png"
               },
               {
-                "src": "./assets/img/favicon-16x16.png",
+                "src": "../assets/img/favicon-16x16.png",
                 "sizes": "16x16",
                 "type": "image/png"
               }
             ],
 
+           "screenshots": [
 
-              /*     (El campo screenshots en el manifest.json de una Progressive Web App (PWA) se utiliza para
+                  (La sección "screenshots" del archivo manifest.json en una Progressive Web App (PWA) permite especificar capturas de pantalla que se muestran como vista previa en tiendas de aplicaciones, como Google Play, o al añadir la aplicación a la pantalla de inicio de un dispositivo.
+
+                  Especificaciones para las capturas de pantalla:
+
+                        Resolución recomendada:
+                            Aunque no hay una resolución estricta, Google recomienda un tamaño mínimo de 320 x 320 píxeles y un tamaño máximo de 3840 x 3840 píxeles. Es ideal que las capturas tengan la misma relación de aspecto que tu aplicación para representar mejor la experiencia de usuario.
+
+                        Formato:
+                            Las imágenes deben estar en formato PNG o JPEG.
+
+                        Cantidad de capturas:
+                            No hay un límite exacto, pero se recomienda incluir entre 3 y 8 capturas de pantalla para que los usuarios tengan una buena perspectiva de la aplicación sin abrumarlos. Cada captura debe representar un aspecto clave o funcionalidad importante.
+
+                  Relación de aspecto de las imágenes:
+                    Las imágenes pueden tener diferentes dimensiones, pero la relación de aspecto debe ser consistente
+                    para todas las imágenes dentro de un mismo form_factor. Esto quiere decir, que si para el form_factor "wide",
+                    se optó por la relación de aspecto 16:9, las capturas de pantalla pueden tener diferentes dimensiones pero todas
+                    deben tener una relación de aspecto de 16:9, de lo contrario, se mostrará una advertencia en el "manifest" en las herramientas
+                    para desarrolladores de Chrome:
+
+
+
+                    Por ejemplo:
+                            Si tienes imágenes con un form_factor de "wide", todas deben tener una relación de aspecto idéntica,
+                            como 16:9. Lo mismo ocurre con el form_factor "narrow"; las imágenes dentro de esa categoría deben tener la misma relación de aspecto,
+                            es decir, 9:16 (la relación de aspecto de "wide" invertida).
+
+                  Los siguientes tamaños, tiene todos una relación de aspecto de 16:9:
+                      - 2560X1440
+                      - 1920X1080
+                      - 1280X720
+
+
+                  )
+
+
+              {
+                "src": "assets/img/screenshot-wide-2560x1440",
+                "sizes": "2560x1440",
+                "type": "image/png",
+                "form_factor": "wide"    (El atributo "form_factor" en el manifest.json de una Progressive Web App (PWA) especifica el tipo de dispositivo en el
+                                          que se recomienda que se muestren ciertos elementos visuales, como capturas de pantalla en la sección "screenshots".
+                                          Este atributo ayuda a mostrar la vista previa correcta dependiendo del tipo de dispositivo en el que el usuario se encuentra, mejorando así la experiencia al mostrar imágenes más relevantes.
+
+                                          Valores comunes de "form_factor":
+                                            "wide": Indica que la captura de pantalla o el recurso visual está diseñado para dispositivos con pantallas
+                                                    más anchas, como tablets, laptops y monitores de escritorio. Relación de aspecto 16:9.
+                                            "narrow": Indica que la captura es para dispositivos con pantallas más estrechas, como teléfonos móviles en orientación vertical. Relación de aspecto 9:16.
+
+
+
+                                          Tamaños recomendados para wide:
+                                            - 2560x1440 (QHD o 2K) — Relación de aspecto 16:9
+                                                  Uso: Monitores y pantallas de alta resolución, como laptops de gama alta o pantallas grandes.
+                                            - 1920x1080 (Full HD) — Relación de aspecto 16:9
+                                                  Uso: Ideal para pantallas de computadora, televisores y la mayoría de dispositivos de alta resolución.
+                                            - 1600x900 (HD+) — Relación de aspecto 16:9
+                                                  Uso: Resolución común en monitores de computadoras y laptops más antiguas o de gama media.
+                                            - 1280x720 (HD) — Relación de aspecto 16:9
+                                                  Uso: Pantallas de teléfonos móviles más antiguos, tablets y dispositivos con pantallas más pequeñas.                              )
+              },
+              {
+                "src": "assets/img/screenshot-wide-1920x1080",
+                "sizes": "1920x1080",
+                "type": "image/png",
+                "form_factor": "wide"
+              },
+              {
+                "src": "assets/img/screenshot-wide-1600x900",
+                "sizes": "1600x900",
+                "type": "image/png",
+                "form_factor": "wide"
+              },
+              {
+                "src": "assets/img/screenshot-wide-1280x720",
+                "sizes": "1280x720",
+                "type": "image/png",
+                "form_factor": "wide"
+              },
+              {
+                "src": "assets/img/screenshot-portrait-483X997.png",
+                "sizes": "483x997",
+                "type": "image/png",
+                "form_factor": "narrow"
+
+                                            Tamaños recomendados para narrow (9:16):
+                                                - 1440x2560 px — Relación de aspecto 9:16 (Quad HD)
+                                                     Uso: Este tamaño es ideal para teléfonos de gama alta con pantallas de resolución más alta,
+                                                     como dispositivos Android más nuevos y modelos de iPhone de última generación. También es una buena
+                                                     opción para tabletas de mayor resolución.
+                                                - 1080x1920 px — Relación de aspecto 9:16
+                                                     Uso: Esta es una resolución común en dispositivos móviles de gama alta, como muchos teléfonos Android y iPhones modernos (iPhone 6, 7, 8, etc.). Es ampliamente compatible y se ve bien en la mayoría de los dispositivos.
+                                                - 720x1280 px — Relación de aspecto 9:16
+                                                    Uso: resolución HD, adecuada para dispositivos con pantallas más pequeñas o de menor resolución.
+                                                    Es una opción ligera y adecuada para dispositivos con especificaciones más bajas.
+
+              },
+              {
+                "src": "assets/img/screenshot-portrait-1440x2560.png",
+                "sizes": "1440x2560",
+                "type": "image/png",
+                "form_factor": "narrow"
+              },
+              {
+                "src": "assets/img/screenshots-portrait-1080x1920.png",
+                "sizes": "1080x1920",
+                "type": "image/png",
+                "form_factor": "narrow"
+              },
+               {
+                "src": "assets/img/screenshots-portrait-768x1366.png",
+                "sizes": "720x1280",
+                "type": "image/png",
+                "form_factor": "narrow"
+              }
+            ],
+          "protocol_handlers": [
+            {
+              "protocol": "web+micontacto",   (La propiedad "protocol_handlers" en el archivo manifest.json de una Progressive Web App (PWA) permite que tu aplicación maneje
+                                              ciertos esquemas de protocolo personalizados o ya existentes en URLs. Esto significa que puedes registrar tu PWA como el manejador
+                                              predeterminado para abrir enlaces que comiencen con un esquema específico, como mailto: (para correos electrónicos) o incluso
+                                              esquemas personalizados como web+miapp:.
+
+                                            ¿Para qué sirve?
+                                              La propiedad "protocol_handlers" permite a los usuarios abrir tu aplicación directamente desde enlaces externos con un esquema
+                                              específico, proporcionando una experiencia más integrada y conectada. Es especialmente útil para:
+                                                - Registrar tu aplicación como manejador de correos electrónicos o mensajería:
+                                                - Permite que tu PWA maneje enlaces como mailto: (correos electrónicos) o tel: (llamadas telefónicas).
+                                                - Soporte para protocolos personalizados: Puedes crear y manejar esquemas personalizados como web+miapp: para interactuar con tu aplicación de manera específica.
+                                                - Integrar servicios web en el navegador: Por ejemplo, puedes registrar tu PWA como manejador para abrir enlaces específicos desde otro sitio web o aplicación.)
+
+
+              "url": "http://127.0.0.1:5500/nosotros.html?data=%s"    (IMPORTANTE: si se sube este sitio web a un Hosting, es imperativo cambiar
+                                                                      la URL: http://127.0.0.1:5500 por la URL del dominio en el que se cargó el sitio web, de lo contrario se generará un error porque dicho link está fuera del ámbito de la Progressive Web App. )
+            }
+          ]
+        }
+
+
+             (El campo screenshots en el manifest.json de una Progressive Web App (PWA) se utiliza para
           proporcionar imágenes que muestran cómo se ve la aplicación en diferentes contextos. Estas
           capturas de pantalla son especialmente útiles para las siguientes razones:
 
@@ -236,46 +538,30 @@ Las Progressive Web App, únicamente se pueden instalar en protocolos seguros, e
             5. Diferenciación en la Tienda de Aplicaciones: Si la PWA se presenta en una tienda de
             aplicaciones, las capturas de pantalla pueden ayudar a diferenciarla de otras aplicaciones, atrayendo así más usuarios.)
 
-             */
 
 
-                      "screenshots": [
+            "screenshots": [
             {
-              "src": "./assets/img/screenshot-wide-1280X800.png",
-              "sizes": "1280x800",
-              "type": "image/png",
-              "form_factor": "wide"
-            },
-            {
-              "src": "./assets/img/screenshot-portrait-800X1280.png",
-              "sizes": "800x1280",
+              "src": "../assets/img/screenshot-1200X800.png",
+              "sizes": "1200x800",
               "type": "image/png"
             }
-          ],
-          "protocol_handlers": [
-            {
-              "protocol": "web+micontacto",
-
-              "url": "http://127.0.0.1:5500/nosotros.html?data=%s"   /*  (IMPORTANTE: si se sube este sitio web a un Hosting, es imperativo cambiar
-                                                                      la URL: http://127.0.0.1:5500 por la URL del dominioen el que se cargó el sitio web, de lo contrario se generará un error porque dicho link está fuera del ámbito de la Progressive Web App. ) */
-            }
           ]
-        }
+
+
+
+          }
 
 
 
 
-
-
-
-
-  /* IMPORTANTE: para comprobar que el "manifest.json" funciona correctamente,
+    /* IMPORTANTE: para comprobar que el "manifest.json" funciona correctamente,
      se deben seguir los siguientes pasos:
 
      1. Abrir las herramientas para desarrolladores de Chrome (F12).
      2. Navegar hasta el menú "Application" (Aplicación).
      3. Ya debería aparecer los datos del "manifest.json". Si hubiese algún error,
-        acá se mostrará. */
+        acá se mostrará.*/
 
 
 ```
@@ -320,3 +606,7 @@ Esta Progressive Web App ya está cargada en **GitHub**, por lo que solamente es
    - En la barra de navegación de lado izquierdo, seleccionar "Service workers".
    - En el lado derecho, se muestra el botón "Update". Dar clic en él.
    - Listo.
+
+```
+
+```

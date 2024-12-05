@@ -582,6 +582,52 @@
     />
 
     <!-- IMPORTANTE: el archivo "manifest.json" es recomendable que esté ubicado en la carpeta raíz (principal) del sitio web.  
+
+    ¿Qué es el manifest.json?
+
+    El manifest es un archivo de configuración en formato JSON que define cómo se debe comportar y mostrar tu aplicación web cuando se instala como una Progressive Web App (PWA) en dispositivos. Es fundamental para convertir una aplicación web en una experiencia similar a una aplicación nativa en dispositivos móviles y de escritorio.
+
+    ¿Qué hace el manifest.json?
+
+    - Define la apariencia de la PWA: Configura el nombre, íconos, colores y diseño de la aplicación.
+    - Controla el comportamiento: Establece cómo se debe iniciar la aplicación (URL de inicio, orientación, modo de pantalla completa, etc.).
+    - Permite la instalación: Es obligatorio para que los navegadores permitan instalar la PWA en la pantalla de inicio.
+
+¿Qué debe Íconos debe incluir el manifest.json?
+
+Se debe tomar en cuenta que dentro del manifest.json, en la propiedad "icons" solamente se deben incluir las imágenes que servirán para la instalación de la Progressive Web App. En este caso, se agregaron los "favicon" porque se desea que esas imágenes use la Progressive Web App al instalarse y agregarse a la lista de aplicaciones. Ahora bien, esto solo tiene que ver con la instalación de la progressive web app, pues todo lo referente al contenido que se agregará al caché, esto se administra en el ServiceWorker (sw.js). Esto quiere decir que el que se hayan agregado algunos favicons en el manifest esto no hará que se muestren offline, pues el único que el contenido que se mostrará offline, es el Service Worker (sw.js).
+
+El manifest.json funciona tanto en Windows como en Apple, pero el soporte varía según la plataforma y el navegador:
+
+1. Windows:
+   El soporte para manifest.json es excelente en Windows, especialmente en los navegadores basados en Chromium, como:
+
+- Google Chrome
+- Microsoft Edge
+
+Características principales en Windows:
+
+- Las aplicaciones instaladas desde navegadores compatibles funcionan como aplicaciones independientes.
+- El ícono, el nombre, el esquema de colores y otros ajustes configurados en el manifest.json se reflejan al instalar la PWA.
+- En navegadores como Edge, las PWAs pueden integrarse completamente en el sistema operativo (menú de inicio, barra de tareas, etc.).
+
+Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte varía según la plataforma y el navegador:
+
+2. Apple (macOS e iOS)
+   El soporte para manifest.json en los dispositivos Apple depende del navegador:
+
+- Safari en macOS e iOS
+  - Soporte limitado para PWA: Safari reconoce el manifest.json, pero no implementa todas sus características.
+  - Las PWAs pueden instalarse en la pantalla de inicio en iOS (a través de la opción "Añadir a la pantalla de inicio"), pero el proceso depende más de los metadatos en el <head> del HTML que del manifest.json.
+  - En macOS, las PWAs no tienen un soporte tan nativo como en navegadores basados en Chromium.
+- Requiere metadatos adicionales en el HTML: Para que funcione correctamente en iOS, debes incluir etiquetas <link> y <meta> en el archivo HTML.
+
+  Metadatos esenciales para Safari:
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Mi Aplicación" />
+
     
     
     Estructura del archivo "manifest.json":
@@ -591,14 +637,8 @@
 
             "id": "./index.html?utm_source=web_app_manifest",  
             
-                ()La línea "id": "./index.html?utm_source=web_app_manifest" en el archivo manifest.json tiene un propósito específico en aplicaciones 
+                La línea "id": "./index.html?utm_source=web_app_manifest" en el archivo manifest.json tiene un propósito específico en aplicaciones 
                 web progresivas (PWA), y aquí está el desglose detallado de cada parte y su importancia:
-
-                  1. Contexto del manifest.json
-                    El archivo manifest.json es una pieza clave en una PWA porque contiene la configuración básica de la aplicación. 
-                    Este archivo permite que los navegadores sepan cómo manejar la aplicación cuando los usuarios la instalan 
-                    o la agregan a su pantalla de inicio. El archivo incluye propiedades como el nombre de la aplicación, 
-                    íconos, colores de fondo, entre otras, y también define un punto de inicio de la aplicación a través de la propiedad id.
 
                   2. ¿Qué significa "id": "./index.html?utm_source=web_app_manifest"?
                     - id: Esta propiedad es opcional en el manifest.json, pero cuando se usa, define un 
@@ -612,7 +652,7 @@
 
                     - ?utm_source=web_app_manifest: Esta parte del código es un parámetro de consulta (query parameter) que se añade 
                                                     al final de la URL ./index.html.
-                      - utm_source=web_app_manifest es un parámetro UTM, utilizado para el seguimiento de análisis web. 
+                        - utm_source=web_app_manifest es un parámetro UTM, utilizado para el seguimiento de análisis web. 
                                                 Los parámetros UTM (Urchin Tracking Module) permiten que herramientas de análisis como Google Analytics puedan identificar la "fuente" desde donde los usuarios abren la aplicación.
                                                 En este caso, el valor web_app_manifest indica que el usuario accedió a la PWA a través de 
                                                 un acceso directo creado desde el archivo manifest.json.
@@ -732,7 +772,46 @@
                                                                 analítica (como Google Analytics).)
                                                                 Página de inicio: Cuando un usuario instala tu PWA y la abre desde la pantalla de inicio (por ejemplo, en un dispositivo móvil), la aplicación se abrirá en la URL definida por start_url.
                                                                 Control de navegación: Permite a los desarrolladores dirigir a los usuarios a la página que mejor representa la aplicación o que debe ser la primera vista de la misma.
-                                                                Inclusión de parámetros: Puedes incluir parámetros de URL en start_url, lo que permite personalizar la experiencia al iniciar la aplicación. Esto es útil para el seguimiento o para configurar el estado inicial de la aplicación.)
+                                                                Inclusión de parámetros: Puedes incluir parámetros de URL en start_url, lo que permite personalizar la experiencia al iniciar la aplicación. Esto es útil para el seguimiento o para configurar el estado inicial de la aplicación.
+                                                                
+                                                                En el contexto del archivo manifest.json de una Progressive Web App (PWA), las propiedades id y start_url tienen roles 
+                                                                diferentes pero complementarios:
+                                                                  id 
+                                                                    Qué es:
+                                                                      La propiedad id es un identificador único para la aplicación. En la mayoría de los casos, este valor no es visible para el usuario, pero 
+                                                                      es importante para el navegador y las plataformas de instalación de PWAs.
+
+                                                                    Para qué sirve: 
+                                                                        - Identificación única: Permite que el navegador distinga entre diferentes PWAs, incluso si comparten el mismo start_url.
+                                                                        - Gestión de instalaciones: Cuando instalas una PWA, el navegador usa este id para rastrear configuraciones o datos 
+                                                                          específicos de esa aplicación.
+                                                                        - Compatibilidad futura: Aunque su uso es limitado actualmente, se está convirtiendo en una práctica 
+                                                                          recomendada para PWAs modernas para garantizar un comportamiento más predecible en plataformas y actualizaciones.
+
+                                                                start_url
+                                                                    Qué es:
+                                                                      La propiedad start_url define la URL inicial que se cargará cuando el usuario abra la PWA instalada.
+
+                                                                    Para qué sirve:
+                                                                            - Inicio de la app: Define dónde comienza la navegación dentro de tu aplicación. Por ejemplo, puede ser una página específica como index.
+                                                                              html, una página de inicio personalizada, o incluso una sección de la app.
+                                                                            - Personalización del contexto: Puedes incluir parámetros (como en tu caso ?utm_source=web_app_manifest) para rastrear o ajustar el 
+                                                                              comportamiento de la app cuando se abre desde el ícono instalado.
+                                                                            - Flexibilidad de rutas: Si tu aplicación utiliza un sistema de rutas (como en frameworks SPA), puedes especificar cualquier ruta válida 
+                                                                              para iniciar la app.
+
+                                                                Importancia de cada una
+                                                                  id:
+                                                                    Crucial para identificar la PWA y evitar conflictos entre diferentes aplicaciones, especialmente en sistemas 
+                                                                    operativos que soporten múltiples instalaciones.
+                                                                    Mejora la compatibilidad futura a medida que los navegadores amplíen su uso.
+                                                                  start_url:
+                                                                    Es fundamental para determinar cómo comienza la experiencia del usuario en la PWA.
+                                                                    Permite personalizar la experiencia inicial y es esencial para que la app funcione correctamente cuando se abre desde el ícono instalado.
+                                                                Resumen
+                                                                  - id es como un "nombre único interno" para la PWA, útil para el navegador y plataformas.
+                                                                  - start_url es como un "punto de entrada" para los usuarios, ya que define qué página se cargará cuando inicien la app desde el ícono.
+                                                                )
             "scope": "./",        (Define el ámbito de la aplicación. Este es el conjunto de URLs que 
                                   forman parte de la PWA. Aquí, "./" significa que cualquier URL relativa 
                                   a la raíz de la app (cualquier URL que se encuentre dentro de la
@@ -740,14 +819,17 @@
                                   aplicación intenta acceder a URLs fuera de este ámbito, se comportará 
                                   como un sitio web normal.)
             "lang": "es-GT",    (Especifica el idioma predeterminado de la aplicación. 
-                                En este caso, es español de México (es-GT). Esto ayuda a los navegadores 
+                                En este caso, es español de Guatemala (es-GT). Esto ayuda a los navegadores 
                                 y dispositivos a saber cuál es el idioma principal de la interfaz de usuario.)
             "icons": [                    (La propiedad icons define una lista de iconos que se usan en 
                                           diferentes resoluciones para representar la aplicación.
                                             Cada ítem en la lista contiene:
                                               src: La ruta al archivo de la imagen.
                                               sizes: El tamaño de la imagen en píxeles (ej. 1024x1024).
-                                              type: El tipo de archivo, usualmente image/png.)
+                                              type: El tipo de archivo, usualmente image/png.
+                                          Estos íconos son los directamente relacionados con la instalación de la progressive web app. No tiene nada que
+                                          ver con los recursos que se guardarán en caché para su uso offline. En este caso, se agregaron aquí los favicons, 
+                                          porque son las imágenes que se desea se muestren como ícono de la aplicación.
               {
                 "src": "../assets/img/icon-1024x1024",   (IMPORTANTE:  esta tamaño no es necesario para
                                                   favicon, pero sí para PWA (Progressive Web App). 
@@ -922,10 +1004,22 @@
             ],
           "protocol_handlers": [
             {
-              "protocol": "web+micontacto",
+              "protocol": "web+micontacto",   (La propiedad "protocol_handlers" en el archivo manifest.json de una Progressive Web App (PWA) permite que tu aplicación maneje 
+                                              ciertos esquemas de protocolo personalizados o ya existentes en URLs. Esto significa que puedes registrar tu PWA como el manejador 
+                                              predeterminado para abrir enlaces que comiencen con un esquema específico, como mailto: (para correos electrónicos) o incluso 
+                                              esquemas personalizados como web+miapp:.
+
+                                            ¿Para qué sirve?
+                                              La propiedad "protocol_handlers" permite a los usuarios abrir tu aplicación directamente desde enlaces externos con un esquema 
+                                              específico, proporcionando una experiencia más integrada y conectada. Es especialmente útil para:
+                                                - Registrar tu aplicación como manejador de correos electrónicos o mensajería:
+                                                - Permite que tu PWA maneje enlaces como mailto: (correos electrónicos) o tel: (llamadas telefónicas).
+                                                - Soporte para protocolos personalizados: Puedes crear y manejar esquemas personalizados como web+miapp: para interactuar con tu aplicación de manera específica.
+                                                - Integrar servicios web en el navegador: Por ejemplo, puedes registrar tu PWA como manejador para abrir enlaces específicos desde otro sitio web o aplicación.)
+
               
               "url": "http://127.0.0.1:5500/nosotros.html?data=%s"    (IMPORTANTE: si se sube este sitio web a un Hosting, es imperativo cambiar
-                                                                      la URL: http://127.0.0.1:5500 por la URL del dominioen el que se cargó el sitio web, de lo contrario se generará un error porque dicho link está fuera del ámbito de la Progressive Web App. )
+                                                                      la URL: http://127.0.0.1:5500 por la URL del dominio en el que se cargó el sitio web, de lo contrario se generará un error porque dicho link está fuera del ámbito de la Progressive Web App. )
             }
           ]
         }
