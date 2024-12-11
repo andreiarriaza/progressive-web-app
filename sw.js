@@ -26,23 +26,21 @@
         4. Ya debería mostrarse el chaché llamado "v1_chess_mate_club", que se creón dentro de este archivo y el listado de URL que se agregarón dentro
            de la constante "urlsToCache".
 
-        5. Si las variables no se muestran correctamente al acceder en las Herramientas para Desarrolladores de Chrome a "Application/Cache Storage",
+        5. Si las variables no se muestran correctamente al acceder en las Herramientas para 
+           Desarrolladores de Chrome a "Application/Cache Storage" (regularmente ocurre, después de una modificación del Service Worker),
            es necesario reinicar el Service Worker. Para reinicarlo, se deben seguir los siguientes pasos: 
                - Acceder a las Herramientas para Desarrolladores de Chrome. 
                - Seleccionar la opción "Application".
                - En la barra de navegación de lado izquierdo, seleccionar "Service workers".
                - En el lado derecho, se muestra el botón "Update". Dar clic en él. 
-               - Listo.
-
-      
-
-        
+               - Listo.  
         */
 
 /* Las AppProgresivas permiten almacenar todos los recursos estáticos en el disco duro del dispositivo en el que se
 esté visualizando la aplicación. 
 
-En una aplicación progresiva (PWA), el caché se utiliza para almacenar recursos estáticos que serán necesarios para que la aplicación funcione sin conexión o se cargue más rápido. Los elementos que generalmente se incluyen en el caché son los siguientes:
+En una aplicación progresiva (PWA), el caché se utiliza para almacenar recursos estáticos que serán necesarios para que la aplicación 
+https://www.kemik.gt/stanley-mini-pistola-de-silicon-2-temperaturas-120-voltios-80-wattsfuncione sin conexión o se cargue más rápido. Los elementos que generalmente se incluyen en el caché son los siguientes:
 
     - Páginas HTML principales: como index.html o cualquier otra página clave.
     - Archivos CSS: como hojas de estilo personalizadas.
@@ -83,7 +81,6 @@ const CACHE_NAME = "v1_chess_mate_club",
 
 
     */
-    /*     "sw-register.js", */
 
     /* Imágenes del sitio web */
     "./assets/img/ProgramadorFitness.png",
@@ -161,8 +158,8 @@ El código dentro del bloque self.addEventListener("install", ...) se ejecuta en
 */
 self.addEventListener("install", (e) => {
   console.log("Service Worker installing...");
-  /* El método e.waitUntil() se asegura que el Service Worker no se considere instalado hasta que todas las tareas dentro de él hayan finalizado correctamente. En este caso, 
-  hasta que se hayan agregado todos los archivos al caché.
+  /* El método e.waitUntil() se asegura que el Service Worker no se considere instalado hasta que todas las tareas dentro de él hayan 
+  finalizado correctamente. En este caso, hasta que se hayan agregado todos los archivos al caché.
   */
   e.waitUntil(
     caches
@@ -210,11 +207,21 @@ self.addEventListener("install", (e) => {
   );
 });
 
-/* Una vez que se instale el Service Worker, se activa y buscar los recursos para hacer que funcione sin conexión.Si se pierde la conexión en algún momento, este evento se encarga de buscar en caché los recursos necesarios para el funcionamiento de la Progressive Web App 
+/* 
+1. ¿Qué hace self.addEventListener?
+    self: es una referencia al contexto global del Service Worker. Es equivalente a window en el navegador, pero en este caso, funciona dentro del entorno aislado   
+          del Service Worker.
+    addEventListener: se usa para escuchar eventos que ocurren en el ciclo de vida del Service Worker. 
+    
+    
 
+2. ¿Qué es el evento activate?
+    El evento activate se dispara cuando:
 
-Se está utilizando el evento "activate" para ejecutar código cuando el Service Worker se activa. La activación ocurre después de que el Service Worker ha sido instalado (cuando ya se ha cargado y almacenado el caché en el dispositivo del usuario).
-*/
+      - El Service Worker ha sido instalado exitosamente.
+      - Está listo para reemplazar cualquier Service Worker anterior
+    
+    */
 self.addEventListener("activate", (e) => {
   console.log("Service Worker activating...");
   /* Aquí se crea una lista blanca de caché llamada "cacheWhiteList", 
@@ -224,6 +231,7 @@ self.addEventListener("activate", (e) => {
   contiene los archivos más recientes de la aplicación. 
   Solo este caché debe mantenerse activo.
   */
+
   const cacheWhiteList = [CACHE_NAME];
 
   /* 
@@ -251,10 +259,11 @@ estos nombres con la lista blanca cacheWhiteList y decidir cuáles cachés deben
             /* Esta condición verifica si el cacheName actual no está en la lista blanca 
             (cacheWhiteList). Si el nombre del caché no se encuentra en la lista blanca 
             (lo que significa que es un caché antiguo o no deseado), se procede a eliminarlo. */
+
+            /* Si cacheName NO está en la lista blanca (cacheWhiteList), "indexOf" devolverá "-1"`. */
             if (cacheWhiteList.indexOf(cacheName) === -1) {
               /* caches.delete(cacheName):
-                Si la condición anterior es verdadera (es decir, el caché no está en la lista blanca), se llama a caches.delete(cacheName) para eliminar ese caché del 
-                navegador. Esta operación devuelve una promesa que indica que el caché se ha 
+                Si la condición anterior es verdadera (es decir, el caché no está en la lista blanca), se llama a caches.delete(cacheName) para eliminar ese caché del navegador. Esta operación devuelve una promesa que indica que el caché se ha 
                 eliminado correctamente. */
               return caches.delete(cacheName);
             }
@@ -285,7 +294,10 @@ estos nombres con la lista blanca cacheWhiteList y decidir cuáles cachés deben
         */
 });
 
-/* Este fragmento de código gestiona el evento fetch en un Service Worker dentro de una Progressive Web App (PWA). El objetivo del código es interceptar las solicitudes de red de la aplicación y responder con los archivos que ya están en el caché o, si no están en el caché, realizar la solicitud a la red (internet). 
+/* 
+
+Evento "fetch":
+Este fragmento de código gestiona el evento fetch en un Service Worker dentro de una Progressive Web App (PWA). El objetivo del código es interceptar las solicitudes de red de la aplicación y responder con los archivos que ya están en el caché o, si no están en el caché, realizar la solicitud a la red (internet). 
 
 
 */
@@ -300,16 +312,16 @@ estos nombres con la lista blanca cacheWhiteList y decidir cuáles cachés deben
 
 /* 
 self.addEventListener("fetch", (e) => {...}):
-  - Registra un event listener para el evento fetch en el Service Worker. 
+  - Registra un event listener para el evento "fetch" en el Service Worker. 
     Este evento se activa cada vez que el navegador realiza una solicitud de red (ya sea para obtener una página, imagen, archivo, etc.).
-  - El parámetro e es el evento de la solicitud, que contiene detalles sobre la solicitud, como la URL que se está solicitando.
+  - El parámetro "e" es el evento de la solicitud, que contiene detalles sobre la solicitud, como la URL que se está solicitando.
 
 */
 self.addEventListener("fetch", (e) => {
   /* e.respondWith(...):
       - Este método es utilizado para proporcionar una respuesta personalizada al evento fetch. 
         Aquí es donde decidimos qué respuesta se debe devolver: puede ser desde la caché o la red.
-      - Todo el código dentro de respondWith es una promesa que eventualmente devuelve una respuesta. 
+      - Todo el código dentro de "respondWith" es una promesa que eventualmente devuelve una respuesta. 
   */
   e.respondWith(
     /* caches.match(e.request):
@@ -323,7 +335,8 @@ self.addEventListener("fetch", (e) => {
       /* .then((res) => {...}):
             - Si caches.match(e.request) devuelve una respuesta (res), es decir, si la solicitud está en la caché:
                 - Se imprime en la consola que la respuesta está siendo servida desde la caché con console.log.
-                - Se devuelve esa respuesta inmediatamente con return res. */
+                - Se devuelve esa respuesta inmediatamente con return res. 
+      */
       .then((res) => {
         if (res) {
           console.log(`Sirviendo desde caché: ${e.request.url}`);
@@ -332,7 +345,7 @@ self.addEventListener("fetch", (e) => {
         console.log(`Realizando fetch: ${e.request.url}`);
         /*  return fetch(e.request):
               Si el recurso no está en la caché, realizar una solicitud a la red. Si el recurso no está en la caché, se 
-              realiza una solicitud fetch a la red para obtenerlo. */
+              realiza una solicitud "fetch" a la red para obtenerlo. */
         return (
           fetch(e.request)
             /* .then((networkResponse) => {...}):
@@ -354,7 +367,7 @@ self.addEventListener("fetch", (e) => {
 
               if (e.request.url.startsWith("https://")) {
                 /* caches.open(CACHE_NAME):
-                  Abre (o crea si no existe) un caché con el nombre definido por la constante CACHE_NAME.
+                  Abre (o crea, si no existe) un caché con el nombre definido por la constante CACHE_NAME.
               */
                 caches.open(CACHE_NAME).then((cache) => {
                   /* cache.put(e.request, clonedResponse):

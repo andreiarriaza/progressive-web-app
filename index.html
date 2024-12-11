@@ -595,7 +595,7 @@
 
 ¿Qué debe Íconos debe incluir el manifest.json?
 
-Se debe tomar en cuenta que dentro del manifest.json, en la propiedad "icons" solamente se deben incluir las imágenes que servirán para la instalación de la Progressive Web App. En este caso, se agregaron los "favicon" porque se desea que esas imágenes use la Progressive Web App al instalarse y agregarse a la lista de aplicaciones. Ahora bien, esto solo tiene que ver con la instalación de la progressive web app, pues todo lo referente al contenido que se agregará al caché, esto se administra en el ServiceWorker (sw.js). Esto quiere decir que el que se hayan agregado algunos favicons en el manifest esto no hará que se muestren offline, pues el único que el contenido que se mostrará offline, es el Service Worker (sw.js).
+Se debe tomar en cuenta que dentro del manifest.json, en la propiedad "icons" solamente se deben incluir las imágenes que servirán para la instalación de la Progressive Web App. En este caso, se agregaron los "favicon" porque se desea que esas imágenes use la Progressive Web App al instalarse y agregarse a la lista de aplicaciones. Ahora bien, esto solo tiene que ver con la instalación de la progressive web app, pues todo lo referente al contenido que se agregará al caché, esto se administra en el ServiceWorker (sw.js). Esto quiere decir que el que se hayan agregado algunos favicons en el manifest esto no hará que se muestren offline, pues el único que el contenido que se mostrará offline, es el que se encuentra agregado en el Service Worker (sw.js).
 
 El manifest.json funciona tanto en Windows como en Apple, pero el soporte varía según la plataforma y el navegador:
 
@@ -611,13 +611,13 @@ Características principales en Windows:
 - El ícono, el nombre, el esquema de colores y otros ajustes configurados en el manifest.json se reflejan al instalar la PWA.
 - En navegadores como Edge, las PWAs pueden integrarse completamente en el sistema operativo (menú de inicio, barra de tareas, etc.).
 
-Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte varía según la plataforma y el navegador:
+Sí, el "manifest.json" funciona tanto en Windows como en Apple, pero el soporte varía según la plataforma y el navegador:
 
 2. Apple (macOS e iOS)
    El soporte para manifest.json en los dispositivos Apple depende del navegador:
 
 - Safari en macOS e iOS
-  - Soporte limitado para PWA: Safari reconoce el manifest.json, pero no implementa todas sus características.
+  - Soporte limitado para PWA: Safari reconoce el "manifest.json", pero no implementa todas sus características.
   - Las PWAs pueden instalarse en la pantalla de inicio en iOS (a través de la opción "Añadir a la pantalla de inicio"), pero el proceso depende más de los metadatos en el <head> del HTML que del manifest.json.
   - En macOS, las PWAs no tienen un soporte tan nativo como en navegadores basados en Chromium.
 - Requiere metadatos adicionales en el HTML: Para que funcione correctamente en iOS, debes incluir etiquetas <link> y <meta> en el archivo HTML.
@@ -774,21 +774,19 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
                                                                 Control de navegación: Permite a los desarrolladores dirigir a los usuarios a la página que mejor representa la aplicación o que debe ser la primera vista de la misma.
                                                                 Inclusión de parámetros: Puedes incluir parámetros de URL en start_url, lo que permite personalizar la experiencia al iniciar la aplicación. Esto es útil para el seguimiento o para configurar el estado inicial de la aplicación.
                                                                 
-                                                                En el contexto del archivo manifest.json de una Progressive Web App (PWA), las propiedades id y start_url tienen roles 
-                                                                diferentes pero complementarios:
-                                                                  id 
+                                                                En el contexto del archivo manifest.json de una Progressive Web App (PWA), las propiedades "id" y "start_url" tienen roles diferentes pero complementarios:
+                                                                  - id 
                                                                     Qué es:
                                                                       La propiedad id es un identificador único para la aplicación. En la mayoría de los casos, este valor no es visible para el usuario, pero 
                                                                       es importante para el navegador y las plataformas de instalación de PWAs.
 
                                                                     Para qué sirve: 
                                                                         - Identificación única: Permite que el navegador distinga entre diferentes PWAs, incluso si comparten el mismo start_url.
-                                                                        - Gestión de instalaciones: Cuando instalas una PWA, el navegador usa este id para rastrear configuraciones o datos 
-                                                                          específicos de esa aplicación.
-                                                                        - Compatibilidad futura: Aunque su uso es limitado actualmente, se está convirtiendo en una práctica 
-                                                                          recomendada para PWAs modernas para garantizar un comportamiento más predecible en plataformas y actualizaciones.
+                                                                        - Gestión de instalaciones: Cuando instalas una PWA, el navegador usa este id para rastrear configuraciones o datosespecíficos de esa aplicación.
+                                                                        - Compatibilidad futura: Aunque su uso es limitado actualmente, se está convirtiendo en una práctica recomendada para PWAs modernas para garantizar un 
+                                                                        comportamiento más predecible en plataformas y actualizaciones.
 
-                                                                start_url
+                                                                - start_url
                                                                     Qué es:
                                                                       La propiedad start_url define la URL inicial que se cargará cuando el usuario abra la PWA instalada.
 
@@ -926,7 +924,7 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
                 "src": "assets/img/screenshot-wide-2560x1440",
                 "sizes": "2560x1440",
                 "type": "image/png",
-                "form_factor": "wide"    (El atributo "form_factor" en el manifest.json de una Progressive Web App (PWA) especifica el tipo de dispositivo en el 
+                "form_factor": "wide"    (El atributo "form_factor" en el "manifest.json" de una Progressive Web App (PWA) especifica el tipo de dispositivo en el 
                                           que se recomienda que se muestren ciertos elementos visuales, como capturas de pantalla en la sección "screenshots". 
                                           Este atributo ayuda a mostrar la vista previa correcta dependiendo del tipo de dispositivo en el que el usuario se encuentra, mejorando así la experiencia al mostrar imágenes más relevantes.
 
