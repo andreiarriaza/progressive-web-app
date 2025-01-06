@@ -635,40 +635,15 @@ Sí, el "manifest.json" funciona tanto en Windows como en Apple, pero el soporte
             {
 
 
-            "id": "./index.html?utm_source=web_app_manifest",  
-            
-                La línea "id": "./index.html?utm_source=web_app_manifest" en el archivo manifest.json tiene un propósito específico en aplicaciones 
-                web progresivas (PWA), y aquí está el desglose detallado de cada parte y su importancia:
+            "id": "https://andreiarriaza.github.io/progressive-web-app",  
+                      Es un identificador único para la PWA que ayuda al navegador a reconocer y asociar datos específicos con esa aplicación. Actúa como su "nombre interno" único para diferenciarla de otras aplicaciones.
 
-                  2. ¿Qué significa "id": "./index.html?utm_source=web_app_manifest"?
-                    - id: Esta propiedad es opcional en el manifest.json, pero cuando se usa, define un 
-                          identificador único de la PWA. Este identificador permite que los navegadores, especialmente los que soportan la 
-                          instalación de PWA, puedan reconocer, actualizar y abrir la aplicación con consistencia. También ayuda a 
-                          asegurar que los usuarios no instalen duplicados de la misma aplicación en sus dispositivos.
+                      Para qué sirve: 
+                        - Identificación única: Permite que el navegador distinga entre diferentes PWAs, incluso si comparten el mismo start_url.
+                        - Gestión de instalaciones: Cuando instalas una PWA, el navegador usa este id para rastrear configuraciones o datosespecíficos de esa aplicación.
+                        - Compatibilidad futura: Aunque su uso es limitado actualmente, se está convirtiendo en una práctica recomendada para PWAs modernas para garantizar un comportamiento más predecible en plataformas y actualizaciones.
 
-                    - "./index.html": Este es el punto de entrada de tu aplicación web cuando se abre a través de un acceso directo de 
-                                      la PWA o se lanza después de ser instalada. Aquí, index.html es el archivo que representa la página 
-                                      principal de la aplicación.
 
-                    - ?utm_source=web_app_manifest: Esta parte del código es un parámetro de consulta (query parameter) que se añade 
-                                                    al final de la URL ./index.html.
-                        - utm_source=web_app_manifest es un parámetro UTM, utilizado para el seguimiento de análisis web. 
-                                                Los parámetros UTM (Urchin Tracking Module) permiten que herramientas de análisis como Google Analytics puedan identificar la "fuente" desde donde los usuarios abren la aplicación.
-                                                En este caso, el valor web_app_manifest indica que el usuario accedió a la PWA a través de 
-                                                un acceso directo creado desde el archivo manifest.json.
-                  3. ¿Por qué es necesario?
-                      - Identificación de Origen: Agregar utm_source=web_app_manifest te permite analizar cómo los usuarios están 
-                                                  abriendo tu aplicación. Puedes distinguir entre usuarios que acceden a través de un navegador, 
-                                                  una instalación en pantalla de inicio o mediante otras rutas. Esto es útil en el análisis de comportamiento de usuarios.
-                      - Optimización de Contenidos: Con esta información, puedes optimizar la experiencia de usuario 
-                                                    específicamente para quienes instalan la aplicación, por ejemplo, cargando contenido 
-                                                    o características específicas solo para usuarios que acceden desde la PWA.
-                      - Compatibilidad y Buenas Prácticas: Si decides expandir la funcionalidad de la aplicación o hacer un seguimiento 
-                                                           detallado de uso, esta estructura de id es una práctica recomendada en 
-                                                           PWA para asegurar una identificación única y consistente en todas las plataformas.
-                      
-                    Ejemplo de cómo se ve en la práctica
-                      Si usas Google Analytics y un usuario abre la PWA desde el acceso directo instalado en su dispositivo, la URL ./index.html?utm_source=web_app_manifest se enviará como fuente de tráfico. Esto permitirá rastrear cuántos usuarios están accediendo mediante la instalación de la PWA y evaluar el uso de la aplicación como una "app nativa".)
 
             "name": "Chess Mate Club",     (Es el nombre completo de la aplicación web.
                                             Se mostrará cuando los usuarios añadan la PWA a su 
@@ -774,41 +749,15 @@ Sí, el "manifest.json" funciona tanto en Windows como en Apple, pero el soporte
                                                                 Control de navegación: Permite a los desarrolladores dirigir a los usuarios a la página que mejor representa la aplicación o que debe ser la primera vista de la misma.
                                                                 Inclusión de parámetros: Puedes incluir parámetros de URL en start_url, lo que permite personalizar la experiencia al iniciar la aplicación. Esto es útil para el seguimiento o para configurar el estado inicial de la aplicación.
                                                                 
-                                                                En el contexto del archivo manifest.json de una Progressive Web App (PWA), las propiedades "id" y "start_url" tienen roles diferentes pero complementarios:
-                                                                  - id 
-                                                                    Qué es:
-                                                                      La propiedad id es un identificador único para la aplicación. En la mayoría de los casos, este valor no es visible para el usuario, pero 
-                                                                      es importante para el navegador y las plataformas de instalación de PWAs.
+                                                                
+                                                                 Qué es:
+                                                                  La propiedad start_url define la URL inicial que se cargará cuando el usuario abra la PWA instalada.
 
-                                                                    Para qué sirve: 
-                                                                        - Identificación única: Permite que el navegador distinga entre diferentes PWAs, incluso si comparten el mismo start_url.
-                                                                        - Gestión de instalaciones: Cuando instalas una PWA, el navegador usa este id para rastrear configuraciones o datosespecíficos de esa aplicación.
-                                                                        - Compatibilidad futura: Aunque su uso es limitado actualmente, se está convirtiendo en una práctica recomendada para PWAs modernas para garantizar un 
-                                                                        comportamiento más predecible en plataformas y actualizaciones.
-
-                                                                - start_url
-                                                                    Qué es:
-                                                                      La propiedad start_url define la URL inicial que se cargará cuando el usuario abra la PWA instalada.
-
-                                                                    Para qué sirve:
-                                                                            - Inicio de la app: Define dónde comienza la navegación dentro de tu aplicación. Por ejemplo, puede ser una página específica como index.
-                                                                              html, una página de inicio personalizada, o incluso una sección de la app.
-                                                                            - Personalización del contexto: Puedes incluir parámetros (como en tu caso ?utm_source=web_app_manifest) para rastrear o ajustar el 
-                                                                              comportamiento de la app cuando se abre desde el ícono instalado.
-                                                                            - Flexibilidad de rutas: Si tu aplicación utiliza un sistema de rutas (como en frameworks SPA), puedes especificar cualquier ruta válida 
-                                                                              para iniciar la app.
-
-                                                                Importancia de cada una
-                                                                  id:
-                                                                    Crucial para identificar la PWA y evitar conflictos entre diferentes aplicaciones, especialmente en sistemas 
-                                                                    operativos que soporten múltiples instalaciones.
-                                                                    Mejora la compatibilidad futura a medida que los navegadores amplíen su uso.
-                                                                  start_url:
-                                                                    Es fundamental para determinar cómo comienza la experiencia del usuario en la PWA.
-                                                                    Permite personalizar la experiencia inicial y es esencial para que la app funcione correctamente cuando se abre desde el ícono instalado.
-                                                                Resumen
-                                                                  - id es como un "nombre único interno" para la PWA, útil para el navegador y plataformas.
-                                                                  - start_url es como un "punto de entrada" para los usuarios, ya que define qué página se cargará cuando inicien la app desde el ícono.
+                                                                  Para qué sirve:
+                                                                   - Inicio de la app: Define dónde comienza la navegación dentro de tu aplicación. Por ejemplo, puede ser una página específica como index.html, una página de inicio personalizada, o incluso una sección de la app.
+                                                                  - Personalización del contexto: Puedes incluir parámetros (como en tu caso ?utm_source=web_app_manifest) para rastrear o ajustar el 
+                                                                 comportamiento de la app cuando se abre desde el ícono instalado.
+                                                                 - Flexibilidad de rutas: Si tu aplicación utiliza un sistema de rutas (como en frameworks SPA), puedes especificar cualquier ruta válida para iniciar la app.
                                                                 )
             "scope": "./",        (Define el ámbito de la aplicación. Este es el conjunto de URLs que 
                                   forman parte de la PWA. Aquí, "./" significa que cualquier URL relativa 
