@@ -638,6 +638,10 @@ Sí, el "manifest.json" funciona tanto en Windows como en Apple, pero el soporte
             "id": "https://andreiarriaza.github.io/progressive-web-app",  
                       Es un identificador único para la PWA que ayuda al navegador a reconocer y asociar datos específicos con esa aplicación. Actúa como su "nombre interno" único para diferenciarla de otras aplicaciones.
 
+                      ¿Por qué no debería incluir una barra (/) al final del id?
+                        Aunque técnicamente puedes incluirla, no es necesario ni recomendado. Los navegadores prefieren valores sin barra al final si el dominio ya apunta a la raíz. Por ejemplo, asginar en el "id" la ruta (con diagonal al final): https://andreiarriaza.github.io/progressive-web-app/ podría ser reconocido
+                        como un error por algunos navegadores, por lo que no se recomienda no incluirla.
+
                       Para qué sirve: 
                         - Identificación única: Permite que el navegador distinga entre diferentes PWAs, incluso si comparten el mismo start_url.
                         - Gestión de instalaciones: Cuando instalas una PWA, el navegador usa este id para rastrear configuraciones o datosespecíficos de esa aplicación.
