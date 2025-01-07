@@ -40,7 +40,7 @@
 esté visualizando la aplicación. 
 
 En una aplicación progresiva (PWA), el caché se utiliza para almacenar recursos estáticos que serán necesarios para que la aplicación 
-https://www.kemik.gt/stanley-mini-pistola-de-silicon-2-temperaturas-120-voltios-80-wattsfuncione sin conexión o se cargue más rápido. Los elementos que generalmente se incluyen en el caché son los siguientes:
+funcione sin conexión o se cargue más rápido. Los elementos que generalmente se incluyen en el caché son los siguientes:
 
     - Páginas HTML principales: como index.html o cualquier otra página clave.
     - Archivos CSS: como hojas de estilo personalizadas.
