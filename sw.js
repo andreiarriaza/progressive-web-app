@@ -68,7 +68,7 @@ const CACHE_NAME = "v1_chess_mate_club",
     /* Carga las fuentes de Google Fonts. */
     "https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap",
     /* Kit de Font Awesome Icons */
-    "https://kit.fontawesome.com/f1bff8ec54.js",
+    "./assets/icons/kit-fontawesomeicons.js",
 
     /* Hojas Externas de CSS*/
     "./assets/css/main.css",
