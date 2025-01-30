@@ -699,6 +699,8 @@ Sí, el "manifest.json" funciona tanto en Windows como en Apple, pero el soporte
 
                                             portrait: La aplicación se mostrará en modo vertical  
                                                       (retrato). Esto es común para aplicaciones de lectura, redes sociales, etc.
+                                                      Permite cualquier orientación vertical. Si el usuario gira el 
+                                                      dispositivo al revés, la pantalla también rotará
 
                                             portrait-primary: Indica que la orientación retrato 
                                                               principal es la que debe ser utilizada. 
@@ -714,7 +716,8 @@ Sí, el "manifest.json" funciona tanto en Windows como en Apple, pero el soporte
                                                        (paisaje). Esto es útil para aplicaciones de video, juegos y otras aplicaciones que se benefician de una pantalla más ancha.
 
                                             landscape-primary: Indica que la orientación paisaje 
-                                                               principal debe ser utilizada.
+                                                               principal debe ser utilizada. La aplicación se abrirá en modo paisaje, 
+                                                               pero permitirá girar la pantalla.
 
                                             )
 
@@ -722,6 +725,7 @@ Sí, el "manifest.json" funciona tanto en Windows como en Apple, pero el soporte
                                        Web App (PWA) cuando se lanza. Esta propiedad influye en el 
                                        aspecto y la experiencia del usuario al interactuar con la aplicación. A continuación, te explico las opciones 
                                        disponibles para display:
+                                       
                                           fullscreen: La aplicación ocupa toda la pantalla del        
                                                       dispositivo, sin ninguna interfaz del navegador visible (sin barra de dirección ni controles).
                                                       Ideal para aplicaciones que requieren un entorno 
