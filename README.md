@@ -126,43 +126,21 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
 
     Estructura del archivo "manifest.json":
 
-            {
+              {
 
 
-            "id": "./index.html?utm_source=web_app_manifest",
+            "id": "https://andreiarriaza.github.io/progressive-web-app",
+                      Es un identificador único para la PWA que ayuda al navegador a reconocer y asociar datos específicos con esa aplicación. Actúa como su "nombre interno" único para diferenciarla de otras aplicaciones.
 
-                La línea "id": "./index.html?utm_source=web_app_manifest" en el archivo manifest.json tiene un propósito específico en aplicaciones
-                web progresivas (PWA), y aquí está el desglose detallado de cada parte y su importancia:
+                      ¿Por qué no debería incluir una barra (/) al final del id?
+                        Aunque técnicamente puedes incluirla, no es necesario ni recomendado. Los navegadores prefieren valores sin barra al final si el dominio ya apunta a la raíz. Por ejemplo, asginar en el "id" la ruta (con diagonal al final): https://andreiarriaza.github.io/progressive-web-app/ podría ser reconocido como un error por algunos navegadores, por lo que se recomienda no incluirla.
 
-                  2. ¿Qué significa "id": "./index.html?utm_source=web_app_manifest"?
-                    - id: Esta propiedad es opcional en el manifest.json, pero cuando se usa, define un
-                          identificador único de la PWA. Este identificador permite que los navegadores, especialmente los que soportan la
-                          instalación de PWA, puedan reconocer, actualizar y abrir la aplicación con consistencia. También ayuda a
-                          asegurar que los usuarios no instalen duplicados de la misma aplicación en sus dispositivos.
+                      Para qué sirve:
+                        - Identificación única: Permite que el navegador distinga entre diferentes PWAs, incluso si comparten el mismo start_url.
+                        - Gestión de instalaciones: Cuando instalas una PWA, el navegador usa este id para rastrear configuraciones o datosespecíficos de esa aplicación.
+                        - Compatibilidad futura: Aunque su uso es limitado actualmente, se está convirtiendo en una práctica recomendada para PWAs modernas para garantizar un comportamiento más predecible en plataformas y actualizaciones.
 
-                    - "./index.html": Este es el punto de entrada de tu aplicación web cuando se abre a través de un acceso directo de
-                                      la PWA o se lanza después de ser instalada. Aquí, index.html es el archivo que representa la página
-                                      principal de la aplicación.
 
-                    - ?utm_source=web_app_manifest: Esta parte del código es un parámetro de consulta (query parameter) que se añade
-                                                    al final de la URL ./index.html.
-                        - utm_source=web_app_manifest es un parámetro UTM, utilizado para el seguimiento de análisis web.
-                                                Los parámetros UTM (Urchin Tracking Module) permiten que herramientas de análisis como Google Analytics puedan identificar la "fuente" desde donde los usuarios abren la aplicación.
-                                                En este caso, el valor web_app_manifest indica que el usuario accedió a la PWA a través de
-                                                un acceso directo creado desde el archivo manifest.json.
-                  3. ¿Por qué es necesario?
-                      - Identificación de Origen: Agregar utm_source=web_app_manifest te permite analizar cómo los usuarios están
-                                                  abriendo tu aplicación. Puedes distinguir entre usuarios que acceden a través de un navegador,
-                                                  una instalación en pantalla de inicio o mediante otras rutas. Esto es útil en el análisis de comportamiento de usuarios.
-                      - Optimización de Contenidos: Con esta información, puedes optimizar la experiencia de usuario
-                                                    específicamente para quienes instalan la aplicación, por ejemplo, cargando contenido
-                                                    o características específicas solo para usuarios que acceden desde la PWA.
-                      - Compatibilidad y Buenas Prácticas: Si decides expandir la funcionalidad de la aplicación o hacer un seguimiento
-                                                           detallado de uso, esta estructura de id es una práctica recomendada en
-                                                           PWA para asegurar una identificación única y consistente en todas las plataformas.
-
-                    Ejemplo de cómo se ve en la práctica
-                      Si usas Google Analytics y un usuario abre la PWA desde el acceso directo instalado en su dispositivo, la URL ./index.html?utm_source=web_app_manifest se enviará como fuente de tráfico. Esto permitirá rastrear cuántos usuarios están accediendo mediante la instalación de la PWA y evaluar el uso de la aplicación como una "app nativa".)
 
             "name": "Chess Mate Club",     (Es el nombre completo de la aplicación web.
                                             Se mostrará cuando los usuarios añadan la PWA a su
@@ -215,6 +193,8 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
 
                                             portrait: La aplicación se mostrará en modo vertical
                                                       (retrato). Esto es común para aplicaciones de lectura, redes sociales, etc.
+                                                      Permite cualquier orientación vertical. Si el usuario gira el
+                                                      dispositivo al revés, la pantalla también rotará
 
                                             portrait-primary: Indica que la orientación retrato
                                                               principal es la que debe ser utilizada.
@@ -230,7 +210,8 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
                                                        (paisaje). Esto es útil para aplicaciones de video, juegos y otras aplicaciones que se benefician de una pantalla más ancha.
 
                                             landscape-primary: Indica que la orientación paisaje
-                                                               principal debe ser utilizada.
+                                                               principal debe ser utilizada. La aplicación se abrirá en modo paisaje,
+                                                               pero permitirá girar la pantalla.
 
                                             )
 
@@ -238,6 +219,7 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
                                        Web App (PWA) cuando se lanza. Esta propiedad influye en el
                                        aspecto y la experiencia del usuario al interactuar con la aplicación. A continuación, te explico las opciones
                                        disponibles para display:
+
                                           fullscreen: La aplicación ocupa toda la pantalla del
                                                       dispositivo, sin ninguna interfaz del navegador visible (sin barra de dirección ni controles).
                                                       Ideal para aplicaciones que requieren un entorno
@@ -264,52 +246,27 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
                                                                 usado para rastrear el uso de la
                                                                 aplicación como PWA en herramientas de
                                                                 analítica (como Google Analytics).)
+
                                                                 Página de inicio: Cuando un usuario instala tu PWA y la abre desde la pantalla de inicio (por ejemplo, en un dispositivo móvil), la aplicación se abrirá en la URL definida por start_url.
+
                                                                 Control de navegación: Permite a los desarrolladores dirigir a los usuarios a la página que mejor representa la aplicación o que debe ser la primera vista de la misma.
+
                                                                 Inclusión de parámetros: Puedes incluir parámetros de URL en start_url, lo que permite personalizar la experiencia al iniciar la aplicación. Esto es útil para el seguimiento o para configurar el estado inicial de la aplicación.
 
-                                                                En el contexto del archivo manifest.json de una Progressive Web App (PWA), las propiedades id y start_url tienen roles
-                                                                diferentes pero complementarios:
-                                                                  id
-                                                                    Qué es:
-                                                                      La propiedad id es un identificador único para la aplicación. En la mayoría de los casos, este valor no es visible para el usuario, pero
-                                                                      es importante para el navegador y las plataformas de instalación de PWAs.
 
-                                                                    Para qué sirve:
-                                                                        - Identificación única: Permite que el navegador distinga entre diferentes PWAs, incluso si comparten el mismo start_url.
-                                                                        - Gestión de instalaciones: Cuando instalas una PWA, el navegador usa este id para rastrear configuraciones o datos
-                                                                          específicos de esa aplicación.
-                                                                        - Compatibilidad futura: Aunque su uso es limitado actualmente, se está convirtiendo en una práctica
-                                                                          recomendada para PWAs modernas para garantizar un comportamiento más predecible en plataformas y actualizaciones.
+                                                                 Qué es:
+                                                                  La propiedad start_url define la URL inicial que se cargará cuando el usuario abra la PWA instalada.
 
-                                                                start_url
-                                                                    Qué es:
-                                                                      La propiedad start_url define la URL inicial que se cargará cuando el usuario abra la PWA instalada.
-
-                                                                    Para qué sirve:
-                                                                            - Inicio de la app: Define dónde comienza la navegación dentro de tu aplicación. Por ejemplo, puede ser una página específica como index.
-                                                                              html, una página de inicio personalizada, o incluso una sección de la app.
-                                                                            - Personalización del contexto: Puedes incluir parámetros (como en tu caso ?utm_source=web_app_manifest) para rastrear o ajustar el
-                                                                              comportamiento de la app cuando se abre desde el ícono instalado.
-                                                                            - Flexibilidad de rutas: Si tu aplicación utiliza un sistema de rutas (como en frameworks SPA), puedes especificar cualquier ruta válida
-                                                                              para iniciar la app.
-
-                                                                Importancia de cada una
-                                                                  id:
-                                                                    Crucial para identificar la PWA y evitar conflictos entre diferentes aplicaciones, especialmente en sistemas
-                                                                    operativos que soporten múltiples instalaciones.
-                                                                    Mejora la compatibilidad futura a medida que los navegadores amplíen su uso.
-                                                                  start_url:
-                                                                    Es fundamental para determinar cómo comienza la experiencia del usuario en la PWA.
-                                                                    Permite personalizar la experiencia inicial y es esencial para que la app funcione correctamente cuando se abre desde el ícono instalado.
-                                                                Resumen
-                                                                  - id es como un "nombre único interno" para la PWA, útil para el navegador y plataformas.
-                                                                  - start_url es como un "punto de entrada" para los usuarios, ya que define qué página se cargará cuando inicien la app desde el ícono.
+                                                                  Para qué sirve:
+                                                                   - Inicio de la app: Define dónde comienza la navegación dentro de tu aplicación. Por ejemplo, puede ser una página específica como index.html, una página de inicio personalizada, o incluso una sección de la app.
+                                                                  - Personalización del contexto: Puedes incluir parámetros (como ?utm_source=web_app_manifest)
+                                                                  para rastrear o ajustar el comportamiento de la app cuando se abre desde el ícono instalado.
+                                                                 - Flexibilidad de rutas: Si tu aplicación utiliza un sistema de rutas (como en SPA (Single Page Application)), puedes especificar cualquier ruta válida para iniciar la app.
                                                                 )
             "scope": "./",        (Define el ámbito de la aplicación. Este es el conjunto de URLs que
                                   forman parte de la PWA. Aquí, "./" significa que cualquier URL relativa
-                                  a la raíz de la app (cualquier URL que se encuentre dentro de la
-                                  carpeta raíz) estará dentro del alcance de la PWA. Si la
+                                  a la carpeta actual (cualquier URL que se encuentre dentro de la
+                                  carpeta actual) estará dentro del alcance de la PWA. Si la
                                   aplicación intenta acceder a URLs fuera de este ámbito, se comportará
                                   como un sitio web normal.)
             "lang": "es-GT",    (Especifica el idioma predeterminado de la aplicación.
@@ -317,17 +274,19 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
                                 y dispositivos a saber cuál es el idioma principal de la interfaz de usuario.)
             "icons": [                    (La propiedad icons define una lista de iconos que se usan en
                                           diferentes resoluciones para representar la aplicación.
-                                            Cada ítem en la lista contiene:
-                                              src: La ruta al archivo de la imagen.
-                                              sizes: El tamaño de la imagen en píxeles (ej. 1024x1024).
-                                              type: El tipo de archivo, usualmente image/png.
+                                          Cada ítem en la lista contiene:
+                                            - src: La ruta al archivo de la imagen.
+                                            - sizes: El tamaño de la imagen en píxeles (ej. 1024x1024).
+                                            - type: El tipo de archivo, usualmente image/png.
                                           Estos íconos son los directamente relacionados con la instalación de la progressive web app. No tiene nada que
                                           ver con los recursos que se guardarán en caché para su uso offline. En este caso, se agregaron aquí los favicons,
                                           porque son las imágenes que se desea se muestren como ícono de la aplicación.
               {
                 "src": "../assets/img/icon-1024x1024",   (IMPORTANTE:  esta tamaño no es necesario para
                                                   favicon, pero sí para PWA (Progressive Web App).
-                                                  Los dispositivos modernos, como smartphones y tablets, a menudo cuentan con pantallas de alta densidad de píxeles (como Retina en dispositivos Apple). Un ícono de 1024x1024 px se verá nítido y claro en estas pantallas.)
+                                                  Los dispositivos modernos, como smartphones y tablets, a menudo cuentan con pantallas de alta
+                                                  densidad de píxeles (como Retina en dispositivos Apple). Un ícono de 1024x1024 px se verá
+                                                  nítido y claro en estas pantallas.)
                 "sizes": "1024x1024",
                 "type": "image/png"
               },
@@ -385,13 +344,17 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
                   Especificaciones para las capturas de pantalla:
 
                         Resolución recomendada:
-                            Aunque no hay una resolución estricta, Google recomienda un tamaño mínimo de 320 x 320 píxeles y un tamaño máximo de 3840 x 3840 píxeles. Es ideal que las capturas tengan la misma relación de aspecto que tu aplicación para representar mejor la experiencia de usuario.
+                            Aunque no hay una resolución estricta, Google recomienda un tamaño mínimo de 320 x 320 píxeles
+                            y un tamaño máximo de 3840 x 3840 píxeles. Es ideal que las capturas tengan la misma relación de aspecto
+                            que tu aplicación para representar mejor la experiencia de usuario.
 
                         Formato:
-                            Las imágenes deben estar en formato PNG o JPEG.
+                            Las imágenes deben estar en formato PNG, JPEG, y WebP.
 
                         Cantidad de capturas:
-                            No hay un límite exacto, pero se recomienda incluir entre 3 y 8 capturas de pantalla para que los usuarios tengan una buena perspectiva de la aplicación sin abrumarlos. Cada captura debe representar un aspecto clave o funcionalidad importante.
+                            No hay un límite exacto, pero se recomienda incluir entre 3 y 8 capturas de pantalla para que los usuarios
+                            tengan una buena perspectiva de la aplicación sin abrumarlos.
+                            Cada captura debe representar un aspecto clave o funcionalidad importante.
 
                   Relación de aspecto de las imágenes:
                     Las imágenes pueden tener diferentes dimensiones, pero la relación de aspecto debe ser consistente
@@ -412,6 +375,27 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
                       - 1920X1080
                       - 1280X720
 
+                  El campo screenshots en el manifest.json de una Progressive Web App (PWA) se utiliza para
+                  proporcionar imágenes que muestran cómo se ve la aplicación en diferentes contextos. Estas
+                  capturas de pantalla son especialmente útiles para las siguientes razones:
+
+                    1. Una de las imágenes asignadas aquí, será la que se mostrará cuando se inicie la instalación de la Progressive Web App,
+                       junto con el título y la descrición de la Progressive Web App que se definieron en el archivo "manifest.json".
+
+                    2. Mejorar la Presentación de la PWA: Las capturas de pantalla ayudan a los usuarios a tener una idea visual de la
+                       experiencia de usuario que ofrece la PWA. Esto puede aumentar la tasa de instalación al mostrar la interfaz atractiva
+                       y funcional de la aplicación.
+
+                    3. Reforzar la Identidad de la Aplicación: Al incluir capturas de pantalla que reflejan la
+                       apariencia y las características de la aplicación, se puede ayudar a construir una identidad
+                       visual más fuerte y consistente.
+
+                    4. Aumentar la Confianza del Usuario: Mostrar cómo se verá la aplicación una vez instalada
+                       puede ayudar a generar confianza en los usuarios, especialmente si están considerando
+                       instalar la aplicación desde su navegador.
+
+                    5. Diferenciación en la Tienda de Aplicaciones: Si la PWA se presenta en una tienda de
+                       aplicaciones, las capturas de pantalla pueden ayudar a diferenciarla de otras aplicaciones, atrayendo así más usuarios.)
 
                   )
 
@@ -420,14 +404,15 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
                 "src": "assets/img/screenshot-wide-2560x1440",
                 "sizes": "2560x1440",
                 "type": "image/png",
-                "form_factor": "wide"    (El atributo "form_factor" en el manifest.json de una Progressive Web App (PWA) especifica el tipo de dispositivo en el
+                "form_factor": "wide"    (El atributo "form_factor" en el "manifest.json" de una Progressive Web App (PWA) especifica el tipo de dispositivo en el
                                           que se recomienda que se muestren ciertos elementos visuales, como capturas de pantalla en la sección "screenshots".
                                           Este atributo ayuda a mostrar la vista previa correcta dependiendo del tipo de dispositivo en el que el usuario se encuentra, mejorando así la experiencia al mostrar imágenes más relevantes.
 
                                           Valores comunes de "form_factor":
                                             "wide": Indica que la captura de pantalla o el recurso visual está diseñado para dispositivos con pantallas
                                                     más anchas, como tablets, laptops y monitores de escritorio. Relación de aspecto 16:9.
-                                            "narrow": Indica que la captura es para dispositivos con pantallas más estrechas, como teléfonos móviles en orientación vertical. Relación de aspecto 9:16.
+                                            "narrow": Indica que la captura es para dispositivos con pantallas más estrechas, como teléfonos móviles en orientación
+                                                      vertical. Relación de aspecto 9:16.
 
 
 
@@ -498,14 +483,14 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
             ],
           "protocol_handlers": [
             {
-              "protocol": "web+micontacto",   (La propiedad "protocol_handlers" en el archivo manifest.json de una Progressive Web App (PWA) permite que tu aplicación maneje
-                                              ciertos esquemas de protocolo personalizados o ya existentes en URLs. Esto significa que puedes registrar tu PWA como el manejador
-                                              predeterminado para abrir enlaces que comiencen con un esquema específico, como mailto: (para correos electrónicos) o incluso
-                                              esquemas personalizados como web+miapp:.
+              "protocol": "web+micontacto",   (La propiedad "protocol_handlers" en el archivo manifest.json de una Progressive Web App (PWA) permite que
+                                              la aplicación maneje ciertos esquemas de protocolo personalizados o ya existentes en URLs. Esto
+                                              significa que puedes registrar tu PWA como el manejador predeterminado para abrir enlaces que comiencen
+                                              con un esquema específico, como mailto: (para correos electrónicos) o incluso esquemas personalizados
+                                              como web+miapp.
 
                                             ¿Para qué sirve?
-                                              La propiedad "protocol_handlers" permite a los usuarios abrir tu aplicación directamente desde enlaces externos con un esquema
-                                              específico, proporcionando una experiencia más integrada y conectada. Es especialmente útil para:
+                                              La propiedad "protocol_handlers" permite a los usuarios abrir tu aplicación directamente desde enlaces externos con un esquema específico, proporcionando una experiencia más integrada y conectada. Es especialmente útil para:
                                                 - Registrar tu aplicación como manejador de correos electrónicos o mensajería:
                                                 - Permite que tu PWA maneje enlaces como mailto: (correos electrónicos) o tel: (llamadas telefónicas).
                                                 - Soporte para protocolos personalizados: Puedes crear y manejar esquemas personalizados como web+miapp: para interactuar con tu aplicación de manera específica.
