@@ -702,22 +702,25 @@ Sí, el "manifest.json" funciona tanto en Windows como en Apple, pero el soporte
                                                       Permite cualquier orientación vertical. Si el usuario gira el 
                                                       dispositivo al revés, la pantalla también rotará
 
-                                            portrait-primary: Indica que la orientación retrato 
-                                                              principal es la que debe ser utilizada. 
-                                                              En la mayoría de los dispositivos, 
-                                                              esto es equivalente a portrait.
+                                            portrait-primary: La aplicación se abrirá en modo retrato en su orientación 
+                                                              principal. Sin embargo, puede cambiar a portrait-secondary si el usuario 
+                                                              gira el dispositivo 180 grados.
 
                                             portrait-secondary: Indica que la orientación retrato   
                                                                 secundaria (invertida) debe ser 
                                                                 utilizada. Esto es menos común y
                                                                 generalmente se refiere a girar el dispositivo 180 grados.
 
-                                            landscape: La aplicación se mostrará en modo horizontal   
-                                                       (paisaje). Esto es útil para aplicaciones de video, juegos y otras aplicaciones que se benefician de una pantalla más ancha.
+                                            landscape:  La aplicación se mostrará en modo horizontal (paisaje). 
+                                                        Permite cualquier orientación horizontal (landscape-primary o landscape-secondary). 
+                                                        Es útil para aplicaciones de video, juegos y herramientas que requieren una pantalla más ancha..
 
-                                            landscape-primary: Indica que la orientación paisaje 
-                                                               principal debe ser utilizada. La aplicación se abrirá en modo paisaje, 
-                                                               pero permitirá girar la pantalla.
+                                            landscape-primary: La aplicación se abrirá en modo paisaje en su orientación principal. 
+                                                               Sin embargo, si el usuario gira el dispositivo, puede cambiar a landscape-secondary.
+
+                                            landscape-secondary: La aplicación se abrirá en modo paisaje, 
+                                                                 pero en su orientación secundaria (invertida 180 grados). 
+                                                                 Es útil para dispositivos que tienen un lado preferido para sostener en horizontal.
 
                                             )
 
