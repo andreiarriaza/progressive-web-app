@@ -55,7 +55,7 @@ funcione sin conexión o se cargue más rápido. Los elementos que generalmente 
 const CACHE_NAME = "v1_chess_mate_club",
   urlsToCache = [
     /* Se encarga de cargar el archivo "index.html". */
-    "./index.html",
+    "./",
 
     /* Se agrega la página web "mates"*/
     "./mates/",
