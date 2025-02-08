@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta
-      name="description"
-      content="Bienvenidos al sitio web para amantes del ajedrez, en el cual encontrarás recomendaciones de libros, consejos de aperturas, finales,
-        jaque mates y medio juego."
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Color de la Barra de direcciones del navegador
+  <meta name="description" content="Bienvenidos al sitio web para amantes del ajedrez, en el cual encontrarás recomendaciones de libros, consejos de aperturas, finales,
+        jaque mates y medio juego." />
+
+  <!-- Color de la Barra de direcciones del navegador
      en dispositivos móviles -->
-    <meta name="theme-color" content="#F0DB4F" />
+  <meta name="theme-color" content="#F0DB4F" />
 
-    <!-- ****************** ETIQUETAS OBSOLETAS ****************** -->
+  <!-- ****************** ETIQUETAS OBSOLETAS ****************** -->
 
-    <!-- IMPORTANTE: Las etiquetas 
+  <!-- IMPORTANTE: Las etiquetas 
           <meta name="MobileOptimized" content="width" />
           <meta name="HandheldFriendly" content="true" /> 
 
@@ -30,23 +28,23 @@
      
     -->
 
-    <!--  -->
+  <!--  -->
 
-    <!-- Propósito: Esta etiqueta era utilizada para asegurar que el sitio web se ajustara correctamente a la anchura de la pantalla de dispositivos móviles.
+  <!-- Propósito: Esta etiqueta era utilizada para asegurar que el sitio web se ajustara correctamente a la anchura de la pantalla de dispositivos móviles.
     Función: Al establecer el valor width, estás indicando que el contenido del sitio web debe ser escalado y optimizado para coincidir con el ancho de la pantalla del dispositivo móvil. Esta etiqueta es principalmente relevante para navegadores más antiguos de Microsoft, como Internet Explorer Mobile, aunque actualmente no se usa tanto ya que la mayoría de navegadores modernos utilizan otras formas de manejo, como el <meta name="viewport">. -->
 
-    <!-- <meta name="MobileOptimized" content="width" /> -->
+  <!-- <meta name="MobileOptimized" content="width" /> -->
 
-    <!-- Propósito: Informaba a los dispositivos portátiles (handhelds), como teléfonos y otros dispositivos móviles, que la página está optimizada para su uso.
+  <!-- Propósito: Informaba a los dispositivos portátiles (handhelds), como teléfonos y otros dispositivos móviles, que la página está optimizada para su uso.
         Función: Cuando content="true", indica que el sitio es amigable para dispositivos móviles, lo que puede mejorar la visualización en navegadores móviles más antiguos que podrían no reconocer automáticamente el diseño responsive o adaptable. Nuevamente, es reemplazada por la etiqueta "Viewport".-->
 
-    <!-- <meta name="HandheldFriendly" content="true" /> -->
+  <!-- <meta name="HandheldFriendly" content="true" /> -->
 
-    <!-- ****************** FIN ETIQUETAS OBSOLETAS ****************** -->
+  <!-- ****************** FIN ETIQUETAS OBSOLETAS ****************** -->
 
-    <!-- ****************** ETIQUETAS PARA CONTROLAR CÓMO SE VERÁ EL SITIO CUANDO SE AGREGUE A LA PANTALLA DE INICIO DEL SMARTPHONE Y LUEGO SE ABRA ****************** -->
+  <!-- ****************** ETIQUETAS PARA CONTROLAR CÓMO SE VERÁ EL SITIO CUANDO SE AGREGUE A LA PANTALLA DE INICIO DEL SMARTPHONE Y LUEGO SE ABRA ****************** -->
 
-    <!-- Las siguiente etiqeutas, NO CONVIERTEN EL SITIO en una Progressive Web App: 
+  <!-- Las siguiente etiqeutas, NO CONVIERTEN EL SITIO en una Progressive Web App: 
           Las etiquetas que se muestran a continuación, solamente sirven para que, cuando se agregue un acceso directo del sitio web
           a la pantalla de inicio del Smartphone, y luego se abra dicho sitio, este se muestre en pantalla completa, sin la barra de herramientas del navegador.
           Aunque esto pareciera que es una Progressive Web App, aún no lo es, solamente da la apariencia de una Progressive Web App que simplemente
@@ -82,7 +80,7 @@
               
   -->
 
-    <!-- 
+  <!-- 
     <meta name="mobile-web-app-capable" content="yes" />
     
       Definición:
@@ -95,9 +93,9 @@
         Experiencia de aplicación: Hace que el sitio web funcione como una Progressive Web App (PWA), 
         dándole una apariencia más nativa.. -->
 
-    <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
 
-    <!-- <meta name="apple-mobile-web-app-capable" content="yes" />
+  <!-- <meta name="apple-mobile-web-app-capable" content="yes" />
             Definición:
               Esta etiqueta es específica para dispositivos iOS (iPhone, iPad, iPod touch) y le indica a Safari que el sitio web es "capaz" de comportarse como una aplicación web cuando el usuario lo agrega a su pantalla de inicio.
 
@@ -107,9 +105,9 @@
               
     -->
 
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
 
-    <!-- 
+  <!-- 
     
      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
           Propósito: Controla el estilo de la barra de estado (la barra en la parte superior que muestra la hora, batería, etc.) cuando tu sitio 
@@ -127,12 +125,9 @@
             - black-translucent: La barra de estado será negra y translúcida, permitiendo que parte del contenido de la página web sea visible debajo de la barra de estado.
     
      -->
-    <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent"
-    />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-    <!-- 
+  <!-- 
    
     La etiqueta <link rel="apple-touch-startup-image" /> se utiliza en páginas web y aplicaciones web progresivas (PWAs) 
     para definir una imagen de inicio que se muestra mientras una aplicación web se está cargando en dispositivos Apple iOS, como iPhones y iPads.
@@ -149,7 +144,7 @@
     Función: Sirve como una pantalla de carga que aparece brevemente cuando se abre la web app, antes de que el contenido esté listo para ser visualizado. Le da una apariencia más parecida a una aplicación nativa, con una transición más fluida al abrir la web app.   
     -->
 
-    <!-- 
+  <!-- 
     rel="apple-touch-startup-image"
         - Este atributo indica que el enlace especificado es una imagen de inicio para dispositivos Apple, como iPhones o iPads, 
           cuando se agrega una aplicación web a la pantalla de inicio.
@@ -185,16 +180,13 @@
                                                                                   
     -->
 
-    <!-- iPhone 6, 7, 8, SE (2ª generación) - Retina @2x -->
-    <link
-      rel="apple-touch-startup-image"
-      href="../assets/img/startup-image-750x1334@2x.png"
-      media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
-    />
+  <!-- iPhone 6, 7, 8, SE (2ª generación) - Retina @2x -->
+  <link rel="apple-touch-startup-image" href="../assets/img/startup-image-750x1334@2x.png"
+    media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" />
 
-    <!-- iPhone X, XS, 11 Pro, 12, 12 Pro, 13, 13 Pro - Retina @3x -->
+  <!-- iPhone X, XS, 11 Pro, 12, 12 Pro, 13, 13 Pro - Retina @3x -->
 
-    <!-- 
+  <!-- 
     media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
       - El atributo media es una consulta de medios que define las condiciones bajo las cuales esta imagen 
         será utilizada. Específicamente, esta consulta está dirigida a dispositivos con:
@@ -210,15 +202,12 @@
     (-webkit-device-pixel-ratio: 3):
       - El dispositivo tiene una densidad de píxeles de 3, es decir, cada punto de diseño contiene 3 píxeles físicos.
       - Este valor es característico de las pantallas Retina de alta densidad, como las de los iPhones modernos. -->
-    <link
-      rel="apple-touch-startup-image"
-      href="../assets/img/startup-image-1125x2436@3x.png"
-      media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
-    />
+  <link rel="apple-touch-startup-image" href="../assets/img/startup-image-1125x2436@3x.png"
+    media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" />
 
-    <!-- iPad 9.7", Air - Retina @2x -->
+  <!-- iPad 9.7", Air - Retina @2x -->
 
-    <!-- 
+  <!-- 
     media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)"
       El atributo media es una consulta de medios que define las características del dispositivo donde se aplicará esta imagen de inicio.
     
@@ -234,17 +223,14 @@
       - iPad Mini (con pantalla Retina).
       - Otros dispositivos Apple con una resolución lógica de 768x1024 puntos y pantallas Retina (2x).
       -->
-    <link
-      rel="apple-touch-startup-image"
-      href="../assets/img/startup-image-768x1024@2x.png"
-      media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)"
-    />
+  <link rel="apple-touch-startup-image" href="../assets/img/startup-image-768x1024@2x.png"
+    media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" />
 
-    <!-- ****************** FIN ETIQUETAS PARA CONTROLAR CÓMO SE VERÁ EL SITIO CUANDO SE AGREGUE A LA PANTALLA DE INICIO DEL SMARTPHONE Y LUEGO SE ABRA ****************** -->
+  <!-- ****************** FIN ETIQUETAS PARA CONTROLAR CÓMO SE VERÁ EL SITIO CUANDO SE AGREGUE A LA PANTALLA DE INICIO DEL SMARTPHONE Y LUEGO SE ABRA ****************** -->
 
-    <!-- ****************************************** FAVICON ******************************************  -->
+  <!-- ****************************************** FAVICON ******************************************  -->
 
-    <!-- Sitio Web para descargar Favicon y Apple Touch Icons: https://favicon.io/ 
+  <!-- Sitio Web para descargar Favicon y Apple Touch Icons: https://favicon.io/ 
     Para descargar las  imágenes deseadas, se debe aceder a la opción "emojis". Al elegir la imagen deseada, dar clic en el botón "descargar", 
     y se descargará todo el paquete de imágenes, entre ellas se incluy el "favicon" y la imagen "apple-touch-icon".
 
@@ -263,9 +249,9 @@
     tendrá preeminencia sobre el tipo de archivo ".png" si es que existen ambos en el mismo sitio Web.
     -->
 
-    <!-- Etiqueta para agregar Favicon al sitio Web. -->
+  <!-- Etiqueta para agregar Favicon al sitio Web. -->
 
-    <!-- No es estrictamente necesario incluir type="image/x-icon" para agregar un favicon en la mayoría de los navegadores modernos si se una 
+  <!-- No es estrictamente necesario incluir type="image/x-icon" para agregar un favicon en la mayoría de los navegadores modernos si se una 
          imagen "png", sin embargo, si se utiliza una imagen ".ico" sí es recomendable agregarlo. 
          Los navegadores suelen detectar automáticamente el tipo de archivo basado en la extensión, p
          or lo que generalmente no es necesario especificarlo explícitamente (excepto cuando se usa una imagen .ico).
@@ -281,107 +267,32 @@
         Compatibilidad: Aunque los navegadores modernos ya no requieren este atributo, algunos navegadores más antiguos podrían esperar que lo declares   
             para los archivos .ico. -->
 
-    <!-- IMPORTANTE: el atributo sizes indica al navegador qué dimensiones tiene cada imagen de favicon. 
+  <!-- IMPORTANTE: el atributo sizes indica al navegador qué dimensiones tiene cada imagen de favicon. 
          Esto ayuda al navegador a seleccionar el tamaño adecuado según el contexto. -->
 
-    <!-- IMPORTANTE: cuando se utliza "./" antes de una ruta, se indica que dicha ruta se busca a partir de la ubicación actual.  -->
+  <!-- IMPORTANTE: cuando se utliza "./" antes de una ruta, se indica que dicha ruta se busca a partir de la ubicación actual.  -->
 
-    <!-- La "/" se utiliza para definir que las URL tomen de referencias
+  <!-- La "/" se utiliza para definir que las URL tomen de referencias
      la carpeta raíz. De este modo, se puede utilizar la misma ruta en todas las páginas web, sin tener
      que modificarla sin importar la ubicación. -->
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="../assets/img/favicon-16x16.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="../assets/img/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="48x48"
-      href="../assets/img/favicon-48x48.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="64x64"
-      href="../assets/img/favicon-64x64.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="76x76"
-      href="../assets/img/favicon-76x76.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="96x96"
-      href="../assets/img/favicon-96x96.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="120x120"
-      href="../assets/img/favicon-120x120.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="144x144"
-      href="../assets/img/favicon-144x144.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="152x152"
-      href="../assets/img/favicon-152x152.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="167x167"
-      href="../assets/img/favicon-167x167.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="180x180"
-      href="../assets/img/favicon-180x180.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="../assets/img/favicon-192x192.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="256x256"
-      href="../assets/img/favicon-256x256.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="384x384"
-      href="../assets/img/favicon-384x384.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="512x512"
-      href="../assets/img/favicon-512x512.png"
-    />
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="../assets/img/favicon-48x48.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="../assets/img/favicon-64x64.png" />
+  <link rel="icon" type="image/png" sizes="76x76" href="../assets/img/favicon-76x76.png" />
+  <link rel="icon" type="image/png" sizes="96x96" href="../assets/img/favicon-96x96.png" />
+  <link rel="icon" type="image/png" sizes="120x120" href="../assets/img/favicon-120x120.png" />
+  <link rel="icon" type="image/png" sizes="144x144" href="../assets/img/favicon-144x144.png" />
+  <link rel="icon" type="image/png" sizes="152x152" href="../assets/img/favicon-152x152.png" />
+  <link rel="icon" type="image/png" sizes="167x167" href="../assets/img/favicon-167x167.png" />
+  <link rel="icon" type="image/png" sizes="180x180" href="../assets/img/favicon-180x180.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/img/favicon-192x192.png" />
+  <link rel="icon" type="image/png" sizes="256x256" href="../assets/img/favicon-256x256.png" />
+  <link rel="icon" type="image/png" sizes="384x384" href="../assets/img/favicon-384x384.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/img/favicon-512x512.png" />
 
-    <!-- ****************** Tamaños de favicons que se recomienda agregar ******************--->
-    <!--
+  <!-- ****************** Tamaños de favicons que se recomienda agregar ******************--->
+  <!--
 
   <link rel="icon" type="image/png" sizes="16x16" href=".../assets/img/favicon-16x16.png">
   <link rel="icon" type="image/png" sizes="32x32" href=".../assets/img/favicon-32x32.png">
@@ -435,9 +346,9 @@
                       El tamaño de 512x512 píxeles es uno de los requisitos para las aplicaciones web progresivas (PWA). Si tu sitio web se convierte en una PWA, este tamaño garantiza que el ícono se muestre correctamente  en las pantallas de inicio de los dispositivos móviles.
   -->
 
-    <!-- ****************************************** APPLE TOUCH ICON ******************************************  -->
+  <!-- ****************************************** APPLE TOUCH ICON ******************************************  -->
 
-    <!-- 
+  <!-- 
         El atributo rel="apple-touch-icon" se utiliza para especificar un ícono personalizado que se muestra cuando los usuarios agregan una página web a la pantalla de inicio de un dispositivo Apple (iPhone, iPad o iPod touch). Este ícono aparece en lugar de una captura de pantalla de la página web, dándole un aspecto más profesional y personalizado.
         
         Para agregar un sitio Web a la pantalla de inicio en un Smartphone:
@@ -467,7 +378,7 @@
         
     -->
 
-    <!-- IMPORTANTE: como buena práctica, es recomendable que el nombre de la imagen 
+  <!-- IMPORTANTE: como buena práctica, es recomendable que el nombre de la imagen 
      sea exactamente el mismo mostrado acá.
 
         Nombre que se recomienda que debe tener el Apple Touch Icon:  apple-touch-icon-(tamaño).png
@@ -476,7 +387,7 @@
     
     -->
 
-    <!-- ****************** Tamaños de apple-touch-icon que se recomienda agregar (en este ejemplo solo se agregó uno, pero es 
+  <!-- ****************** Tamaños de apple-touch-icon que se recomienda agregar (en este ejemplo solo se agregó uno, pero es 
     recomendable agregar todos los tamaños listados) ****************** 
 
         <link rel="apple-touch-icon" sizes="57x57" href="../assets/img/apple-touch-icon-57x57.png">
@@ -506,58 +417,18 @@
 
 
     -->
-    <link
-      rel="apple-touch-icon"
-      sizes="57x57"
-      href="../assets/img/apple-touch-icon-57x57.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="60x60"
-      href="../assets/img/apple-touch-icon-60x60.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="72x72"
-      href="../assets/img/apple-touch-icon-72x72.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="76x76"
-      href="../assets/img/apple-touch-icon-76x76.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="114x114"
-      href="../assets/img/apple-touch-icon-114x114.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="120x120"
-      href="../assets/img/apple-touch-icon-120x120.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="144x144"
-      href="../assets/img/apple-touch-icon-144x144.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="152x152"
-      href="../assets/img/apple-touch-icon-152x152.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="167x167"
-      href="../assets/img/apple-touch-icon-167x167.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="../assets/img/apple-touch-icon-180x180.png"
-    />
+  <link rel="apple-touch-icon" sizes="57x57" href="../assets/img/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="60x60" href="../assets/img/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="../assets/img/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="../assets/img/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="../assets/img/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="../assets/img/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="../assets/img/apple-touch-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="167x167" href="../assets/img/apple-touch-icon-167x167.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon-180x180.png" />
 
-    <!-- IMPORTANTE: el archivo "manifest.json" es recomendable que esté ubicado en la carpeta raíz (principal) del sitio web.  
+  <!-- IMPORTANTE: el archivo "manifest.json" es recomendable que esté ubicado en la carpeta raíz (principal) del sitio web.  
     
     
     Estructura del archivo "manifest.json":
@@ -817,31 +688,28 @@
     
     -->
 
-    <!-- IMPORTANTE: para comprobar que el "manifest.json" funciona correctamente, 
+  <!-- IMPORTANTE: para comprobar que el "manifest.json" funciona correctamente, 
      se deben seguir los siguientes pasos:
      
      1. Abrir las herramientas para desarrolladores de Chrome (F12).
      2. Navegar hasta el menú "Application" (Aplicación).
      3. Ya debería aparecer los datos del "manifest.json". Si hubiese algún error,
         acá se mostrará.-->
-    <link rel="manifest" href="../manifest.json" />
+  <link rel="manifest" href="../manifest.json" />
 
-    <!-- Fuente de Google Fonts -->
-    <!-- Link para ver cómo utilizar la Api de Google Fonts: 
+  <!-- Fuente de Google Fonts -->
+  <!-- Link para ver cómo utilizar la Api de Google Fonts: 
             https://fonts.google.com/knowledge/using_type/loading_variable_fonts_on_the_web
             
         En este caso, se utilizó la fuente Raleway, y se agregaron los grosores "400" (regular)
         y 700 (bold).
      -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../assets/css/main.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
 
-    <link rel="stylesheet" href="assets/css/contacto.css" />
+  <link rel="stylesheet" href="assets/css/contacto.css" />
 
-    <!-- Font Awesome Icons ya no permite hacer el uso de CDN directamente. Para poder utilizar estos íconos, es necesario realizar los siguientes pasos: 
+  <!-- Font Awesome Icons ya no permite hacer el uso de CDN directamente. Para poder utilizar estos íconos, es necesario realizar los siguientes pasos: 
       1. Inicar sesión en https://fontawesome.com/
       2. Acceder a la sección "Your kits".
       3. Font Awesome solamente permite la creación de 1 kit gratuito, por lo que si ya hay uno es necesario eliminarlo o bien utilizar el existente.
@@ -857,220 +725,208 @@
       11. Seleccionar la pestaña "Set Up" y copiar el script que se muestra al dar clic en la pestaña.
 
       -->
-    <script
-      src="https://kit.fontawesome.com/f1bff8ec54.js"
-      crossorigin="anonymous"
-    ></script>
-    <title>Contacto</title>
-  </head>
-  <body>
-    <header>
-      <h1>Datos de Contacto</h1>
-      <nav>
-        <a href="../index.html" target="_self" title="Inicio"> Inicio </a>
-        <a href="../mates/mates.html" target="_self" title="Jaque Mates">
-          Mates
-        </a>
-        <a href="../aperturas/aperturas.html" target="_self" title="Aperturas">
-          Aperturas
-        </a>
+  <script src="https://kit.fontawesome.com/f1bff8ec54.js" crossorigin="anonymous"></script>
+  <title>Contacto</title>
+</head>
 
-        <a href="../libros/libros.html" target="_self" title="Libros">
-          Libros
-        </a>
-      </nav>
-    </header>
+<body>
+  <header>
+    <h1>Datos de Contacto</h1>
+    <nav>
+      <a href="../" target="_self" title="Inicio"> Inicio </a>
+      <a href="../mates/" target="_self" title="Jaque Mates">
+        Mates
+      </a>
+      <a href="../aperturas/" target="_self" title="Aperturas">
+        Aperturas
+      </a>
 
-    <h2 id="contact-id" class="contact-param-id"></h2>
-    <p id="contact-info"></p>
+      <a href="../libros/" target="_self" title="Libros">
+        Libros
+      </a>
+    </nav>
+  </header>
 
-    <script>
-      /*      
-      
-       Protocol Handlers (Manejadores de Protocolo): 
-        Los Protocol Handlers permiten que las aplicaciones web interactúen con servicios externos o incluso con otras aplicaciones 
-        nativas, usando un protocolo personalizado. Este mecanismo puede ser muy útil para tareas como la integración de una PWA (Progressive Web App) 
-        con aplicaciones móviles, abrir una aplicación en particular, o hacer uso de servicios de terceros. A continuación, te presento algunos 
-        ejemplos claros de uso de Protocol Handlers.
+  <h2 id="contact-id" class="contact-param-id"></h2>
+  <p id="contact-info"></p>
 
-        IMPORTANTE: los protocol handlers funcionan únicamente en Windows. ¡No funciona en dispositivos móviles!
+  <script>
+    /*      
+    
+     Protocol Handlers (Manejadores de Protocolo): 
+      Los Protocol Handlers permiten que las aplicaciones web interactúen con servicios externos o incluso con otras aplicaciones 
+      nativas, usando un protocolo personalizado. Este mecanismo puede ser muy útil para tareas como la integración de una PWA (Progressive Web App) 
+      con aplicaciones móviles, abrir una aplicación en particular, o hacer uso de servicios de terceros. A continuación, te presento algunos 
+      ejemplos claros de uso de Protocol Handlers.
 
-        IMPORTANTE 2: link de Google Chrome de referencia para conocer más de Protocol Handlers: https://developer.chrome.com/docs/web-platform/best-practices/url-protocol-handler?hl=es-419
+      IMPORTANTE: los protocol handlers funcionan únicamente en Windows. ¡No funciona en dispositivos móviles!
 
-        1. Abrir una aplicación nativa desde el navegador
-              Supón que tienes una aplicación nativa en un teléfono móvil, como una aplicación de mensajería (por ejemplo, WhatsApp, 
-              Telegram, o una app personalizada) y quieres abrirla directamente desde tu sitio web. Esto es un uso clásico de los Protocol Handlers.
+      IMPORTANTE 2: link de Google Chrome de referencia para conocer más de Protocol Handlers: https://developer.chrome.com/docs/web-platform/best-practices/url-protocol-handler?hl=es-419
 
-            Ejemplo: Abrir WhatsApp desde una página web
-              Supongamos que quieres permitir que los usuarios se conecten directamente con alguien en WhatsApp mediante 
-              un clic en un enlace. Puedes usar el protocolo whatsapp:// para lograrlo.
+      1. Abrir una aplicación nativa desde el navegador
+            Supón que tienes una aplicación nativa en un teléfono móvil, como una aplicación de mensajería (por ejemplo, WhatsApp, 
+            Telegram, o una app personalizada) y quieres abrirla directamente desde tu sitio web. Esto es un uso clásico de los Protocol Handlers.
 
-            Cuando un usuario hace clic en este enlace, si tiene instalada la aplicación de WhatsApp, se abrirá y automáticamente 
-            comenzará una conversación con el número especificado. Este tipo de protocolo personalizado (whatsapp://) es 
-            manejado por la aplicación móvil de WhatsApp.
+          Ejemplo: Abrir WhatsApp desde una página web
+            Supongamos que quieres permitir que los usuarios se conecten directamente con alguien en WhatsApp mediante 
+            un clic en un enlace. Puedes usar el protocolo whatsapp:// para lograrlo.
 
-       Prefijo web+: Es una buena práctica utilizar el prefijo web+ en tus protocolos personalizados para evitar conflictos con protocolos existentes y adherirte a las recomendaciones de los estándares web.
+          Cuando un usuario hace clic en este enlace, si tiene instalada la aplicación de WhatsApp, se abrirá y automáticamente 
+          comenzará una conversación con el número especificado. Este tipo de protocolo personalizado (whatsapp://) es 
+          manejado por la aplicación móvil de WhatsApp.
+
+     Prefijo web+: Es una buena práctica utilizar el prefijo web+ en tus protocolos personalizados para evitar conflictos con protocolos existentes y adherirte a las recomendaciones de los estándares web.
 
 
 
-       El manejo de protocolos personalizados con protocol_handlers en una Progressive Web App (PWA) te permite registrar protocolos específicos que luego serán manejados directamente por tu aplicación. Esto significa que puedes crear enlaces con un protocolo personalizado (como web+micontacto://) que redirijan a tu PWA, facilitando la interacción con la app fuera del típico comportamiento web.
+     El manejo de protocolos personalizados con protocol_handlers en una Progressive Web App (PWA) te permite registrar protocolos específicos que luego serán manejados directamente por tu aplicación. Esto significa que puedes crear enlaces con un protocolo personalizado (como web+micontacto://) que redirijan a tu PWA, facilitando la interacción con la app fuera del típico comportamiento web.
 
 ¿Para qué sirve exactamente?
-  - Redirigir a la PWA desde otros contextos:
+- Redirigir a la PWA desde otros contextos:
 
-      Permite que otros sitios web, correos electrónicos, o incluso aplicaciones puedan crear enlaces con un protocolo específico que 
-      redirija directamente a tu PWA. En lugar de abrir otra aplicación o una página genérica, el navegador abrirá tu PWA con una URL 
-      personalizada, procesando parámetros en la URL para realizar acciones específicas.
+    Permite que otros sitios web, correos electrónicos, o incluso aplicaciones puedan crear enlaces con un protocolo específico que 
+    redirija directamente a tu PWA. En lugar de abrir otra aplicación o una página genérica, el navegador abrirá tu PWA con una URL 
+    personalizada, procesando parámetros en la URL para realizar acciones específicas.
 
-  - Mejorar la experiencia de usuario:
+- Mejorar la experiencia de usuario:
 
-      Puedes mejorar la navegación y la interacción de los usuarios con tu app creando enlaces que pasen datos 
-      específicos (como identificadores o nombres) directamente a tu PWA, permitiendo que la app cargue una página o información personalizada al instante.
+    Puedes mejorar la navegación y la interacción de los usuarios con tu app creando enlaces que pasen datos 
+    específicos (como identificadores o nombres) directamente a tu PWA, permitiendo que la app cargue una página o información personalizada al instante.
 
-  Ejemplos Prácticos
-     PWA para Contactos Personalizados
-        Imagina que tienes una PWA de gestión de contactos y quieres que otros usuarios o aplicaciones puedan abrir un 
-        contacto específico usando un protocolo personalizado.
+Ejemplos Prácticos
+   PWA para Contactos Personalizados
+      Imagina que tienes una PWA de gestión de contactos y quieres que otros usuarios o aplicaciones puedan abrir un 
+      contacto específico usando un protocolo personalizado.
 
 
 Los protocol handlerse no funciona en Smartphones:
 
-  Es importante aclarar que los Protocol Handlers son una característica relativamente nueva y no son necesariamente compatibles con todos los navegadores ni plataformas, especialmente en dispositivos móviles. El soporte de Protocol Handlers en smartphones puede variar dependiendo del sistema operativo, el navegador y la configuración del dispositivo.
+Es importante aclarar que los Protocol Handlers son una característica relativamente nueva y no son necesariamente compatibles con todos los navegadores ni plataformas, especialmente en dispositivos móviles. El soporte de Protocol Handlers en smartphones puede variar dependiendo del sistema operativo, el navegador y la configuración del dispositivo.
 
-  Razones por las que no funciona en smartphones:
-  
-  Limitaciones del sistema operativo móvil:
+Razones por las que no funciona en smartphones:
+ 
+Limitaciones del sistema operativo móvil:
 
-    - Android y iOS tienen restricciones más estrictas en cuanto a la ejecución de protocolos personalizados desde aplicaciones web, principalmente 
-      por razones de seguridad.
-    - Algunos sistemas operativos no permiten la ejecución de protocolos personalizados a través de navegadores móviles, especialmente si no está registrado el 
-      protocolo en el sistema operativo.
-  
-  Compatibilidad de navegadores móviles:
-    - Los navegadores móviles pueden no soportar los Protocol Handlers de la misma manera que los navegadores de escritorio. 
-      Incluso si el navegador de escritorio (como Chrome, Edge o Firefox) en una computadora soporta Protocol Handlers, 
-      los navegadores en dispositivos móviles como Chrome para Android o Safari para iOS pueden no soportarlos o tener limitaciones en su funcionamiento.
-  
-  Restricciones de seguridad:
-    - Los navegadores en dispositivos móviles tienen políticas de seguridad más estrictas. Pueden bloquear los intentos de abrir aplicaciones 
-      nativas mediante protocolos personalizados, ya que esto puede ser un vector de ataque para aplicaciones maliciosas.
-  
-  Manifest de la PWA:
-    - Aunque en tu manifest.json defines un Protocol Handler, es importante saber que no todos los navegadores en dispositivos móviles respetan estas 
-      configuraciones de la misma manera. Por ejemplo, los Protocol Handlers definidos en el manifest de una PWA son más efectivos en el navegador de escritorio que en dispositivos móviles.
-  Compatibilidad con iOS:
-    - En iOS, Safari es más restrictivo con los protocolos personalizados. No siempre permite abrir aplicaciones nativas mediante un protocolo personalizado 
-      directamente desde el navegador.
+  - Android y iOS tienen restricciones más estrictas en cuanto a la ejecución de protocolos personalizados desde aplicaciones web, principalmente 
+    por razones de seguridad.
+  - Algunos sistemas operativos no permiten la ejecución de protocolos personalizados a través de navegadores móviles, especialmente si no está registrado el 
+    protocolo en el sistema operativo.
+ 
+Compatibilidad de navegadores móviles:
+  - Los navegadores móviles pueden no soportar los Protocol Handlers de la misma manera que los navegadores de escritorio. 
+    Incluso si el navegador de escritorio (como Chrome, Edge o Firefox) en una computadora soporta Protocol Handlers, 
+    los navegadores en dispositivos móviles como Chrome para Android o Safari para iOS pueden no soportarlos o tener limitaciones en su funcionamiento.
+ 
+Restricciones de seguridad:
+  - Los navegadores en dispositivos móviles tienen políticas de seguridad más estrictas. Pueden bloquear los intentos de abrir aplicaciones 
+    nativas mediante protocolos personalizados, ya que esto puede ser un vector de ataque para aplicaciones maliciosas.
+ 
+Manifest de la PWA:
+  - Aunque en tu manifest.json defines un Protocol Handler, es importante saber que no todos los navegadores en dispositivos móviles respetan estas 
+    configuraciones de la misma manera. Por ejemplo, los Protocol Handlers definidos en el manifest de una PWA son más efectivos en el navegador de escritorio que en dispositivos móviles.
+Compatibilidad con iOS:
+  - En iOS, Safari es más restrictivo con los protocolos personalizados. No siempre permite abrir aplicaciones nativas mediante un protocolo personalizado 
+    directamente desde el navegador.
 
 Definición del protocolo en el manifest.json:
 
-    {
-      "name": "Gestión de Contactos",
-      "protocol_handlers": [
-        {
-          "protocol": "web+micontacto",
-          "url": "https://miapp.com/contacto.html?id=%s"
-        }
-      ]
-    }
+  {
+    "name": "Gestión de Contactos",
+    "protocol_handlers": [
+      {
+        "protocol": "web+micontacto",
+        "url": "https://miapp.com/contacto.html?id=%s"
+      }
+    ]
+  }
 
-  Ahora, cualquier enlace del tipo web+contacto://12345 redirigirá a la PWA con la URL:
-      https://miapp.com/contacto.html?id=12345
+Ahora, cualquier enlace del tipo web+contacto://12345 redirigirá a la PWA con la URL:
+    https://miapp.com/contacto.html?id=12345
 
-        Ejemplo de Enlace Personalizado:
-
-
-    <a href="web+contacto://12345">Ver Contacto 12345</a>
+      Ejemplo de Enlace Personalizado:
 
 
+  <a href="web+contacto://12345">Ver Contacto 12345</a>
 
-    Al hacer clic en este enlace:
-        La PWA abrirá la página contacto.html, y la aplicación podrá mostrar automáticamente 
-        los detalles del contacto con ID 12345.
 
-        Manejo del Parámetro en la PWA (contacto.html):
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const rawCcontactoId = urlParams.get('id');
+  Al hacer clic en este enlace:
+      La PWA abrirá la página contacto.html, y la aplicación podrá mostrar automáticamente 
+      los detalles del contacto con ID 12345.
 
-        if (rawCcontactoId) {
-             const contactoId = rawContactoId
-
-          .replace("web+micontacto://", "")
-          .replace("/", "");
-          
-          document.getElementById("contact-id").textContent = `ID: ${contactoId}
-          document.getElementById('contact-info').textContent = `Mostrando detalles del contacto ID: ${contactoId}`;
-        }
-       */
-
-      /* 
-      - URLSearchParams: Esta clase permite trabajar con los parámetros de la URL, en este caso, los que 
-              vienen después del signo ?. 
-      
-      - window.location.search: Obtiene la parte de la URL que contiene los parámetros (lo que está   
-        después del ?).
-
-      
-      */
+      Manejo del Parámetro en la PWA (contacto.html):
 
       const urlParams = new URLSearchParams(window.location.search);
-      /* - urlParams.get("id"): Extrae el valor del parámetro id de la URL (por ejemplo, si la URL es ?id=web+micontacto://100/, entonces rawContactoId contendría web+micontacto://100/). 
+      const rawCcontactoId = urlParams.get('id');
 
-       */
-      const rawContactoId = urlParams.get("id");
-      /* El if (rawContactoId) comprueba si hay algún valor en el parámetro id. Si lo hay, procede a procesarlo. */
-      if (rawContactoId) {
-        /* 
+      if (rawCcontactoId) {
+           const contactoId = rawContactoId
+
+        .replace("web+micontacto://", "")
+        .replace("/", "");
         
-        
-        - rawContactoId.replace("web+micontacto://", "").replace("/", "")
-            Sin embargo, como lo que se necesita es el valor del "id", es necesario reemplazar la parte de la URL que no se necesita con espacios vacíos, de tal manera que se obtenga únicamente el "id". }}. Esto se consigue mediante los métodos:  */
-        const contactoId = rawContactoId
-
-          .replace("web+micontacto://", "")
-          .replace("/", "");
-        document.getElementById("contact-id").textContent = `ID: ${contactoId}`;
-        console.log(contactoId);
-
-        /* Acá se comprueba el valor del "id". No se aplicó igualdad estricta (===), porque el parámetro no es un número, sino una cadena de texto. */
-        if (contactoId == 100) {
-          /*  Se modifica el valor del elemento que tiene asignada la clase "contact-info".*/
-          document.getElementById(
-            "contact-info"
-          ).textContent = `Nombre: Andrei Arriaza`;
-        } else if (contactoId == 200) {
-          document.getElementById(
-            "contact-info"
-          ).textContent = `Nombre: Bobby Fischer`;
-        }
+        document.getElementById("contact-id").textContent = `ID: ${contactoId}
+        document.getElementById('contact-info').textContent = `Mostrando detalles del contacto ID: ${contactoId}`;
       }
-    </script>
+     */
 
-    <footer>
-      <nav>
-        <a
-          href="https://www.youtube.com/watch?v=xfHjALkNt0U&t=1s&ab_channel=OrquestaSinf%C3%B3nicadeMiner%C3%ADa"
-          target="_blank"
-          title="YouTube"
-        >
-          <i class="fab fa-youtube"></i>
-        </a>
-        <a
-          href="https://facebook.com/programadorfitness"
-          target="_blank"
-          title="Facebook"
-        >
-          <i class="fa-brands fa-facebook"></i>
-        </a>
-        <a
-          href="https://www.instagram.com/explore/tags/ProgramadorFitness/"
-          target="_blank"
-          title="Instagram"
-        >
-          <i class="fab fa-instagram"></i>
-        </a>
-      </nav>
-    </footer>
-  </body>
+    /* 
+    - URLSearchParams: Esta clase permite trabajar con los parámetros de la URL, en este caso, los que 
+            vienen después del signo ?. 
+    
+    - window.location.search: Obtiene la parte de la URL que contiene los parámetros (lo que está   
+      después del ?).
+
+    
+    */
+
+    const urlParams = new URLSearchParams(window.location.search);
+    /* - urlParams.get("id"): Extrae el valor del parámetro id de la URL (por ejemplo, si la URL es ?id=web+micontacto://100/, entonces rawContactoId contendría web+micontacto://100/). 
+
+     */
+    const rawContactoId = urlParams.get("id");
+    /* El if (rawContactoId) comprueba si hay algún valor en el parámetro id. Si lo hay, procede a procesarlo. */
+    if (rawContactoId) {
+      /* 
+      
+      
+      - rawContactoId.replace("web+micontacto://", "").replace("/", "")
+          Sin embargo, como lo que se necesita es el valor del "id", es necesario reemplazar la parte de la URL que no se necesita con espacios vacíos, de tal manera que se obtenga únicamente el "id". }}. Esto se consigue mediante los métodos:  */
+      const contactoId = rawContactoId
+
+        .replace("web+micontacto://", "")
+        .replace("/", "");
+      document.getElementById("contact-id").textContent = `ID: ${contactoId}`;
+      console.log(contactoId);
+
+      /* Acá se comprueba el valor del "id". No se aplicó igualdad estricta (===), porque el parámetro no es un número, sino una cadena de texto. */
+      if (contactoId == 100) {
+        /*  Se modifica el valor del elemento que tiene asignada la clase "contact-info".*/
+        document.getElementById(
+          "contact-info"
+        ).textContent = `Nombre: Andrei Arriaza`;
+      } else if (contactoId == 200) {
+        document.getElementById(
+          "contact-info"
+        ).textContent = `Nombre: Bobby Fischer`;
+      }
+    }
+  </script>
+
+  <footer>
+    <nav>
+      <a href="https://www.youtube.com/watch?v=xfHjALkNt0U&t=1s&ab_channel=OrquestaSinf%C3%B3nicadeMiner%C3%ADa"
+        target="_blank" title="YouTube">
+        <i class="fab fa-youtube"></i>
+      </a>
+      <a href="https://facebook.com/programadorfitness" target="_blank" title="Facebook">
+        <i class="fa-brands fa-facebook"></i>
+      </a>
+      <a href="https://www.instagram.com/explore/tags/ProgramadorFitness/" target="_blank" title="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </nav>
+  </footer>
+</body>
+
 </html>
