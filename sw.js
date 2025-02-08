@@ -58,13 +58,13 @@ const CACHE_NAME = "v1_chess_mate_club",
     "./index.html",
 
     /* Se agrega la página web "mates"*/
-    "./mates/mates.html",
+    "./mates/",
     /* Se agrega la página web "libros"*/
-    "./libros/libros.html",
+    "./libros/",
     /* Se agrega la página web "aperturas"*/
-    "./aperturas/aperturas.html",
+    "./aperturas/",
     /* Se agrega la página web "contacto"*/
-    "./contacto/contacto.html",
+    "./contacto/",
     /* Carga las fuentes de Google Fonts. */
     "https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap",
     /* Kit de Font Awesome Icons */
