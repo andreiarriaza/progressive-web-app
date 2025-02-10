@@ -124,9 +124,10 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
 */
 
 
+
     Estructura del archivo "manifest.json":
 
-              {
+            {
 
 
             "id": "https://andreiarriaza.github.io/progressive-web-app",
@@ -196,22 +197,25 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
                                                       Permite cualquier orientación vertical. Si el usuario gira el
                                                       dispositivo al revés, la pantalla también rotará
 
-                                            portrait-primary: Indica que la orientación retrato
-                                                              principal es la que debe ser utilizada.
-                                                              En la mayoría de los dispositivos,
-                                                              esto es equivalente a portrait.
+                                            portrait-primary: La aplicación se abrirá en modo retrato en su orientación
+                                                              principal. Sin embargo, puede cambiar a portrait-secondary si el usuario
+                                                              gira el dispositivo 180 grados.
 
                                             portrait-secondary: Indica que la orientación retrato
                                                                 secundaria (invertida) debe ser
                                                                 utilizada. Esto es menos común y
                                                                 generalmente se refiere a girar el dispositivo 180 grados.
 
-                                            landscape: La aplicación se mostrará en modo horizontal
-                                                       (paisaje). Esto es útil para aplicaciones de video, juegos y otras aplicaciones que se benefician de una pantalla más ancha.
+                                            landscape:  La aplicación se mostrará en modo horizontal (paisaje).
+                                                        Permite cualquier orientación horizontal (landscape-primary o landscape-secondary).
+                                                        Es útil para aplicaciones de video, juegos y herramientas que requieren una pantalla más ancha..
 
-                                            landscape-primary: Indica que la orientación paisaje
-                                                               principal debe ser utilizada. La aplicación se abrirá en modo paisaje,
-                                                               pero permitirá girar la pantalla.
+                                            landscape-primary: La aplicación se abrirá en modo paisaje en su orientación principal.
+                                                               Sin embargo, si el usuario gira el dispositivo, puede cambiar a landscape-secondary.
+
+                                            landscape-secondary: La aplicación se abrirá en modo paisaje,
+                                                                 pero en su orientación secundaria (invertida 180 grados).
+                                                                 Es útil para dispositivos que tienen un lado preferido para sostener en horizontal.
 
                                             )
 
@@ -282,7 +286,7 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
                                           ver con los recursos que se guardarán en caché para su uso offline. En este caso, se agregaron aquí los favicons,
                                           porque son las imágenes que se desea se muestren como ícono de la aplicación.
               {
-                "src": "../assets/img/icon-1024x1024",   (IMPORTANTE:  esta tamaño no es necesario para
+                "src": "./assets/img/icon-1024x1024",   (IMPORTANTE:  esta tamaño no es necesario para
                                                   favicon, pero sí para PWA (Progressive Web App).
                                                   Los dispositivos modernos, como smartphones y tablets, a menudo cuentan con pantallas de alta
                                                   densidad de píxeles (como Retina en dispositivos Apple). Un ícono de 1024x1024 px se verá
@@ -291,47 +295,47 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
                 "type": "image/png"
               },
               {
-                "src": "../assets/img/favicon-512x512.png",
+                "src": "./assets/img/favicon-512x512.png",
                 "sizes": "512x512",
                 "type": "image/png"
               },
               {
-                "src": "../assets/img/favicon-384x384.png",
+                "src": "./assets/img/favicon-384x384.png",
                 "sizes": "384x384",
                 "type": "image/png"
               },
               {
-                "src": "../assets/img/favicon-256x256.png",
+                "src": "./assets/img/favicon-256x256.png",
                 "sizes": "256x256",
                 "type": "image/png"
               },
               {
-                "src": "../assets/img/favicon-144x144.png",
+                "src": "./assets/img/favicon-144x144.png",
                 "sizes": "144X144",
                 "type": "image/png"
               },
               {
-                "src": "../assets/img/favicon-120x120.png",
+                "src": "./assets/img/favicon-120x120.png",
                 "sizes": "120x120",
                 "type": "image/png"
               },
               {
-                "src": "../assets/img/favicon-96x96.png",
+                "src": "./assets/img/favicon-96x96.png",
                 "sizes": "96x96",
                 "type": "image/png"
               },
               {
-                "src": "../assets/img/favicon-64x64.png",
+                "src": "./assets/img/favicon-64x64.png",
                 "sizes": "64x64",
                 "type": "image/png"
               },
               {
-                "src": "../assets/img/favicon-32x32.png",
+                "src": "./assets/img/favicon-32x32.png",
                 "sizes": "32x32",
                 "type": "image/png"
               },
               {
-                "src": "../assets/img/favicon-16x16.png",
+                "src": "./assets/img/favicon-16x16.png",
                 "sizes": "16x16",
                 "type": "image/png"
               }
@@ -401,7 +405,7 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
 
 
               {
-                "src": "assets/img/screenshot-wide-2560x1440",
+                "src": "./assets/img/screenshot-wide-2560x1440",
                 "sizes": "2560x1440",
                 "type": "image/png",
                 "form_factor": "wide"    (El atributo "form_factor" en el "manifest.json" de una Progressive Web App (PWA) especifica el tipo de dispositivo en el
@@ -427,25 +431,25 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
                                                   Uso: Pantallas de teléfonos móviles más antiguos, tablets y dispositivos con pantallas más pequeñas.                              )
               },
               {
-                "src": "assets/img/screenshot-wide-1920x1080",
+                "src": "./assets/img/screenshot-wide-1920x1080",
                 "sizes": "1920x1080",
                 "type": "image/png",
                 "form_factor": "wide"
               },
               {
-                "src": "assets/img/screenshot-wide-1600x900",
+                "src": "./assets/img/screenshot-wide-1600x900",
                 "sizes": "1600x900",
                 "type": "image/png",
                 "form_factor": "wide"
               },
               {
-                "src": "assets/img/screenshot-wide-1280x720",
+                "src": "./assets/img/screenshot-wide-1280x720",
                 "sizes": "1280x720",
                 "type": "image/png",
                 "form_factor": "wide"
               },
               {
-                "src": "assets/img/screenshot-portrait-483X997.png",
+                "src": "./assets/img/screenshot-portrait-483X997.png",
                 "sizes": "483x997",
                 "type": "image/png",
                 "form_factor": "narrow"
@@ -463,19 +467,19 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
 
               },
               {
-                "src": "assets/img/screenshot-portrait-1440x2560.png",
+                "src": "./assets/img/screenshot-portrait-1440x2560.png",
                 "sizes": "1440x2560",
                 "type": "image/png",
                 "form_factor": "narrow"
               },
               {
-                "src": "assets/img/screenshots-portrait-1080x1920.png",
+                "src": "./assets/img/screenshots-portrait-1080x1920.png",
                 "sizes": "1080x1920",
                 "type": "image/png",
                 "form_factor": "narrow"
               },
                {
-                "src": "assets/img/screenshots-portrait-768x1366.png",
+                "src": "./assets/img/screenshots-portrait-768x1366.png",
                 "sizes": "720x1280",
                 "type": "image/png",
                 "form_factor": "narrow"
@@ -497,11 +501,19 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
                                                 - Integrar servicios web en el navegador: Por ejemplo, puedes registrar tu PWA como manejador para abrir enlaces específicos desde otro sitio web o aplicación.)
 
 
-              "url": "http://127.0.0.1:5500/nosotros.html?data=%s"    (IMPORTANTE: si se sube este sitio web a un Hosting, es imperativo cambiar
+              "url": "http://127.0.0.1:5500/contacto/?data=%s"    (IMPORTANTE: si se sube este sitio web a un Hosting, es imperativo cambiar
                                                                       la URL: http://127.0.0.1:5500 por la URL del dominio en el que se cargó el sitio web, de lo contrario se generará un error porque dicho link está fuera del ámbito de la Progressive Web App. )
             }
           ]
         }
+
+
+
+
+
+
+
+
 
 
              (El campo screenshots en el manifest.json de una Progressive Web App (PWA) se utiliza para
