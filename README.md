@@ -251,6 +251,14 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
                                                                 aplicación como PWA en herramientas de
                                                                 analítica (como Google Analytics).)
 
+                                                              🔍 Ventajas de usar utm_source en start_url
+                                                                - Rastreo en Google Analytics: Permite diferenciar el tráfico que proviene de la PWA
+                                                                  instalada respecto a otros accesos (como desde el navegador).
+                                                                - Mejora el análisis de usuarios: Puedes ver cuántos usuarios realmente usan la PWA
+                                                                  como una "app" en comparación con los que la visitan directamente desde la web.
+                                                                - Segmentación de datos: Puedes filtrar sesiones en Google Analytics para analizar
+                                                                  solo los usuarios que abren la app desde la pantalla de inicio.
+
                                                                 Página de inicio: Cuando un usuario instala tu PWA y la abre desde la pantalla de inicio (por ejemplo, en un dispositivo móvil), la aplicación se abrirá en la URL definida por start_url.
 
                                                                 Control de navegación: Permite a los desarrolladores dirigir a los usuarios a la página que mejor representa la aplicación o que debe ser la primera vista de la misma.
