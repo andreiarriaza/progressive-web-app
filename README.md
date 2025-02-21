@@ -127,18 +127,18 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
 
     Estructura del archivo "manifest.json":
 
-            {
+        {
 
 
             "id": "https://andreiarriaza.github.io/progressive-web-app",
                       Es un identificador único para la PWA que ayuda al navegador a reconocer y asociar datos específicos con esa aplicación. Actúa como su "nombre interno" único para diferenciarla de otras aplicaciones.
 
                       ¿Por qué no debería incluir una barra (/) al final del id?
-                        Aunque técnicamente puedes incluirla, no es necesario ni recomendado. Los navegadores prefieren valores sin barra al final si el dominio ya apunta a la raíz. Por ejemplo, asginar en el "id" la ruta (con diagonal al final): https://andreiarriaza.github.io/progressive-web-app/ podría ser reconocido como un error por algunos navegadores, por lo que se recomienda no incluirla.
+                        Aunque técnicamente puedes incluirla, no es necesario ni recomendado. Los navegadores prefieren valores sin barra al final si el dominio ya apunta a la raíz. Por ejemplo, asignar en el "id" la ruta (con diagonal al final): https://andreiarriaza.github.io/progressive-web-app/ podría ser reconocido como un error por algunos navegadores, por lo que se recomienda no incluirla.
 
                       Para qué sirve:
                         - Identificación única: Permite que el navegador distinga entre diferentes PWAs, incluso si comparten el mismo start_url.
-                        - Gestión de instalaciones: Cuando instalas una PWA, el navegador usa este id para rastrear configuraciones o datosespecíficos de esa aplicación.
+                        - Gestión de instalaciones: Cuando instalas una PWA, el navegador usa este id para rastrear configuraciones o datos específicos de esa aplicación.
                         - Compatibilidad futura: Aunque su uso es limitado actualmente, se está convirtiendo en una práctica recomendada para PWAs modernas para garantizar un comportamiento más predecible en plataformas y actualizaciones.
 
 
@@ -154,8 +154,7 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
                                             Se utiliza cuando hay poco espacio para mostrar
                                             el nombre, como en la pantalla de inicio o en la
                                             barra de aplicaciones. Se recomienda que el nombre corto sea breve y fácilmente reconocible.
-                                            Para el atributo short_name en el archivo manifest.json, se recomienda limitarlo a entre 12 y 15
-                                            caracteres.
+                                            Para el atributo short_name en el archivo manifest.json, se recomienda limitarlo a un número máximo de 15 caracteres.
                                             Este nombre abreviado se utiliza cuando hay restricciones de espacio, como en:
                                                 - Íconos en la pantalla de inicio: Especialmente en dispositivos móviles, donde el nombre de la
                                                   aplicación aparece debajo del ícono y el espacio es muy limitado.
@@ -208,7 +207,7 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
 
                                             landscape:  La aplicación se mostrará en modo horizontal (paisaje).
                                                         Permite cualquier orientación horizontal (landscape-primary o landscape-secondary).
-                                                        Es útil para aplicaciones de video, juegos y herramientas que requieren una pantalla más ancha..
+                                                        Es útil para aplicaciones de video, juegos y herramientas que requieren una pantalla más ancha.
 
                                             landscape-primary: La aplicación se abrirá en modo paisaje en su orientación principal.
                                                                Sin embargo, si el usuario gira el dispositivo, puede cambiar a landscape-secondary.
@@ -251,13 +250,13 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
                                                                 aplicación como PWA en herramientas de
                                                                 analítica (como Google Analytics).)
 
-                                                              🔍 Ventajas de usar utm_source en start_url
-                                                                - Rastreo en Google Analytics: Permite diferenciar el tráfico que proviene de la PWA
-                                                                  instalada respecto a otros accesos (como desde el navegador).
-                                                                - Mejora el análisis de usuarios: Puedes ver cuántos usuarios realmente usan la PWA
-                                                                  como una "app" en comparación con los que la visitan directamente desde la web.
-                                                                - Segmentación de datos: Puedes filtrar sesiones en Google Analytics para analizar
-                                                                  solo los usuarios que abren la app desde la pantalla de inicio.
+                                                                🔍 Ventajas de usar utm_source en start_url
+                                                                  - Rastreo en Google Analytics: Permite diferenciar el tráfico que proviene de la PWA
+                                                                    instalada respecto a otros accesos (como desde el navegador).
+                                                                  - Mejora el análisis de usuarios: Puedes ver cuántos usuarios realmente usan la PWA
+                                                                    como una "app" en comparación con los que la visitan directamente desde la web.
+                                                                  - Segmentación de datos: Puedes filtrar sesiones en Google Analytics para analizar
+                                                                    solo los usuarios que abren la app desde la pantalla de inicio.
 
                                                                 Página de inicio: Cuando un usuario instala tu PWA y la abre desde la pantalla de inicio (por ejemplo, en un dispositivo móvil), la aplicación se abrirá en la URL definida por start_url.
 
@@ -378,8 +377,8 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
 
 
                     Por ejemplo:
-                            Si tienes imágenes con un form_factor de "wide", todas deben tener una relación de aspecto idéntica,
-                            como 16:9. Lo mismo ocurre con el form_factor "narrow"; las imágenes dentro de esa categoría deben tener la misma relación de aspecto,
+                            Si tienes imágenes con un form_factor de "wide", todas deben tener una relación de aspecto idéntica (por ejemplo, 16:9).
+                            Lo mismo ocurre con el form_factor "narrow"; las imágenes dentro de esa categoría deben tener la misma relación de aspecto,
                             es decir, 9:16 (la relación de aspecto de "wide" invertida).
 
                   Los siguientes tamaños, tiene todos una relación de aspecto de 16:9:
@@ -407,7 +406,7 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
                        instalar la aplicación desde su navegador.
 
                     5. Diferenciación en la Tienda de Aplicaciones: Si la PWA se presenta en una tienda de
-                       aplicaciones, las capturas de pantalla pueden ayudar a diferenciarla de otras aplicaciones, atrayendo así más usuarios.)
+                       aplicaciones, las capturas de pantalla pueden ayudar a diferenciarla de otras aplicaciones, atrayendo así más usuarios).
 
                   )
 
@@ -505,7 +504,7 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
                                               La propiedad "protocol_handlers" permite a los usuarios abrir tu aplicación directamente desde enlaces externos con un esquema específico, proporcionando una experiencia más integrada y conectada. Es especialmente útil para:
                                                 - Registrar tu aplicación como manejador de correos electrónicos o mensajería:
                                                 - Permite que tu PWA maneje enlaces como mailto: (correos electrónicos) o tel: (llamadas telefónicas).
-                                                - Soporte para protocolos personalizados: Puedes crear y manejar esquemas personalizados como web+miapp: para interactuar con tu aplicación de manera específica.
+                                                - Soporte para protocolos personalizados: Puedes crear y manejar esquemas personalizados como web+miapp: para interactuar con tu aplicación de manera específica. Por ejemplo: definir el protocolo "web+notas" para una Progressive Web App tipo "Notion".
                                                 - Integrar servicios web en el navegador: Por ejemplo, puedes registrar tu PWA como manejador para abrir enlaces específicos desde otro sitio web o aplicación.)
 
 
@@ -518,44 +517,6 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
 
 
 
-
-
-
-
-
-
-             (El campo screenshots en el manifest.json de una Progressive Web App (PWA) se utiliza para
-          proporcionar imágenes que muestran cómo se ve la aplicación en diferentes contextos. Estas
-          capturas de pantalla son especialmente útiles para las siguientes razones:
-
-            1. Una de las imágenes asignadas aquí, será la que se mostrará cuando se inicie la instalación de la Progressive Web App, junto con el
-               título y la descrición de la Progressive Web App que se definieron en el archivo "manifest.json".
-            2. Mejorar la Presentación de la PWA: Las capturas de pantalla ayudan a los usuarios a tener una idea visual de la experiencia de usuario que ofrece la PWA. Esto puede aumentar la tasa de instalación al mostrar la interfaz atractiva y funcional de la aplicación.
-
-            3. Reforzar la Identidad de la Aplicación: Al incluir capturas de pantalla que reflejan la
-            apariencia y las características de la aplicación, se puede ayudar a construir una identidad
-            visual más fuerte y consistente.
-
-            4. Aumentar la Confianza del Usuario: Mostrar cómo se verá la aplicación una vez instalada
-            puede ayudar a generar confianza en los usuarios, especialmente si están considerando
-            instalar la aplicación desde su navegador.
-
-            5. Diferenciación en la Tienda de Aplicaciones: Si la PWA se presenta en una tienda de
-            aplicaciones, las capturas de pantalla pueden ayudar a diferenciarla de otras aplicaciones, atrayendo así más usuarios.)
-
-
-
-            "screenshots": [
-            {
-              "src": "../assets/img/screenshot-1200X800.png",
-              "sizes": "1200x800",
-              "type": "image/png"
-            }
-          ]
-
-
-
-          }
 
 
 

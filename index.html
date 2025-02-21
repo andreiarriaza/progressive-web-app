@@ -466,7 +466,7 @@
 
 ¿Qué debe Íconos debe incluir el manifest.json?
 
-Se debe tomar en cuenta que dentro del manifest.json, en la propiedad "icons" solamente se deben incluir las imágenes que servirán para la instalación de la Progressive Web App. En este caso, se agregaron los "favicon" porque se desea que esas imágenes use la Progressive Web App al instalarse y agregarse a la lista de aplicaciones. Ahora bien, esto solo tiene que ver con la instalación de la progressive web app, pues todo lo referente al contenido que se agregará al caché, esto se administra en el ServiceWorker (sw.js). Esto quiere decir que el que se hayan agregado algunos favicons en el manifest esto no hará que se muestren offline, pues el único que el contenido que se mostrará offline, es el que se encuentra agregado en el Service Worker (sw.js).
+Se debe tomar en cuenta que dentro del manifest.json, en la propiedad "icons" solamente se deben incluir las imágenes que servirán para la instalación de la Progressive Web App; en este caso, se agregaron los "favicon" porque se desea que esas imágenes use la Progressive Web App al instalarse y agregarse a la lista de aplicaciones. Ahora bien, esto solo tiene que ver con la instalación de la progressive web app, pues todo lo referente al contenido que se agregará al caché, esto se administra en el ServiceWorker (sw.js). Esto quiere decir que el que se hayan agregado algunos favicons en el manifest esto no hará que se muestren offline, pues el único que el contenido que se mostrará offline, es el que se encuentra agregado en el Service Worker (sw.js).
 
 El manifest.json funciona tanto en Windows como en Apple, pero el soporte varía según la plataforma y el navegador:
 
@@ -510,11 +510,11 @@ Sí, el "manifest.json" funciona tanto en Windows como en Apple, pero el soporte
                       Es un identificador único para la PWA que ayuda al navegador a reconocer y asociar datos específicos con esa aplicación. Actúa como su "nombre interno" único para diferenciarla de otras aplicaciones.
 
                       ¿Por qué no debería incluir una barra (/) al final del id?
-                        Aunque técnicamente puedes incluirla, no es necesario ni recomendado. Los navegadores prefieren valores sin barra al final si el dominio ya apunta a la raíz. Por ejemplo, asginar en el "id" la ruta (con diagonal al final): https://andreiarriaza.github.io/progressive-web-app/ podría ser reconocido como un error por algunos navegadores, por lo que se recomienda no incluirla.
+                        Aunque técnicamente puedes incluirla, no es necesario ni recomendado. Los navegadores prefieren valores sin barra al final si el dominio ya apunta a la raíz. Por ejemplo, asignar en el "id" la ruta (con diagonal al final): https://andreiarriaza.github.io/progressive-web-app/ podría ser reconocido como un error por algunos navegadores, por lo que se recomienda no incluirla.
 
                       Para qué sirve: 
                         - Identificación única: Permite que el navegador distinga entre diferentes PWAs, incluso si comparten el mismo start_url.
-                        - Gestión de instalaciones: Cuando instalas una PWA, el navegador usa este id para rastrear configuraciones o datosespecíficos de esa aplicación.
+                        - Gestión de instalaciones: Cuando instalas una PWA, el navegador usa este id para rastrear configuraciones o datos específicos de esa aplicación.
                         - Compatibilidad futura: Aunque su uso es limitado actualmente, se está convirtiendo en una práctica recomendada para PWAs modernas para garantizar un comportamiento más predecible en plataformas y actualizaciones.
 
 
@@ -530,8 +530,7 @@ Sí, el "manifest.json" funciona tanto en Windows como en Apple, pero el soporte
                                             Se utiliza cuando hay poco espacio para mostrar 
                                             el nombre, como en la pantalla de inicio o en la 
                                             barra de aplicaciones. Se recomienda que el nombre corto sea breve y fácilmente reconocible.
-                                            Para el atributo short_name en el archivo manifest.json, se recomienda limitarlo a entre 12 y 15 
-                                            caracteres. 
+                                            Para el atributo short_name en el archivo manifest.json, se recomienda limitarlo a un número máximo de 15 caracteres. 
                                             Este nombre abreviado se utiliza cuando hay restricciones de espacio, como en:
                                                 - Íconos en la pantalla de inicio: Especialmente en dispositivos móviles, donde el nombre de la 
                                                   aplicación aparece debajo del ícono y el espacio es muy limitado.
@@ -881,7 +880,7 @@ Sí, el "manifest.json" funciona tanto en Windows como en Apple, pero el soporte
                                               La propiedad "protocol_handlers" permite a los usuarios abrir tu aplicación directamente desde enlaces externos con un esquema específico, proporcionando una experiencia más integrada y conectada. Es especialmente útil para:
                                                 - Registrar tu aplicación como manejador de correos electrónicos o mensajería:
                                                 - Permite que tu PWA maneje enlaces como mailto: (correos electrónicos) o tel: (llamadas telefónicas).
-                                                - Soporte para protocolos personalizados: Puedes crear y manejar esquemas personalizados como web+miapp: para interactuar con tu aplicación de manera específica.
+                                                - Soporte para protocolos personalizados: Puedes crear y manejar esquemas personalizados como web+miapp: para interactuar con tu aplicación de manera específica. Por ejemplo: definir el protocolo "web+notas" para una Progressive Web App tipo "Notion".
                                                 - Integrar servicios web en el navegador: Por ejemplo, puedes registrar tu PWA como manejador para abrir enlaces específicos desde otro sitio web o aplicación.)
 
               
