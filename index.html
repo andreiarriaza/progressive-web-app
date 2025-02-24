@@ -906,6 +906,27 @@ Sí, el "manifest.json" funciona tanto en Windows como en Apple, pero el soporte
      2. Navegar hasta el menú "Application" (Aplicación).
      3. Ya debería aparecer los datos del "manifest.json". Si hubiese algún error,
         acá se mostrará.-->
+
+  <!--  
+
+      *********** Para que la Proggressive Web App y el envío del Protocol Handler funcionen OFFLINE ***********
+
+        IMPORTANTE: cuando la progressive web app se instala en una computadora, se abre automáticamente; sin embargo, es imprescindible cerrar la 
+        ventana que se abrió y abrirla nuevamente, pues de esta manera se asegura que se carguen en caché todos los recursos de la progressive web app para su 
+        funcionamiento offline. 
+
+        No es necesario abrir todas las páginas que conforman la progressive web app, solo es imprescindible que se abran las siguientes: 
+          1. index.html (el index principal): pues este invoca el service worker que se encargará de agregar todos los recursos al caché. 
+          2. Realizar el envío del protocol handler (si la progressive web app tuviera un protocol handler, de lo contrario no. En este caso, se ejecuta 
+            el protocol handler que está en el "index" principal dando clic en el vínculo "Ver contacto: 200 (por medio de protocol_handler)"): 
+                Es necesario realizar este procedimiento, para que se almacene en caché el contenido de la página "contacto", la cual recibe el protocol handler. 
+
+          No es necesario abrir ninguna otra página además de las mencionadas arriba. 
+
+
+        Es importante señalar que el Protocol Handler visto en este ejemplo NO FUNCIONA EN DISPOSITIVOS MÓVILES, solamente en computadoras.
+  
+    -->
   <link rel="manifest" href="manifest.json" />
 
   <!-- Fuente de Google Fonts -->
@@ -969,6 +990,24 @@ Sí, el "manifest.json" funciona tanto en Windows como en Apple, pero el soporte
       jaque mates y medio juego.
     </p>
 
+
+    <!--   
+
+      *********** Para que la Proggressive Web App y el envío del Protocol Handler funcionen OFFLINE ***********
+
+        IMPORTANTE: cuando la progressive web app se instala en una computadora, se abre automáticamente; sin embargo, es imprescindible cerrar la 
+        ventana que se abrió y abrirla nuevamente, pues de esta manera se asegura que se carguen en caché todos los recursos de la progressive web app para su 
+        funcionamiento offline. 
+
+        No es necesario abrir todas las páginas que conforman la progressive web app, solo es imprescindible que se abran las siguientes: 
+          1. index.html (el index principal): pues este invoca el service worker que se encargará de agregar todos los recursos al caché. 
+          2. Realizar el envío del protocol handler (si la progressive web app tuviera un protocol handler, de lo contrario no. En este caso, se ejecuta 
+            el protocol handler que está en el "index" principal dando clic en el vínculo "Ver contacto: 200 (por medio de protocol_handler)"): 
+                Es necesario realizar este procedimiento, para que se almacene en caché el contenido de la página "contacto", la cual recibe el protocol handler. 
+
+          No es necesario abrir ninguna otra página además de las mencionadas arriba. 
+
+    -->
     <!-- 
 
        Protocol Handlers (Manejadores de Protocolo): 
@@ -1088,8 +1127,8 @@ Definición del protocolo en el manifest.json:
         -->
 
     <!-- Este vínculo funciona exclusivamente cuando se ha instalado 
-       el sitio web comuna ProgressiveWebApp en el dispostivo. Lo que hace es que al dar clic en él redirigirá al usuario hacia la progressive 
-       web app cuando se abre en ambiente Windows. -->
+       el sitio web com una Progressive Web App en una computadora (es necesario dar clic en este vínculo por lo menos una vez cuando la Progressive 
+       Web App esté ONLINE para que pueda funcionar después OFFLINE) -->
 
     <a href="web+micontacto://200">Ver contacto: 200
       <small>(por medio de <b>protocol_handler</b>)</small></a>

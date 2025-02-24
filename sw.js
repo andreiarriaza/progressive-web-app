@@ -1,3 +1,23 @@
+/* 
+
+*********** Para que la Proggressive Web App y el envío del Protocol Handler funcionen OFFLINE ***********
+
+  IMPORTANTE: cuando la progressive web app se instala en una computadora, se abre automáticamente; sin embargo, es imprescindible cerrar la 
+  ventana que se abrió y abrirla nuevamente, pues de esta manera se asegura que se carguen en caché todos los recursos de la progressive web app para su 
+  funcionamiento offline. 
+
+  No es necesario abrir todas las páginas que conforman la progressive web app, solo es imprescindible que se abran las siguientes: 
+    1. index.html (el index principal): pues este invoca el service worker que se encargará de agregar todos los recursos al caché. 
+    2. Realizar el envío del protocol handler (si la progressive web app tuviera un protocol handler, de lo contrario no. En este caso, se ejecuta 
+      el protocol handler que está en el "index" principal dando clic en el vínculo "Ver contacto: 200 (por medio de protocol_handler)"): 
+          Es necesario realizar este procedimiento, para que se almacene en caché el contenido de la página "contacto", la cual recibe el protocol handler. 
+
+    No es necesario abrir ninguna otra página además de las mencionadas arriba. 
+
+
+  Es importante señalar que el Protocol Handler visto en este ejemplo NO FUNCIONA EN DISPOSITIVOS MÓVILES, solamente en computadoras.
+  
+*/
 /* IMPORTANTE: para corroborar que, después de agregar todo el código de este archivo, el ServiceWorker fue detectado correctamente, se deben seguir los siguientes pasos: 
 
 
