@@ -75,9 +75,9 @@ const CACHE_NAME = "v1_chess_mate_club",
     "./aperturas/assets/css/aperturas.css",
     "./libros/assets/css/libros.css",
     "./mates/assets/css/mates.css",
+    "./contacto/assets/css/contacto.css",
 
     /* Hoja Externa de JavaScript. */
-    "./contacto/assets/js/protocol-handler.js",
 
     /* Imágenes del sitio web */
     "./assets/img/ProgramadorFitness.png",
@@ -372,10 +372,7 @@ self.addEventListener("fetch", (e) => {
                       Se valida que la URL sea segura (https://).
               
               */
-              if (
-                e.request.method === "GET" &&
-                e.request.url.startsWith("https://")
-              ) {
+              if (e.request.method === "GET") {
                 /* caches.open(CACHE_NAME):
                   Abre (o crea, si no existe) un caché con el nombre definido por la constante CACHE_NAME.
               */
