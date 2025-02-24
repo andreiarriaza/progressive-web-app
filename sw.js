@@ -16,7 +16,7 @@
 
 
   Es importante señalar que el Protocol Handler visto en este ejemplo NO FUNCIONA EN DISPOSITIVOS MÓVILES, solamente en computadoras.
-  
+
 */
 /* IMPORTANTE: para corroborar que, después de agregar todo el código de este archivo, el ServiceWorker fue detectado correctamente, se deben seguir los siguientes pasos: 
 
@@ -393,7 +393,12 @@ self.addEventListener("fetch", (e) => {
                       Se valida que la URL sea segura (https://).
               
               */
-              if (e.request.method === "GET") {
+              if (
+                e.request.method === "GET" &&
+                !e.request.url.startsWith("chrome-extension://") &&
+                (e.request.url.startsWith("https://") ||
+                  e.request.url.startsWith("web+miapp://")) // o el esquema que uses
+              ) {
                 /* caches.open(CACHE_NAME):
                   Abre (o crea, si no existe) un caché con el nombre definido por la constante CACHE_NAME.
               */
