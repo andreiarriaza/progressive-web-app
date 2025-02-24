@@ -394,6 +394,26 @@ self.addEventListener("fetch", (e) => {
               
               */
               if (
+                /* 
+                e.request.method === "GET":
+
+                  Se asegura de solo interceptar y cachear peticiones HTTP de tipo GET (las que normalmente solicitan recursos).
+                  Peticiones POST, PUT, DELETE, etc., quedan fuera.
+
+                !e.request.url.startsWith("chrome-extension://")
+                  El signo ! significa negación.
+                  e.request.url.startsWith("chrome-extension://") verifica si la URL inicia con chrome-extension://.
+                  Anteponiendo ! indica que no queremos que inicie con ese esquema.
+                  Esto se hace porque los navegadores no permiten cachear recursos con el esquema chrome-extension://, lo que podría provocar conflictos si algun 
+                  plugin del navegador hiciera peticiones; como los plugin para bloqueo de publicidad (AdBlocker), de SEO, o algún otro plugin instalado en el navegador.  
+
+                (e.request.url.startsWith("https://") || e.request.url.startsWith("web+miapp://"))
+
+                  El operador || significa "o" lógico.
+                  Se cumple esta parte si la URL empieza con https:// o si empieza con web+miapp:// (tu protocolo personalizado).
+                  Permite cachear tanto las URLs HTTPS de tu sitio como tu protocolo handler (web+miapp://).
+
+                */
                 e.request.method === "GET" &&
                 !e.request.url.startsWith("chrome-extension://") &&
                 (e.request.url.startsWith("https://") ||
