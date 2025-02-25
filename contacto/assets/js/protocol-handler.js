@@ -5,7 +5,7 @@
 
         IMPORTANTE: cuando la progressive web app se instala en una computadora, se abre automáticamente; sin embargo, es imprescindible cerrar la 
         ventana que se abrió y abrirla nuevamente, pues de esta manera se asegura que se carguen en caché todos los recursos de la progressive web app para su 
-        funcionamiento offline. 
+        funcionamiento offline. Cuando se abre en dispositivos móviles, también es necesario abrirla por lo menos una vez ONLINE para poder luego visualizarla OFFLINE.
 
         No es necesario abrir todas las páginas que conforman la progressive web app, solo es imprescindible que se abran las siguientes: 
           1. index.html (el index principal): pues este invoca el service worker que se encargará de agregar todos los recursos al caché. 
@@ -137,31 +137,31 @@
          */
 
 /* 
-        - URLSearchParams: Esta clase permite trabajar con los parámetros de la URL, en este caso, los que 
-                vienen después del signo ?. 
+    - URLSearchParams: Esta clase permite trabajar con los parámetros de la URL, en este caso, los que 
+      vienen después del signo ?. 
         
-        - window.location.search: Obtiene la parte de la URL que contiene los parámetros (lo que está   
-          después del ?).
-    
-        
-        */
+    - window.location.search: Obtiene la parte de la URL que contiene los parámetros (lo que está   
+      después del ?).
 
+*/
 const urlParams = new URLSearchParams(window.location.search);
-/* - urlParams.get("id"): Extrae el valor del parámetro id de la URL (por ejemplo, si la URL es ?id=web+micontacto://100/, entonces rawContactoId contendría web+micontacto://100/). 
-    
-         */
+/* - urlParams.get("id"): Extrae el valor del parámetro id de la URL (por ejemplo, si la URL es ?id=web+micontacto://100/, entonces rawContactoId contendría web+micontacto://100/). */
 const rawContactoId = urlParams.get("id");
+
 /* El if (rawContactoId) comprueba si hay algún valor en el parámetro id. Si lo hay, procede a procesarlo. */
 if (rawContactoId) {
-  /* 
-          
-          
-          - rawContactoId.replace("web+micontacto://", "").replace("/", "")
-              Sin embargo, como lo que se necesita es el valor del "id", es necesario reemplazar la parte de la URL que no se necesita con espacios vacíos, de tal manera que se obtenga únicamente el "id". }}. Esto se consigue mediante los métodos:  */
+  /*
+  - rawContactoId.replace("web+micontacto://", "").replace("/", "")
+    Con estas dos llamadas a .replace(), se elimina la parte de la URL
+    ("web+micontacto://") y la diagonal ("/") para obtener únicamente el "id".
+    Básicamente, se sustituye cada una de esas cadenas por una cadena vacía.
+    Se debe recordar que la variable "rawContactoId" contendrá, por ejemplo, un valor como el siguiente: web+micontacto://100/
+*/
   const contactoId = rawContactoId
 
     .replace("web+micontacto://", "")
     .replace("/", "");
+
   document.getElementById("contact-id").textContent = `ID: ${contactoId}`;
   console.log(contactoId);
 
