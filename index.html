@@ -733,7 +733,7 @@ Sí, el "manifest.json" funciona tanto en Windows como en Apple, pero el soporte
                         Resolución recomendada:
                             Aunque no hay una resolución estricta, Google recomienda un tamaño mínimo de 320 x 320 píxeles 
                             y un tamaño máximo de 3840 x 3840 píxeles. Es ideal que las capturas tengan la misma relación de aspecto 
-                            que tu aplicación para representar mejor la experiencia de usuario.
+                            que la aplicación para representar mejor la experiencia de usuario.
               
                         Formato:
                             Las imágenes deben estar en formato PNG, JPEG, y WebP.
@@ -760,6 +760,7 @@ Sí, el "manifest.json" funciona tanto en Windows como en Apple, pero el soporte
                   Los siguientes tamaños, tiene todos una relación de aspecto de 16:9:
                       - 2560X1440
                       - 1920X1080
+                      - 1600x900
                       - 1280X720
                   
                   El campo screenshots en el manifest.json de una Progressive Web App (PWA) se utiliza para
@@ -825,6 +826,7 @@ Sí, el "manifest.json" funciona tanto en Windows como en Apple, pero el soporte
                 "type": "image/png",
                 "form_factor": "wide"
               },
+
               {
                 "src": "./assets/img/screenshot-wide-1280x720",
                 "sizes": "1280x720",
@@ -832,41 +834,39 @@ Sí, el "manifest.json" funciona tanto en Windows como en Apple, pero el soporte
                 "form_factor": "wide"
               },
               {
-                "src": "./assets/img/screenshot-portrait-483X997.png",
-                "sizes": "483x997",
-                "type": "image/png",
-                "form_factor": "narrow"
+              "src": "./assets/img/screenshot-portrait-1440X2560.png",
+              "sizes": "1440x2560",
+              "type": "image/png",
+              "form_factor": "narrow"
 
                                             Tamaños recomendados para narrow (9:16):
-                                                - 1440x2560 px — Relación de aspecto 9:16 (Quad HD)
-                                                     Uso: Este tamaño es ideal para teléfonos de gama alta con pantallas de resolución más alta, 
-                                                     como dispositivos Android más nuevos y modelos de iPhone de última generación. También es una buena 
-                                                     opción para tabletas de mayor resolución.
-                                                - 1080x1920 px — Relación de aspecto 9:16
-                                                     Uso: Esta es una resolución común en dispositivos móviles de gama alta, como muchos teléfonos Android y iPhones modernos (iPhone 6, 7, 8, etc.). Es ampliamente compatible y se ve bien en la mayoría de los dispositivos.
-                                                - 720x1280 px — Relación de aspecto 9:16
-                                                    Uso: resolución HD, adecuada para dispositivos con pantallas más pequeñas o de menor resolución.
-                                                    Es una opción ligera y adecuada para dispositivos con especificaciones más bajas.
-                                                
+                                            - 1440x2560 px — Relación de aspecto 9:16 (Quad HD)
+                                                Uso: Este tamaño es ideal para teléfonos de gama alta con pantallas de resolución más alta,
+                                                como dispositivos Android más nuevos y modelos de iPhone de última generación. También es una buena
+                                                opción para tabletas de mayor resolución.
+                                            - 1080x1920 px — Relación de aspecto 9:16
+                                                Uso: Esta es una resolución común en dispositivos móviles de gama alta, como muchos teléfonos Android y iPhones modernos(iPhone 6, 7, 8, etc.). Es ampliamente compatible y se ve bien en la mayoría de los dispositivos.
+                                            - 720x1280 px — Relación de aspecto 9:16
+                                                Uso: resolución HD, adecuada para dispositivos con pantallas más pequeñas o de menor resolución.
+                                                Es una opción ligera y adecuada para dispositivos con especificaciones más bajas.
               },
               {
-                "src": "./assets/img/screenshot-portrait-1440x2560.png",
-                "sizes": "1440x2560",
-                "type": "image/png",
-                "form_factor": "narrow"
+              "src": "./assets/img/screenshot-portrait-1080X1920.png",
+              "sizes": "1080x1920",
+              "type": "image/png",
+              "form_factor": "narrow"
               },
               {
-                "src": "./assets/img/screenshots-portrait-1080x1920.png",
-                "sizes": "1080x1920",
-                "type": "image/png",
-                "form_factor": "narrow"
-              },
-               {
-                "src": "./assets/img/screenshots-portrait-768x1366.png",
-                "sizes": "720x1280",
-                "type": "image/png",
-                "form_factor": "narrow"
+              "src": "./assets/img/screenshot-portrait-720X1280.png",
+              "sizes": "720X1280",
+              "type": "image/png",
+              "form_factor": "narrow"
               }
+
+                                          
+                                                
+              
+             
             ],
           "protocol_handlers": [
             {
