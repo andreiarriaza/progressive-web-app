@@ -194,14 +194,15 @@ self.addEventListener("install", (e) => {
        promesa. Si la promesa se resuelve correctamente, pasa al siguiente bloque .then(). */
       .open(CACHE_NAME)
 
+      /* "cache" es el objeto que representa el caché abierto.
+       */
       .then((cache) => {
         console.log("Caching files...");
         /* Se agrega un return, dentro del cual se ejecutará el método "addAll", el cual se encargará de agregar todas las URL que se encuentran dentro de la
-    constante "urlToCache" a la memoria caché del dispositivo dentro del cual se instale la Progressive Web App. 
-    
-    Esta lista podría contener recursos como archivos HTML, CSS, JavaScript, imágenes, etc., que se desean almacenar en el caché para ser usados sin conexión.
-    
-    */
+           constante "urlToCache" a la memoria caché del dispositivo dentro del cual se instale la Progressive Web App. 
+
+           Esta lista podría contener recursos como archivos HTML, CSS, JavaScript, imágenes, etc., que se desean almacenar en el caché para ser usados sin conexión.
+        */
         return (
           cache
             .addAll(urlsToCache)

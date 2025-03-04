@@ -137,11 +137,14 @@
          */
 
 /* 
-    - URLSearchParams: Esta clase permite trabajar con los parámetros de la URL, en este caso, los que 
-      vienen después del signo ?. 
-        
-    - window.location.search: Obtiene la parte de la URL que contiene los parámetros (lo que está   
-      después del ?).
+    - window.location.search
+         Obtiene la parte de la URL que contiene los parámetros de la consulta (todo lo que viene después del ?).
+    - new URLSearchParams(window.location.search) 
+        Crea un objeto que permite manipular y obtener valores de los parámetros de la URL.
+
+    - urlParams.get("id") 
+        Obtiene el valor del parámetro id.
+
 
 */
 const urlParams = new URLSearchParams(window.location.search);
