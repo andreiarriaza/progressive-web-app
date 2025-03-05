@@ -262,10 +262,10 @@ self.addEventListener("activate", (e) => {
 
   /* 
 
-El método e.waitUntil() extiende el evento de activación hasta que todas las promesas dentro de él se resuelvan. Esto garantiza que el Service Worker no finalice su activación hasta que se hayan ejecutado correctamente las acciones dentro de este bloque (en este caso, la limpieza de caché y la activación del nuevo caché).*/
+El método e.waitUntil() extiende el evento de activación hasta que todas las promesas dentro de él se resuelvan. Esto garantiza que el Service Worker no finalice su activación hasta que se hayan ejecutado correctamente las acciones dentro de este bloque; en este caso, la limpieza de caché y la activación del nuevo caché.*/
   e.waitUntil(
     /* caches.keys():
-Este método devuelve una promesa que se resuelve con una lista de todos los nombres }
+Este método devuelve una promesa que se resuelve con una lista de todos los nombres
 de caché almacenados en el navegador. Cada vez que el caché se actualiza, se crea un 
 nuevo caché con un nombre diferente (versión nueva). */
     caches
@@ -286,7 +286,7 @@ estos nombres con la lista blanca cacheWhiteList y decidir cuáles cachés deben
             (cacheWhiteList). Si el nombre del caché no se encuentra en la lista blanca 
             (lo que significa que es un caché antiguo o no deseado), se procede a eliminarlo. */
 
-            /* Si cacheName NO está en la lista blanca (cacheWhiteList), "indexOf" devolverá "-1"`. */
+            /* Si el caché del arreglo "cacheName" que se esté recorrieno en ese momento NO está en la lista blanca (cacheWhiteList), "indexOf" devolverá "-1"`. */
             if (cacheWhiteList.indexOf(cacheName) === -1) {
               /* caches.delete(cacheName):
                 Si la condición anterior es verdadera (es decir, el caché no está en la lista blanca), se llama a caches.delete(cacheName) para eliminar ese caché del navegador. Esta operación devuelve una promesa que indica que el caché se ha 
@@ -334,8 +334,6 @@ Este fragmento de código gestiona el evento fetch en un Service Worker dentro d
         una solicitud de red. Cada vez que el navegador pide algún recurso (como una página
         HTML, una imagen o un archivo CSS), el Service Worker intercepta la solicitud con 
         este evento. */
-
-// ... (resto del código)
 
 /* 
 self.addEventListener("fetch", (e) => {...}):
