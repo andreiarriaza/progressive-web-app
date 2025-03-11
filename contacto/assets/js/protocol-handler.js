@@ -144,8 +144,6 @@
 
     - urlParams.get("id") 
         Obtiene el valor del parámetro id.
-
-
 */
 const urlParams = new URLSearchParams(window.location.search);
 /* - urlParams.get("id"): Extrae el valor del parámetro id de la URL (por ejemplo, si la URL es ?id=web+micontacto://100/, entonces rawContactoId contendría web+micontacto://100/). */
