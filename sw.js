@@ -189,9 +189,8 @@ self.addEventListener("install", (e) => {
   e.waitUntil(
     caches
 
-      /* El método caches.open(CACHE_NAME) abre un caché (almacenamiento local en el
-       navegador, es decir, que ese caché será almacenado en el dispositivo) con el nombre que se define en CACHE_NAME. Esta operación devuelve una 
-       promesa. Si la promesa se resuelve correctamente, pasa al siguiente bloque .then(). */
+      /* El método caches.open(CACHE_NAME) abre un caché (el caché que será almacenado en el dispositivo) con el nombre que se define en CACHE_NAME. 
+      Esta operación devuelve una promesa. Si la promesa se resuelve correctamente, pasa al siguiente bloque .then(). */
       .open(CACHE_NAME)
 
       /* "cache" es el objeto que representa el caché abierto.
@@ -286,7 +285,7 @@ estos nombres con la lista blanca cacheWhiteList y decidir cuáles cachés deben
             (cacheWhiteList). Si el nombre del caché no se encuentra en la lista blanca 
             (lo que significa que es un caché antiguo o no deseado), se procede a eliminarlo. */
 
-            /* Si el caché del arreglo "cacheName" que se esté recorrieno en ese momento NO está en la lista blanca (cacheWhiteList), "indexOf" devolverá "-1"`. */
+            /* Si el caché del arreglo "cacheName" que se esté recorriendo en ese momento NO está en la lista blanca (cacheWhiteList), "indexOf" devolverá "-1"`. */
             if (cacheWhiteList.indexOf(cacheName) === -1) {
               /* caches.delete(cacheName):
                 Si la condición anterior es verdadera (es decir, el caché no está en la lista blanca), se llama a caches.delete(cacheName) para eliminar ese caché del navegador. Esta operación devuelve una promesa que indica que el caché se ha 
@@ -325,8 +324,6 @@ estos nombres con la lista blanca cacheWhiteList y decidir cuáles cachés deben
 
 Evento "fetch":
 Este fragmento de código gestiona el evento fetch en un Service Worker dentro de una Progressive Web App (PWA). El objetivo del código es interceptar las solicitudes de red de la aplicación y responder con los archivos que ya están en el caché o, si no están en el caché, realizar la solicitud a la red (internet). 
-
-
 */
 
 /* self.addEventListener("fetch", (e) => { ... }):
@@ -410,7 +407,7 @@ self.addEventListener("fetch", (e) => {
 
                   El operador || significa "o" lógico.
                   Se cumple esta parte si la URL empieza con https:// o si empieza con web+miapp:// (tu protocolo personalizado).
-                  Permite cachear tanto las URLs HTTPS de tu sitio como tu protocolo handler (web+miapp://).
+                  Permite cachear tanto las URLs HTTPS de tu sitio como tu protocol handler (web+miapp://).
 
                 */
                 e.request.method === "GET" &&
