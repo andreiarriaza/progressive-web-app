@@ -369,6 +369,13 @@ self.addEventListener("fetch", (e) => {
           console.log(`Sirviendo desde caché: ${e.request.url}`);
           return res;
         }
+
+        /*  
+        console.log(`Realizando fetch: ${e.request.url}`);
+          Imprime en la consola del navegador un mensaje que indica que se está realizando una solicitud de red (fetch) para la URL especificada en e.request.url. 
+          Esencialmente, sirve para fines de depuración, permitiendo a los desarrolladores ver en tiempo real qué recursos no se encontraron en la caché y, 
+          por lo tanto, se están solicitando a la red. 
+        */
         console.log(`Realizando fetch: ${e.request.url}`);
         /*  return fetch(e.request):
               Si el recurso no está en la caché, se realiza una solicitud a la red para obtenerlo.  */
