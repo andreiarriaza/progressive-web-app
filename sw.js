@@ -414,7 +414,7 @@ self.addEventListener("fetch", (e) => {
 
                   El operador || significa "o" lógico.
                   Se cumple esta parte si la URL empieza con https:// o si empieza con web+miapp:// (tu protocolo personalizado).
-                  Permite cachear tanto las URLs HTTPS de tu sitio como tu protocol handler (web+miapp://).
+                  Permite cachear tanto las URLs seguras de tipo "https" del sitio como el protocol handler (web+miapp://).
 
                 */
                 e.request.method === "GET" &&
