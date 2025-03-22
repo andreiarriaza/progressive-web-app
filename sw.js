@@ -1,3 +1,23 @@
+/* 
+
+*********** Para que la Proggressive Web App y el envío del Protocol Handler funcionen OFFLINE ***********
+
+  IMPORTANTE: cuando la progressive web app se instala en una computadora, se abre automáticamente; sin embargo, es imprescindible cerrar la 
+  ventana que se abrió y abrirla nuevamente, pues de esta manera se asegura que se carguen en caché todos los recursos de la progressive web app para su 
+  funcionamiento offline. Cuando se abre en dispositivos móviles, también es necesario abrirla por lo menos una vez ONLINE para poder luego visualizarla OFFLINE.
+
+  No es necesario abrir todas las páginas que conforman la progressive web app, solo es imprescindible que se abran las siguientes: 
+    1. index.html (el index principal): pues este invoca el service worker que se encargará de agregar todos los recursos al caché. 
+    2. Realizar el envío del protocol handler (si la progressive web app tuviera un protocol handler, de lo contrario no. En este caso, se ejecuta 
+      el protocol handler que está en el "index" principal dando clic en el vínculo "Ver contacto: 200 (por medio de protocol_handler)"): 
+          Es necesario realizar este procedimiento, para que se almacene en caché el contenido de la página "contacto", la cual recibe el protocol handler. 
+
+    No es necesario abrir ninguna otra página además de las mencionadas arriba. 
+
+
+  Es importante señalar que el Protocol Handler visto en este ejemplo NO FUNCIONA EN DISPOSITIVOS MÓVILES, solamente en computadoras.
+
+*/
 /* IMPORTANTE: para corroborar que, después de agregar todo el código de este archivo, el ServiceWorker fue detectado correctamente, se deben seguir los siguientes pasos: 
 
 
@@ -75,12 +95,10 @@ const CACHE_NAME = "v1_chess_mate_club",
     "./aperturas/assets/css/aperturas.css",
     "./libros/assets/css/libros.css",
     "./mates/assets/css/mates.css",
+    "./contacto/assets/css/contacto.css",
 
-    /* Hoja Externa de JavaScript.
-    
-
-
-    */
+    /* Hoja Externa de JavaScript. */
+    "./contacto/assets/js/protocol-handler.js",
 
     /* Imágenes del sitio web */
     "./assets/img/ProgramadorFitness.png",
@@ -150,7 +168,14 @@ const CACHE_NAME = "v1_chess_mate_club",
     "./libros/assets/img/curso-completo-de-ajedrez.jpg",
   ];
 
-/* Durante la fase de instalación, generalmente se almacenan en caché los activos estáticos. 
+/*
+
+¿Qué hace self.addEventListener?
+    self: es una referencia al contexto global del Service Worker. Es equivalente a window en el navegador, pero en este caso, funciona dentro del entorno aislado   
+          del Service Worker.
+    addEventListener: se usa para escuchar eventos que ocurren en el ciclo de vida del Service Worker.
+
+Durante la fase de instalación, generalmente se almacenan en caché los activos estáticos. 
 
 El evento "install" ocurre cuando el Service Worker está siendo instalado en el navegador. 
 El código dentro del bloque self.addEventListener("install", ...) se ejecuta en ese momento.
@@ -164,19 +189,19 @@ self.addEventListener("install", (e) => {
   e.waitUntil(
     caches
 
-      /* El método caches.open(CACHE_NAME) abre un caché (almacenamiento local en el
-       navegador, es decir, que ese caché será almacenado en el dispositivo) con el nombre que se define en CACHE_NAME. Esta operación devuelve una 
-       promesa. Si la promesa se resuelve correctamente, pasa al siguiente bloque .then(). */
+      /* El método caches.open(CACHE_NAME) abre un caché (el caché que será almacenado en el dispositivo) con el nombre que se define en CACHE_NAME. 
+      Esta operación devuelve una promesa. Si la promesa se resuelve correctamente, pasa al siguiente bloque .then(). */
       .open(CACHE_NAME)
 
+      /* "cache" es el objeto que representa el caché abierto.
+       */
       .then((cache) => {
         console.log("Caching files...");
         /* Se agrega un return, dentro del cual se ejecutará el método "addAll", el cual se encargará de agregar todas las URL que se encuentran dentro de la
-    constante "urlToCache" a la memoria caché del dispositivo dentro del cual se instale la Progressive Web App. 
-    
-    Esta lista podría contener recursos como archivos HTML, CSS, JavaScript, imágenes, etc., que se desean almacenar en el caché para ser usados sin conexión.
-    
-    */
+           constante "urlToCache" a la memoria caché del dispositivo dentro del cual se instale la Progressive Web App. 
+
+           Esta lista podría contener recursos como archivos HTML, CSS, JavaScript, imágenes, etc., que se desean almacenar en el caché para ser usados sin conexión.
+        */
         return (
           cache
             .addAll(urlsToCache)
@@ -227,7 +252,7 @@ self.addEventListener("activate", (e) => {
   /* Aquí se crea una lista blanca de caché llamada "cacheWhiteList", 
   que contiene los nombres de los cachés que se desean conservar. 
   
-  "CACHE_NAME" es una constante que contiene el nombre del caché actual, el cual 
+  "CACHE_NAME" es una constante que contiene el nombre del caché actual (que se definió anteriormente), el cual 
   contiene los archivos más recientes de la aplicación. 
   Solo este caché debe mantenerse activo.
   */
@@ -236,10 +261,10 @@ self.addEventListener("activate", (e) => {
 
   /* 
 
-El método e.waitUntil() extiende el evento de activación hasta que todas las promesas dentro de él se resuelvan. Esto garantiza que el Service Worker no finalice su activación hasta que se hayan ejecutado correctamente las acciones dentro de este bloque (en este caso, la limpieza de caché y la activación del nuevo caché).*/
+El método e.waitUntil() extiende el evento de activación hasta que todas las promesas dentro de él se resuelvan. Esto garantiza que el Service Worker no finalice su activación hasta que se hayan ejecutado correctamente las acciones dentro de este bloque; en este caso, la limpieza de caché y la activación del nuevo caché.*/
   e.waitUntil(
     /* caches.keys():
-Este método devuelve una promesa que se resuelve con una lista de todos los nombres }
+Este método devuelve una promesa que se resuelve con una lista de todos los nombres
 de caché almacenados en el navegador. Cada vez que el caché se actualiza, se crea un 
 nuevo caché con un nombre diferente (versión nueva). */
     caches
@@ -260,7 +285,7 @@ estos nombres con la lista blanca cacheWhiteList y decidir cuáles cachés deben
             (cacheWhiteList). Si el nombre del caché no se encuentra en la lista blanca 
             (lo que significa que es un caché antiguo o no deseado), se procede a eliminarlo. */
 
-            /* Si cacheName NO está en la lista blanca (cacheWhiteList), "indexOf" devolverá "-1"`. */
+            /* Si el caché del arreglo "cacheName" que se esté recorriendo en ese momento NO está en la lista blanca (cacheWhiteList), "indexOf" devolverá "-1"`. */
             if (cacheWhiteList.indexOf(cacheName) === -1) {
               /* caches.delete(cacheName):
                 Si la condición anterior es verdadera (es decir, el caché no está en la lista blanca), se llama a caches.delete(cacheName) para eliminar ese caché del navegador. Esta operación devuelve una promesa que indica que el caché se ha 
@@ -270,15 +295,16 @@ estos nombres con la lista blanca cacheWhiteList y decidir cuáles cachés deben
           })
         );
       })
-      // Le indica al Service Worker activar el caché actual.
-      /* .then(() => self.clients.claim()):
-            Después de que todas las promesas de Promise.all() se hayan 
-            resuelto (lo que indica que todos los cachés innecesarios se han eliminado), 
-            se llama a self.clients.claim(). */
 
-      /* self.clients.claim() hace que el nuevo Service Worker tome el control de todas las páginas de la aplicación sin necesidad de que los usuarios cierren y vuelvan a abrir las pestañas. Es decir, asegura que el nuevo Service Worker y los cachés actualizados se utilicen inmediatamente, sin esperar a que se recarguen las páginas. */
       .then(() => {
         console.log("Service Worker activo y listo para controlar clientes.");
+        // Le indica al Service Worker activar el caché actual.
+        /* .then(() => self.clients.claim()):
+            Después de que todas las promesas de Promise.all() se hayan 
+            resuelto (lo que indica que todos los cachés innecesarios se han eliminado), 
+            se llama a self.clients.claim().
+
+        self.clients.claim() hace que el nuevo Service Worker tome el control de todas las páginas de la aplicación sin necesidad de que los usuarios cierren y vuelvan a abrir las pestañas. Es decir, asegura que el nuevo Service Worker y los cachés actualizados se utilicen inmediatamente, sin esperar a que se recarguen las páginas. */
         return self.clients.claim();
       })
   );
@@ -291,15 +317,13 @@ estos nombres con la lista blanca cacheWhiteList y decidir cuáles cachés deben
         - Una vez que se eliminan todos los cachés antiguos, el nuevo Service Worker toma el control de las páginas abiertas de la aplicación con self.clients.claim().  
         
         Este proceso es importante para garantizar que solo se conserve la versión más reciente del caché, eliminando las versiones anteriores y asegurando que la aplicación esté siempre actualizada.
-        */
+*/
 });
 
 /* 
 
 Evento "fetch":
 Este fragmento de código gestiona el evento fetch en un Service Worker dentro de una Progressive Web App (PWA). El objetivo del código es interceptar las solicitudes de red de la aplicación y responder con los archivos que ya están en el caché o, si no están en el caché, realizar la solicitud a la red (internet). 
-
-
 */
 
 /* self.addEventListener("fetch", (e) => { ... }):
@@ -307,8 +331,6 @@ Este fragmento de código gestiona el evento fetch en un Service Worker dentro d
         una solicitud de red. Cada vez que el navegador pide algún recurso (como una página
         HTML, una imagen o un archivo CSS), el Service Worker intercepta la solicitud con 
         este evento. */
-
-// ... (resto del código)
 
 /* 
 self.addEventListener("fetch", (e) => {...}):
@@ -324,6 +346,11 @@ self.addEventListener("fetch", (e) => {
       - Todo el código dentro de "respondWith" es una promesa que eventualmente devuelve una respuesta. 
   */
   e.respondWith(
+    /* 
+    En el contexto de los Service Workers, e.request hace referencia al objeto de solicitud (Request) asociado a un evento de fetch.
+    Cuando un Service Worker intercepta una solicitud de red mediante el evento fetch, el objeto del evento (e o event) tiene una 
+    propiedad "request" que contiene detalles sobre la solicitud que el navegador está intentando hacer.
+    */
     /* caches.match(e.request):
         - caches.match() busca en el caché disponible para ver si ya existe una entrada que coincida con la solicitud que se 
           está realizando (e.request es la solicitud original que se hace).
@@ -342,10 +369,16 @@ self.addEventListener("fetch", (e) => {
           console.log(`Sirviendo desde caché: ${e.request.url}`);
           return res;
         }
+
+        /*  
+        console.log(`Realizando fetch: ${e.request.url}`);
+          Imprime en la consola del navegador un mensaje que indica que se está realizando una solicitud de red (fetch) para la URL especificada en e.request.url. 
+          Esencialmente, sirve para fines de depuración, permitiendo a los desarrolladores ver en tiempo real qué recursos no se encontraron en la caché y, 
+          por lo tanto, se están solicitando a la red. 
+        */
         console.log(`Realizando fetch: ${e.request.url}`);
         /*  return fetch(e.request):
-              Si el recurso no está en la caché, realizar una solicitud a la red. Si el recurso no está en la caché, se 
-              realiza una solicitud "fetch" a la red para obtenerlo. */
+              Si el recurso no está en la caché, se realiza una solicitud a la red para obtenerlo.  */
         return (
           fetch(e.request)
             /* .then((networkResponse) => {...}):
@@ -363,21 +396,31 @@ self.addEventListener("fetch", (e) => {
               // Clonar la respuesta para poder almacenarla en la caché y devolverla
               let clonedResponse = networkResponse.clone();
 
-              // Verificar que el Service Worker solo intente cachear recursos que provienen de una URL segura: https.
-
-              /* Acá se está verificando lo siguiente: 
-                  - e.request.method === "GET"
-                      Esta verificación es fundamental; esto debido a que la memoria caché solamente acepta métodos GET, por lo que
-                      si en alguna de las páginas del sitio web se hace uso del método POST, por ejemplo, en un formulario de contacto, 
-                      se generará un error en consola indicando que no es permitido almacenar métodos POST en caché. Para evitarlo, 
-                      se verifica que el método sea de tipo GET antes de almacenarlo en caché. 
-                  - e.request.url.startsWith("https://")
-                      Se valida que la URL sea segura (https://).
-              
-              */
               if (
+                /* 
+                e.request.method === "GET":
+
+                  Se asegura de solo interceptar y cachear peticiones HTTP de tipo GET (las que normalmente solicitan recursos).
+                  Peticiones POST, PUT, DELETE, etc., quedan fuera.
+
+                !e.request.url.startsWith("chrome-extension://")
+                  El signo ! significa negación.
+                  e.request.url.startsWith("chrome-extension://") verifica si la URL inicia con chrome-extension://.
+                  Anteponiendo ! indica que no queremos que inicie con ese esquema.
+                  Esto se hace porque los navegadores no permiten cachear recursos con el esquema chrome-extension://, lo que podría provocar conflictos si algun 
+                  plugin del navegador hiciera peticiones; como los plugin para bloqueo de publicidad (AdBlocker), de SEO, o algún otro plugin instalado en el navegador.  
+
+                (e.request.url.startsWith("https://") || e.request.url.startsWith("web+miapp://"))
+
+                  El operador || significa "o" lógico.
+                  Se cumple esta parte si la URL empieza con https:// o si empieza con web+miapp:// (tu protocolo personalizado).
+                  Permite cachear tanto las URLs seguras de tipo "https" del sitio como el protocol handler (web+miapp://).
+
+                */
                 e.request.method === "GET" &&
-                e.request.url.startsWith("https://")
+                !e.request.url.startsWith("chrome-extension://") &&
+                (e.request.url.startsWith("https://") ||
+                  e.request.url.startsWith("web+miapp://")) // o el esquema que uses
               ) {
                 /* caches.open(CACHE_NAME):
                   Abre (o crea, si no existe) un caché con el nombre definido por la constante CACHE_NAME.
@@ -398,7 +441,7 @@ self.addEventListener("fetch", (e) => {
             /* .catch((err) => {...}):
                   - Si ocurre un error durante el fetch (por ejemplo, si no hay conexión a la red), se captura el error (err).
                   - Se imprime el error en la consola.
-                  - Como medida de contingencia, se intenta devolver una página offline (/offline.html) desde la caché, si está disponible. */
+            */
             .catch((err) => {
               console.error("Error fetching resource:", err);
             })

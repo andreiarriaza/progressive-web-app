@@ -49,54 +49,82 @@
 
   <!-- ****************** ETIQUETAS PARA CONTROLAR CÓMO SE VERÁ EL SITIO CUANDO SE AGREGUE A LA PANTALLA DE INICIO DEL SMARTPHONE Y LUEGO SE ABRA ****************** -->
 
-  <!-- Las siguiente etiqeutas, NO CONVIERTEN EL SITIO en una Progressive Web App: 
-          Las etiquetas que se muestran a continuación, solamente sirven para que, cuando se agregue un acceso directo del sitio web
-          a la pantalla de inicio del Smartphone, y luego se abra dicho sitio, este se muestre en pantalla completa, sin la barra de herramientas del navegador.
-          Aunque esto pareciera que es una Progressive Web App, aún no lo es, solamente da la apariencia de una Progressive Web App que simplemente
-          cambia la apariencia del sitio cuando se agrega a la pantalla de inicio y se abre. 
-
-         Estas etiquetas siguen siendo útiles incluso si tienes una Progressive Web App (PWA). Aunque una PWA ya ofrece varias funcionalidades avanzadas por sí misma, 
-         estas etiquetas mejoran aún más la experiencia de usuario en dispositivos móviles, especialmente en términos de integración visual y comportamiento en iOS y Android.
-
-        ¿Por qué son útiles en una PWA?
-          Modo de pantalla completa: Aunque las PWAs pueden ejecutarse en modo de pantalla completa automáticamente en muchos navegadores, 
-                                     estas etiquetas garantizan que tanto en iOS (Safari) como en Android (Chrome y otros navegadores móviles) 
-                                     el sitio web se comportará como una aplicación nativa cuando se abra desde la pantalla de inicio.
-
-
-            <meta name="apple-mobile-web-app-capable" content="yes"> (iOS) y <meta name="mobile-web-app-capable" content="yes"> (Android) 
-            le indican al navegador que tu sitio web puede mostrarse en modo pantalla completa cuando los usuarios lo agregan a la pantalla de inicio.
-
-            Modo pantalla completa: Cuando un usuario guarda tu página web en la pantalla de inicio de su dispositivo y luego la abre desde allí, 
-                                    el navegador ocultará la barra de direcciones, controles de navegación y otros elementos de la interfaz, 
-                                    brindando una experiencia similar a la de una aplicación.
-
-            Sin ser una PWA, NO tendrás:
-                Instalación directa: Los usuarios no podrán instalar la página directamente como una aplicación mediante 
-                                     un botón "Instalar" en el navegador (una característica propia de las PWAs).
-            Funcionalidades offline: Las PWAs permiten que las páginas funcionen sin conexión a través de un "service worker", 
-                                      lo cual no es posible si tu página no es una PWA.
-            Actualización automática de contenido: Las PWAs pueden almacenar en caché el contenido localmente y actualizarlo en segundo plano.
-            
-            Beneficios que aún obtendrás:
-              - Pantalla completa: Tus usuarios podrán experimentar tu sitio web en modo de pantalla completa cuando lo abran desde el acceso directo en la pantalla de inicio.
-              - Experiencia tipo app: La interfaz web se verá más inmersiva y parecida a una app, aunque no sea una PWA completa.
-              - Personalización visual: Puedes configurar un ícono, el título de la página cuando se guarda en la pantalla de inicio, y el color de la barra de estado en dispositivos móviles. 
-              
-  -->
+  <!-- Las siguiente etiquetas, NO CONVIERTEN EL SITIO en una Progressive Web App: 
+                Las etiquetas que se muestran a continuación, solamente sirven para que, cuando se agregue un acceso directo del sitio web
+                a la pantalla de inicio del Smartphone, y luego se abra dicho sitio, este se muestre en pantalla completa, sin la barra de herramientas del navegador.
+                Aunque esto pareciera que es una Progressive Web App, aún no lo es, solamente da la apariencia de una Progressive Web App que simplemente
+                cambia la apariencia del sitio cuando se agrega a la pantalla de inicio y se abre. 
+      
+               Estas etiquetas siguen siendo útiles incluso si tienes una Progressive Web App (PWA). Aunque una PWA ya ofrece varias funcionalidades avanzadas por sí misma, 
+               estas etiquetas mejoran aún más la experiencia de usuario en dispositivos móviles, especialmente en términos de integración visual y comportamiento en iOS y Android.
+      
+              ¿Por qué son útiles en una PWA?
+                Modo de pantalla completa: Aunque las PWAs pueden ejecutarse en modo de pantalla completa automáticamente en muchos navegadores, estas etiquetas garantizan que tanto en iOS (Safari) como en Android (Chrome y otros navegadores móviles) el sitio web se comportará como una aplicación nativa cuando se abra desde la pantalla de inicio.
+      
+      
+                  
+      
+                  Sin ser una PWA, NO tendrás:
+                      Instalación directa: Los usuarios no podrán instalar la página directamente como una aplicación mediante un botón "Instalar" en el navegador (una característica propia de las PWAs).
+                  Funcionalidades offline: Las PWAs permiten que las páginas funcionen sin conexión a internet a través de un "service worker", 
+                                            lo cual no es posible si tu página no es una PWA.
+                  Actualización automática de contenido: Las PWAs pueden almacenar en caché el contenido localmente y actualizarlo en segundo plano.
+                  
+                  Beneficios que aún obtendrás:
+                    - Pantalla completa: Tus usuarios podrán experimentar tu sitio web en modo de pantalla completa cuando lo abran desde el acceso directo en la pantalla de inicio.
+                    - Experiencia tipo app: La interfaz web se verá más inmersiva y parecida a una app, aunque no sea una PWA completa.
+                    - Personalización visual: Puedes configurar un ícono, el título de la página cuando se guarda en la pantalla de inicio, y el color de la barra de estado en dispositivos móviles. 
+                    
+        -->
 
   <!-- 
-    <meta name="mobile-web-app-capable" content="yes" />
-    
-      Definición:
-        Esta etiqueta está diseñada para navegadores en dispositivos Android, como Google Chrome, y permite que el sitio web se comporte como 
-        una "aplicación web" cuando se agrega a la pantalla de inicio del dispositivo.
+          A continuación se muestran dos etiquetas, las cuales tienen las siguientes funciones: 
+        
+            <meta name="apple-mobile-web-app-capable" content="yes"> (iOS) y <meta name="mobile-web-app-capable" content="yes"> (Android): 
+                  Le indican al navegador que tu sitio web puede mostrarse en modo pantalla completa cuando los usuarios lo agregan a la pantalla de inicio.
+      
+                    Modo pantalla completa: Cuando un usuario guarda tu página web en la pantalla de inicio de su dispositivo y luego la abre desde allí, el navegador ocultará la barra de direcciones, controles de navegación y otros elementos de la interfaz, brindando una experiencia similar a la de una aplicación.
+                    
+                                            
+          -->
 
-      Funcionalidad:
-        Modo de pantalla completa: Similar a la etiqueta para iOS, esta permite que el sitio web se muestre sin la barra de direcciones ni controles 
-        del navegador cuando se accede desde un acceso directo creado en la pantalla de inicio.
-        Experiencia de aplicación: Hace que el sitio web funcione como una Progressive Web App (PWA), 
-        dándole una apariencia más nativa.. -->
+  <!-- IMPORTANTE: Es cierto que aunque algunas páginas web no incluyan la metaetiqueta <meta name="mobile-web-app-capable" content="yes">, al añadirlas a la pantalla de inicio en Android, siguen mostrando un modo de pantalla completa o un comportamiento similar a una aplicación. Esto sucede porque los navegadores modernos, especialmente Chrome en Android, han ido implementando mejoras para hacer que las aplicaciones web progresivas (PWAs) se comporten como aplicaciones nativas automáticamente cuando cumplen ciertos requisitos básicos.
+      
+      Aquí hay un poco más de contexto:
+      
+        - Compatibilidad Automática en Android: 
+            Los navegadores modernos en Android, como Chrome, reconocen de 
+            forma automática las aplicaciones web que tienen un Web App Manifest (un archivo JSON con propiedades de configuración de la aplicación web) y les aplican el modo de pantalla completa, incluso si no está incluida explícitamente la etiqueta <meta name="mobile-web-app-capable" content="yes">. La existencia del manifest.json y algunas configuraciones como "display": "standalone" o "display": "fullscreen" en este archivo son suficientes para habilitar el comportamiento.
+      
+        - Pantalla Completa Sin Configuración Manual: Al agregar la página a la pantalla de inicio, si cumple 
+            ciertos requisitos como HTTPS, el icono, el título y el manifest, Android la tratará como una PWA y la abrirá en modo de pantalla completa, independientemente de la metaetiqueta específica.
+      
+        - Uso de Metaetiquetas: Aunque esta etiqueta no sea indispensable en Android, incluirla puede ser una 
+            buena práctica si buscas una compatibilidad más amplia con navegadores o dispositivos más antiguos que podrían depender de esta configuración.
+      
+        - Optimización Automática por Chrome: Chrome en Android ha optimizado el comportamiento de las    
+            aplicaciones web para simular un entorno de pantalla completa cuando una página tiene una estructura responsiva adecuada y carga sobre HTTPS. Aunque no es una PWA completa, Chrome interpreta que es una buena candidata para mostrarse en pantalla completa y, por lo tanto, omite los elementos de la interfaz de usuario del navegador como la barra de direcciones.
+      
+      
+      En resumen, en muchos dispositivos modernos de Android, la etiqueta no es necesaria porque el navegador aplica automáticamente el modo de pantalla completa cuando una página cumple con los requisitos de PWA o bien está optimizada para móviles. 
+      
+      
+      Práctica Recomendada: Incluir las etiquetas <meta name="apple-mobile-web-app-capable" content="yes"> y <meta name="mobile-web-app-capable" content="yes"> sigue siendo una buena práctica porque indica que has pensado en la experiencia de los usuarios en dispositivos móviles. Ayuda a asegurarse de que se verán en modo de pantalla completa en navegadores que las requieran específicamente.
+      
+      -->
+
+  <!-- 
+          <meta name="mobile-web-app-capable" content="yes" />
+          
+            Definición:
+              Esta etiqueta está diseñada para navegadores en dispositivos Android, como Google Chrome, y permite que el sitio web se comporte como 
+              una "aplicación web" cuando se agrega a la pantalla de inicio del dispositivo.
+      
+            Funcionalidad:
+              Modo de pantalla completa: Similar a la etiqueta para iOS, esta permite que el sitio web se muestre sin la barra de direcciones ni controles 
+              del navegador cuando se accede desde un acceso directo creado en la pantalla de inicio.
+              Experiencia de aplicación: Cuando un usuario guarda tu página web en la pantalla de inicio de su dispositivo y luego la abre desde allí, el navegador ocultfará la barra de direcciones, controles de navegación y otros elementos de la interfaz, 
+                                         brindando una experiencia similar a la de una aplicación. -->
 
   <meta name="mobile-web-app-capable" content="yes" />
 
@@ -668,15 +696,7 @@ Sí, el "manifest.json" funciona tanto en Windows como en Apple, pero el soporte
                                           Estos íconos son los directamente relacionados con la instalación de la progressive web app. No tiene nada que
                                           ver con los recursos que se guardarán en caché para su uso offline. En este caso, se agregaron aquí los favicons, 
                                           porque son las imágenes que se desea se muestren como ícono de la aplicación.
-              {
-                "src": "./assets/img/icon-1024x1024",   (IMPORTANTE:  esta tamaño no es necesario para
-                                                  favicon, pero sí para PWA (Progressive Web App). 
-                                                  Los dispositivos modernos, como smartphones y tablets, a menudo cuentan con pantallas de alta 
-                                                  densidad de píxeles (como Retina en dispositivos Apple). Un ícono de 1024x1024 px se verá 
-                                                  nítido y claro en estas pantallas.)
-                "sizes": "1024x1024",
-                "type": "image/png"
-              },
+             
               {
                 "src": "./assets/img/favicon-512x512.png",
                 "sizes": "512x512",
@@ -733,7 +753,7 @@ Sí, el "manifest.json" funciona tanto en Windows como en Apple, pero el soporte
                         Resolución recomendada:
                             Aunque no hay una resolución estricta, Google recomienda un tamaño mínimo de 320 x 320 píxeles 
                             y un tamaño máximo de 3840 x 3840 píxeles. Es ideal que las capturas tengan la misma relación de aspecto 
-                            que tu aplicación para representar mejor la experiencia de usuario.
+                            que la aplicación para representar mejor la experiencia de usuario.
               
                         Formato:
                             Las imágenes deben estar en formato PNG, JPEG, y WebP.
@@ -760,6 +780,7 @@ Sí, el "manifest.json" funciona tanto en Windows como en Apple, pero el soporte
                   Los siguientes tamaños, tiene todos una relación de aspecto de 16:9:
                       - 2560X1440
                       - 1920X1080
+                      - 1600x900
                       - 1280X720
                   
                   El campo screenshots en el manifest.json de una Progressive Web App (PWA) se utiliza para
@@ -823,6 +844,7 @@ Sí, el "manifest.json" funciona tanto en Windows como en Apple, pero el soporte
                 "type": "image/png",
                 "form_factor": "wide"
               },
+
               {
                 "src": "./assets/img/screenshot-wide-1280x720",
                 "sizes": "1280x720",
@@ -830,41 +852,39 @@ Sí, el "manifest.json" funciona tanto en Windows como en Apple, pero el soporte
                 "form_factor": "wide"
               },
               {
-                "src": "./assets/img/screenshot-portrait-483X997.png",
-                "sizes": "483x997",
-                "type": "image/png",
-                "form_factor": "narrow"
+              "src": "./assets/img/screenshot-portrait-1440X2560.png",
+              "sizes": "1440x2560",
+              "type": "image/png",
+              "form_factor": "narrow"
 
                                             Tamaños recomendados para narrow (9:16):
-                                                - 1440x2560 px — Relación de aspecto 9:16 (Quad HD)
-                                                     Uso: Este tamaño es ideal para teléfonos de gama alta con pantallas de resolución más alta, 
-                                                     como dispositivos Android más nuevos y modelos de iPhone de última generación. También es una buena 
-                                                     opción para tabletas de mayor resolución.
-                                                - 1080x1920 px — Relación de aspecto 9:16
-                                                     Uso: Esta es una resolución común en dispositivos móviles de gama alta, como muchos teléfonos Android y iPhones modernos (iPhone 6, 7, 8, etc.). Es ampliamente compatible y se ve bien en la mayoría de los dispositivos.
-                                                - 720x1280 px — Relación de aspecto 9:16
-                                                    Uso: resolución HD, adecuada para dispositivos con pantallas más pequeñas o de menor resolución.
-                                                    Es una opción ligera y adecuada para dispositivos con especificaciones más bajas.
-                                                
+                                            - 1440x2560 px — Relación de aspecto 9:16 (Quad HD)
+                                                Uso: Este tamaño es ideal para teléfonos de gama alta con pantallas de resolución más alta,
+                                                como dispositivos Android más nuevos y modelos de iPhone de última generación. También es una buena
+                                                opción para tabletas de mayor resolución.
+                                            - 1080x1920 px — Relación de aspecto 9:16
+                                                Uso: Esta es una resolución común en dispositivos móviles de gama alta, como muchos teléfonos Android y iPhones modernos(iPhone 6, 7, 8, etc.). Es ampliamente compatible y se ve bien en la mayoría de los dispositivos.
+                                            - 720x1280 px — Relación de aspecto 9:16
+                                                Uso: resolución HD, adecuada para dispositivos con pantallas más pequeñas o de menor resolución.
+                                                Es una opción ligera y adecuada para dispositivos con especificaciones más bajas.
               },
               {
-                "src": "./assets/img/screenshot-portrait-1440x2560.png",
-                "sizes": "1440x2560",
-                "type": "image/png",
-                "form_factor": "narrow"
+              "src": "./assets/img/screenshot-portrait-1080X1920.png",
+              "sizes": "1080x1920",
+              "type": "image/png",
+              "form_factor": "narrow"
               },
               {
-                "src": "./assets/img/screenshots-portrait-1080x1920.png",
-                "sizes": "1080x1920",
-                "type": "image/png",
-                "form_factor": "narrow"
-              },
-               {
-                "src": "./assets/img/screenshots-portrait-768x1366.png",
-                "sizes": "720x1280",
-                "type": "image/png",
-                "form_factor": "narrow"
+              "src": "./assets/img/screenshot-portrait-720X1280.png",
+              "sizes": "720X1280",
+              "type": "image/png",
+              "form_factor": "narrow"
               }
+
+                                          
+                                                
+              
+             
             ],
           "protocol_handlers": [
             {
@@ -902,6 +922,27 @@ Sí, el "manifest.json" funciona tanto en Windows como en Apple, pero el soporte
      2. Navegar hasta el menú "Application" (Aplicación).
      3. Ya debería aparecer los datos del "manifest.json". Si hubiese algún error,
         acá se mostrará.-->
+
+  <!--  
+
+      *********** Para que la Proggressive Web App y el envío del Protocol Handler funcionen OFFLINE ***********
+
+        IMPORTANTE: cuando la progressive web app se instala en una computadora, se abre automáticamente; sin embargo, es imprescindible cerrar la 
+        ventana que se abrió y abrirla nuevamente, pues de esta manera se asegura que se carguen en caché todos los recursos de la progressive web app para su 
+        funcionamiento offline. Cuando se abre en dispositivos móviles, también es necesario abrirla por lo menos una vez ONLINE para poder luego visualizarla OFFLINE.
+
+        No es necesario abrir todas las páginas que conforman la progressive web app, solo es imprescindible que se abran las siguientes: 
+          1. index.html (el index principal): pues este invoca el service worker que se encargará de agregar todos los recursos al caché. 
+          2. Realizar el envío del protocol handler (si la progressive web app tuviera un protocol handler, de lo contrario no. En este caso, se ejecuta 
+            el protocol handler que está en el "index" principal dando clic en el vínculo "Ver contacto: 200 (por medio de protocol_handler)"): 
+                Es necesario realizar este procedimiento, para que se almacene en caché el contenido de la página "contacto", la cual recibe el protocol handler. 
+
+          No es necesario abrir ninguna otra página además de las mencionadas arriba. 
+
+
+        Es importante señalar que el Protocol Handler visto en este ejemplo NO FUNCIONA EN DISPOSITIVOS MÓVILES, solamente en computadoras.
+  
+    -->
   <link rel="manifest" href="manifest.json" />
 
   <!-- Fuente de Google Fonts -->
@@ -965,6 +1006,24 @@ Sí, el "manifest.json" funciona tanto en Windows como en Apple, pero el soporte
       jaque mates y medio juego.
     </p>
 
+
+    <!--   
+
+      *********** Para que la Proggressive Web App y el envío del Protocol Handler funcionen OFFLINE ***********
+
+        IMPORTANTE: cuando la progressive web app se instala en una computadora, se abre automáticamente; sin embargo, es imprescindible cerrar la 
+        ventana que se abrió y abrirla nuevamente, pues de esta manera se asegura que se carguen en caché todos los recursos de la progressive web app para su 
+        funcionamiento offline. 
+
+        No es necesario abrir todas las páginas que conforman la progressive web app, solo es imprescindible que se abran las siguientes: 
+          1. index.html (el index principal): pues este invoca el service worker que se encargará de agregar todos los recursos al caché. 
+          2. Realizar el envío del protocol handler (si la progressive web app tuviera un protocol handler, de lo contrario no. En este caso, se ejecuta 
+            el protocol handler que está en el "index" principal dando clic en el vínculo "Ver contacto: 200 (por medio de protocol_handler)"): 
+                Es necesario realizar este procedimiento, para que se almacene en caché el contenido de la página "contacto", la cual recibe el protocol handler. 
+
+          No es necesario abrir ninguna otra página además de las mencionadas arriba. 
+
+    -->
     <!-- 
 
        Protocol Handlers (Manejadores de Protocolo): 
@@ -1084,8 +1143,8 @@ Definición del protocolo en el manifest.json:
         -->
 
     <!-- Este vínculo funciona exclusivamente cuando se ha instalado 
-       el sitio web comuna ProgressiveWebApp en el dispostivo. Lo que hace es que al dar clic en él redirigirá al usuario hacia la progressive 
-       web app cuando se abre en ambiente Windows. -->
+       el sitio web com una Progressive Web App en una computadora (es necesario dar clic en este vínculo por lo menos una vez cuando la Progressive 
+       Web App esté ONLINE para que pueda funcionar después OFFLINE) -->
 
     <a href="web+micontacto://200">Ver contacto: 200
       <small>(por medio de <b>protocol_handler</b>)</small></a>
