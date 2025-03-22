@@ -1146,6 +1146,17 @@ Definición del protocolo en el manifest.json:
        el sitio web com una Progressive Web App en una computadora (es necesario dar clic en este vínculo por lo menos una vez cuando la Progressive 
        Web App esté ONLINE para que pueda funcionar después OFFLINE) -->
 
+    <!-- IMPORTANTE: si en una computadora, se tiene instalada la progresive web app actual, y 
+        en el navegador se accede al siguiente protocolo personalizado:
+            web+micontacto://200  
+        De igual manera se abrirá la página "contacto" y se mostrará el contacto con el ID 200, 
+        en este caso mostrará lo siguiente:
+
+          ID: 200
+          Nombre: Bobby Fischer
+
+            
+    -->
     <a href="web+micontacto://200">Ver contacto: 200
       <small>(por medio de <b>protocol_handler</b>)</small></a>
   </header>

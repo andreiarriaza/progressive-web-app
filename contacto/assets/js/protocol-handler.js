@@ -136,6 +136,18 @@
           }
          */
 
+/* <!-- IMPORTANTE: si en una computadora, se tiene instalada la progresive web app actual, y 
+        en el navegador se accede al siguiente protocolo personalizado:
+            web+micontacto://200  
+        De igual manera se abrirá la página "contacto" y se mostrará el contacto con el ID 200, 
+        en este caso mostrará lo siguiente:
+
+          ID: 200
+          Nombre: Bobby Fischer
+
+            
+    --> */
+
 /* 
     - window.location.search
          Obtiene la parte de la URL que contiene los parámetros de la consulta (todo lo que viene después del ?).
