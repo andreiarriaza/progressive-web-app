@@ -45,9 +45,8 @@
         3. En la barra de navegación del lado izquierdo, seleccionar "Cache storage".
         4. Ya debería mostrarse el chaché llamado "v1_chess_mate_club", que se creón dentro de este archivo y el listado de URL que se agregarón dentro
            de la constante "urlsToCache".
-
         5. Si las variables no se muestran correctamente al acceder en las Herramientas para 
-           Desarrolladores de Chrome a "Application/Cache Storage" (regularmente ocurre, después de una modificación del Service Worker),
+           Desarrolladores de Chrome a "Application/Cache Storage" (regularmente ocurre después de una modificación del Service Worker),
            es necesario reinicar el Service Worker. Para reinicarlo, se deben seguir los siguientes pasos: 
                - Acceder a las Herramientas para Desarrolladores de Chrome. 
                - Seleccionar la opción "Application".
@@ -272,13 +271,13 @@ nuevo caché con un nombre diferente (versión nueva). */
       /* .then((cacheNames) => { ... }):
 Cuando la promesa de caches.keys() se resuelve, el argumento cacheNames contendrá un array 
 con los nombres de todos los cachés actuales. Este bloque de código se utiliza para comparar 
-estos nombres con la lista blanca cacheWhiteList y decidir cuáles cachés deben eliminarse. */
+estos nombres con la lista blanca "cacheWhiteList" y decidir cuáles cachés deben eliminarse. */
       .then((cacheNames) => {
         /* Promise.all() se utiliza para ejecutar varias promesas en paralelo y esperar a que
          todas se resuelvan. En este caso, se espera que todas las eliminaciones de caché 
          innecesario se completen antes de continuar con la activación. */
         return Promise.all(
-          /* Se usa para recorrer cada nombre de caché en cacheNames. Para cada caché, se ejecuta una comparación con la lista blanca cacheWhiteList. */
+          /* Se usa para recorrer cada nombre de caché en cacheNames. Para cada caché, se ejecuta una comparación con la lista blanca "cacheWhiteList". */
           cacheNames.map((cacheName) => {
             // Eliminando lo que ya no se necesita en el caché.
             /* Esta condición verifica si el cacheName actual no está en la lista blanca 
@@ -366,6 +365,7 @@ self.addEventListener("fetch", (e) => {
       */
       .then((res) => {
         if (res) {
+          /* e.request.url contiene la URL del recurso que se está solicitando.  */
           console.log(`Sirviendo desde caché: ${e.request.url}`);
           return res;
         }
