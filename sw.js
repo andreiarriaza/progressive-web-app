@@ -43,7 +43,7 @@
         1. Acceder a las Herramientas para Desarrolladores de Chrome. 
         2. Acceder a la sección "Application" (Aplicación).
         3. En la barra de navegación del lado izquierdo, seleccionar "Cache storage".
-        4. Ya debería mostrarse el chaché llamado "v1_chess_mate_club", que se creón dentro de este archivo y el listado de URL que se agregarón dentro
+        4. Ya debería mostrarse el chaché llamado "v1_chess_mate_club", que se creó dentro de este archivo y el listado de URL que se agregarón dentro
            de la constante "urlsToCache".
         5. Si las variables no se muestran correctamente al acceder en las Herramientas para 
            Desarrolladores de Chrome a "Application/Cache Storage" (regularmente ocurre después de una modificación del Service Worker),
