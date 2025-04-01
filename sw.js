@@ -34,7 +34,7 @@
         1. Abrir las herramientas para desarrolladores de Chrome. 
         2. Acceder a "Application".
         3. Seleccionar en el menú de la izquierda la opción "Service workers".
-        4. En el lado drecho se mostrará el estado del Service Worker detectado, el cual debería mostrar el Status: "... activated and is running" y mostrar
+        4. En el lado derecho se mostrará el estado del Service Worker detectado, el cual debería mostrar el Status: "... activated and is running" y mostrar
            un ícono de color verde al lado izquierdo para indicar que está funcionando correctamente. 
         
 
