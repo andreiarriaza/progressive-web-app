@@ -188,7 +188,7 @@ self.addEventListener("install", (e) => {
   e.waitUntil(
     caches
 
-      /* El método caches.open(CACHE_NAME) abre un caché (el caché que será almacenado en el dispositivo) con el nombre que se define en CACHE_NAME. 
+      /* El método caches.open(CACHE_NAME) abre (o crea, si no existe) un caché (el caché que será almacenado en el dispositivo) con el nombre que se define en CACHE_NAME. 
       Esta operación devuelve una promesa. Si la promesa se resuelve correctamente, pasa al siguiente bloque .then(). */
       .open(CACHE_NAME)
 
@@ -264,8 +264,7 @@ El método e.waitUntil() extiende el evento de activación hasta que todas las p
   e.waitUntil(
     /* caches.keys():
 Este método devuelve una promesa que se resuelve con una lista de todos los nombres
-de caché almacenados en el navegador. Cada vez que el caché se actualiza, se crea un 
-nuevo caché con un nombre diferente (versión nueva). */
+de caché almacenados en el navegador.  */
     caches
       .keys()
       /* .then((cacheNames) => { ... }):
@@ -353,7 +352,7 @@ self.addEventListener("fetch", (e) => {
     /* caches.match(e.request):
         - caches.match() busca en el caché disponible para ver si ya existe una entrada que coincida con la solicitud que se 
           está realizando (e.request es la solicitud original que se hace).
-        - Retorna una promesa que resuelve la respuesta almacenada en caché si existe, o undefined si no se encuentra una coincidencia. 
+        - Retorna una promesa que resuelve la respuesta almacenada en caché, si existe, o "undefined" si no se encuentra una coincidencia. 
     */
     caches
       .match(e.request)
