@@ -233,7 +233,7 @@ self.addEventListener("install", (e) => {
 
 /* 
 1. ¿Qué hace self.addEventListener?
-    self: es una referencia al contexto global del Service Worker. Es equivalente a window en el navegador, pero en este caso, funciona dentro del entorno aislado   
+    self: es una referencia al contexto global del Service Worker. Es equivalente a window en el navegador, pero en este caso, funciona dentro del entorno aislado 
           del Service Worker.
     addEventListener: se usa para escuchar eventos que ocurren en el ciclo de vida del Service Worker. 
     
@@ -268,7 +268,7 @@ de caché almacenados en el navegador.  */
     caches
       .keys()
       /* .then((cacheNames) => { ... }):
-Cuando la promesa de caches.keys() se resuelve, el argumento cacheNames contendrá un array 
+Cuando la promesa de caches.keys() se resuelve, el argumento "cacheNames" contendrá un array 
 con los nombres de todos los cachés actuales. Este bloque de código se utiliza para comparar 
 estos nombres con la lista blanca "cacheWhiteList" y decidir cuáles cachés deben eliminarse. */
       .then((cacheNames) => {
@@ -321,7 +321,8 @@ estos nombres con la lista blanca "cacheWhiteList" y decidir cuáles cachés deb
 /* 
 
 Evento "fetch":
-Este fragmento de código gestiona el evento fetch en un Service Worker dentro de una Progressive Web App (PWA). El objetivo del código es interceptar las solicitudes de red de la aplicación y responder con los archivos que ya están en el caché o, si no están en el caché, realizar la solicitud a la red (internet). 
+Este fragmento de código gestiona el evento "fetch" en un Service Worker dentro de una Progressive Web App (PWA). El objetivo del código es interceptar las solicitudes de red de la aplicación y responder con los archivos que ya están en el caché o, si no están en el caché, realizar la solicitud a la red (internet). 
+
 */
 
 /* self.addEventListener("fetch", (e) => { ... }):
@@ -345,7 +346,7 @@ self.addEventListener("fetch", (e) => {
   */
   e.respondWith(
     /* 
-    En el contexto de los Service Workers, e.request hace referencia al objeto de solicitud (Request) asociado a un evento de fetch.
+    En el contexto de los Service Workers, "e.request" hace referencia al objeto de solicitud (Request) asociado a un evento de fetch.
     Cuando un Service Worker intercepta una solicitud de red mediante el evento fetch, el objeto del evento (e o event) tiene una 
     propiedad "request" que contiene detalles sobre la solicitud que el navegador está intentando hacer.
     */
@@ -371,7 +372,8 @@ self.addEventListener("fetch", (e) => {
 
         /*  
         console.log(`Realizando fetch: ${e.request.url}`);
-          Imprime en la consola del navegador un mensaje que indica que se está realizando una solicitud de red (fetch) para la URL especificada en e.request.url. 
+          Imprime en la consola del navegador un mensaje que indica que se está realizando una solicitud de red (fetch) para la URL especificada 
+          en "e.request.url". 
           Esencialmente, sirve para fines de depuración, permitiendo a los desarrolladores ver en tiempo real qué recursos no se encontraron en la caché y, 
           por lo tanto, se están solicitando a la red. 
         */
@@ -413,7 +415,7 @@ self.addEventListener("fetch", (e) => {
 
                   El operador || significa "o" lógico.
                   Se cumple esta parte si la URL empieza con https:// o si empieza con web+miapp:// (tu protocolo personalizado).
-                  Permite cachear tanto las URLs seguras de tipo "https" del sitio como el protocol handler (web+miapp://).
+                  Permite cachear tanto las URLs seguras de tipo "https", como aquellas que correspondan al protocol handler (web+miapp://).
 
                 */
                 e.request.method === "GET" &&
