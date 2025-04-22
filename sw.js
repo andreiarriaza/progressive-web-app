@@ -55,7 +55,7 @@
                - Listo.  
         */
 
-/* Las AppProgresivas permiten almacenar todos los recursos estáticos en el disco duro del dispositivo en el que se
+/* Las AppProgresivas permiten almacenar todos los recursos estáticos en la emoria RAM del dispositivo en el que se
 esté visualizando la aplicación. 
 
 En una aplicación progresiva (PWA), el caché se utiliza para almacenar recursos estáticos que serán necesarios para que la aplicación 
