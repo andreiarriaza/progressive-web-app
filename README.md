@@ -242,10 +242,12 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
                                                    Esta opción es la menos inmersiva y es útil para
                                                    aplicaciones que no requieren un entorno de aplicación
                                                    dedicado.)
-            "start_url": "./?utm_source=web_app_manifest",     (Especifica la URL inicial de la
+            "start_url": "/progressive-web-app/?utm_source=web_app_manifest", (Especifica la URL inicial de la
                                                                 aplicación cuando se abre desde la
-                                                                pantalla de inicio. El parámetro
-                                                                utm_source=web_app_manifest puede ser
+                                                                pantalla de inicio. Esto permitirá que sin importar desde cuál
+                                                                sección de esta página (mates, libros, etc.) se instale o agregue a la pantalla de inicio
+                                                                esta Progressive Web App, siempre la página de inicio sea el index principal. Se usó una ruta absoluta "/progressive-web-app/" para evitar problemas con el registro del Service Worker (solo hay un service worker en toda la aplicación, por lo que son necesarias rutas absolutas para que las páginas mates, libros, contacto y aperturas puedan utilizar el mismo service worker sin problema). Se debe recordar que esta progressive web app fue creada dentro del repositorio de github llamado "progressive-web-app", el cual funciona como un subdominio de la página raíz (dominio principal): "https://andreiarriaza.github.io", por ello se colocó la ruta "/progressive-web-app".
+                                                                El parámetro                                                                utm_source=web_app_manifest puede ser
                                                                 usado para rastrear el uso de la
                                                                 aplicación como PWA en herramientas de
                                                                 analítica (como Google Analytics).)
@@ -274,12 +276,12 @@ Sí, el manifest.json funciona tanto en Windows como en Apple, pero el soporte v
                                                                   para rastrear o ajustar el comportamiento de la app cuando se abre desde el ícono instalado.
                                                                  - Flexibilidad de rutas: Si tu aplicación utiliza un sistema de rutas (como en SPA (Single Page Application)), puedes especificar cualquier ruta válida para iniciar la app.
                                                                 )
-            "scope": "./",        (Define el ámbito de la aplicación. Este es el conjunto de URLs que
-                                  forman parte de la PWA. Aquí, "./" significa que cualquier URL relativa
-                                  a la carpeta actual (cualquier URL que se encuentre dentro de la
-                                  carpeta actual) estará dentro del alcance de la PWA. Si la
+            "scope": "/progressive-web-app/",   (Define el ámbito de la aplicación. Este es el conjunto de URLs que
+                                  forman parte de la PWA. Aquí, "./progressive-web-app" significa que cualquier URL que se encuentre dentro de la
+                                  carpeta actual estará dentro del alcance de la PWA. Si la
                                   aplicación intenta acceder a URLs fuera de este ámbito, se comportará
-                                  como un sitio web normal.)
+                                  como un sitio web normal.) Se usó una ruta absoluta "/progressive-web-app/" para evitar problemas con el registro del Service Worker (solo hay un service worker en toda la aplicación, por lo que son necesarias rutas absolutas para que las páginas mates, libros, contacto y aperturas puedan utilizar el mismo service worker sin problema). Se debe recordar que esta progressive web app fue creada dentro del repositorio de github llamado "progressive-web-app", el cual funciona como un subdominio de la página raíz (dominio principal): "https://andreiarriaza.github.io", por ello se colocó la ruta "/progressive-web-app".
+
             "lang": "es-GT",    (Especifica el idioma predeterminado de la aplicación.
                                 En este caso, es español de Guatemala (es-GT). Esto ayuda a los navegadores
                                 y dispositivos a saber cuál es el idioma principal de la interfaz de usuario.)
