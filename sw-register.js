@@ -8,7 +8,9 @@ if ("serviceWorker" in navigator) {
      */
 
     /* register() es un método que registra el archivo del Service Worker. */
-    .register("./sw.js")
+    .register("/progressive-web-app/sw.js", {
+      scope: "/progressive-web-app/mates/",
+    })
     /* El método register() devuelve una promesa que se puede manejar con .then() y .catch().
     Si el Service Worker se registra correctamente, el navegador devolverá un objeto reg (registration).
 
