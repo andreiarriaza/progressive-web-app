@@ -8,6 +8,7 @@ if ("serviceWorker" in navigator) {
      */
 
     /* register() es un método que registra el archivo del Service Worker. */
+    /* Se usó una ruta absoluta "/progressive-web-app/" para evitar problemas con el registro del Service Worker (solo hay un service worker en toda la aplicación, por lo que son necesarias rutas absolutas para que las páginas mates, libros, contacto y aperturas puedan utilizar el mismo service worker sin problema). Se debe recordar que esta progressive web app fue creada dentro del repositorio de github llamado "progressive-web-app", el cual funciona como un subdominio de la página raíz (dominio principal): "https://andreiarriaza.github.io", por ello se colocó la ruta "/progressive-web-app". */
     .register("/progressive-web-app/sw.js")
     /* El método register() devuelve una promesa que se puede manejar con .then() y .catch().
     Si el Service Worker se registra correctamente, el navegador devolverá un objeto reg (registration).
