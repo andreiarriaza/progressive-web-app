@@ -1,4 +1,4 @@
-A/* 
+/* 
 
 *********** Para que la Proggressive Web App y el envío del Protocol Handler funcionen OFFLINE ***********
 
