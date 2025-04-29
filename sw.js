@@ -296,8 +296,9 @@ estos nombres con la lista blanca "cacheWhiteList" y decidir cuáles cachés deb
 
       .then(() => {
         console.log("Service Worker activo y listo para controlar clientes.");
-        // Le indica al Service Worker activar el caché actual.
+
         /* .then(() => self.clients.claim()):
+        
             Después de que todas las promesas de Promise.all() se hayan 
             resuelto (lo que indica que todos los cachés innecesarios se han eliminado), 
             se llama a self.clients.claim().
@@ -372,8 +373,9 @@ self.addEventListener("fetch", (e) => {
 
         /*  
         console.log(`Realizando fetch: ${e.request.url}`);
-          Imprime en la consola del navegador un mensaje que indica que se está realizando una solicitud de red (fetch) para la URL especificada 
-          en "e.request.url". 
+          Imprime en la consola del navegador un mensaje que indica que se está realizando una solicitud de red (fetch) 
+          para la URL especificada: "e.request.url". 
+          
           Esencialmente, sirve para fines de depuración, permitiendo a los desarrolladores ver en tiempo real qué recursos no se encontraron en la caché y, 
           por lo tanto, se están solicitando a la red. 
         */
