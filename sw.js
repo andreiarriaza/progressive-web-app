@@ -454,7 +454,7 @@ self.addEventListener("fetch", (e) => {
       /* .catch((err) => {...}):
             - Si ocurre un error al intentar buscar en la caché (caches.match()), se captura el error (err).
             - Se imprime el error en la consola.
-            - De nuevo, como medida de contingencia, se intenta devolver la página offline (/offline.html) desde la caché. */
+             */
       .catch((err) => {
         console.error("Error matching en caché", err);
 
@@ -462,7 +462,8 @@ self.addEventListener("fetch", (e) => {
             - Si la solicitud se encuentra en la caché, se sirve desde allí.
             - Si no se encuentra en la caché, se hace una solicitud a la red.
             - Si la solicitud a la red es exitosa, se guarda la respuesta en la caché para la próxima vez y se devuelve la respuesta de la red.
-            - Si ocurre un error (por ejemplo, falta de conexión a internet), se sirve una página offline desde la caché. 
+            - Si ocurre un error (por ejemplo, falta de conexión a internet), se devuelve el 
+            mensaje de "Error matching caché". 
         */
       })
   );
