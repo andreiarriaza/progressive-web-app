@@ -93,7 +93,7 @@
       "src": "./assets/img/screenshot-portrait-1080X1920.png",
       "sizes": "1080x1920",
       "type": "image/png",
-      "form_factor": "narrow"
+      "form_factor": "narrow" 
     },
     {
       "src": "./assets/img/screenshot-portrait-720X1280.png",
